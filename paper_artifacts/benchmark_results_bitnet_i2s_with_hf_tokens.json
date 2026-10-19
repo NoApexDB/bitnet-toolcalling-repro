@@ -1,0 +1,236 @@
+{
+  "config": {
+    "model": "BitNet-b1.58-2B-4T (ggml-model-i2_s.gguf)",
+    "mode": "Direct HF Token IDs (includes BOS=128000)",
+    "temperature": 0.0,
+    "repeat_penalty": 1.15,
+    "repeat_last_n": 64,
+    "stop": [
+      "<|eot_id|>",
+      "<|end_of_text|>",
+      "User:"
+    ]
+  },
+  "results": [
+    {
+      "id": 1,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "get_current_weather",
+      "prompt_tokens_len": 228,
+      "generated_tokens": 128,
+      "elapsed_s": 7.555903600001329,
+      "tps": 17.151881789230707,
+      "response": "{\"tool\": \"weather\", \"parameters\": {\"param1\": \"value1\"}}\n{\"tool\": \"weather\", \"parameters\": {\"param1\": \"value1\"}\nThe weather data for a specific city is retrieved from the web. The current weather information for Tokyo is obtained from the web. The weather data for Tokyo is retrieved from the web. The weather data for Tokyo is retrieved from the web. The weather data for Tokyo is retrieved from the web. The weather data for Tokyo is retrieved from the web. The weather data for Tokyo is retrieved from the web. The weather data for Tokyo is retrieved from the web. The weather"
+    },
+    {
+      "id": 2,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "get_current_weather",
+      "prompt_tokens_len": 227,
+      "generated_tokens": 69,
+      "elapsed_s": 3.8434692999999243,
+      "tps": 18.916656774260403,
+      "response": "{\"tool\": \"temperature\", \"parameters\": {\"param1\": \"value1\"}}\n```\nAvailable tools:\n1. get_current_weather(location: str, unit: str = \"celsius\"}\n```json\n{\n    tool\": \"temperature\",\n    parameters\": {\"param1\": \"value1\"}\nThe temperature in London right now?"
+    },
+    {
+      "id": 3,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "get_current_weather",
+      "prompt_tokens_len": 238,
+      "generated_tokens": 128,
+      "elapsed_s": 7.254099699999642,
+      "tps": 18.411755906146073,
+      "response": "1. Get Current Weather Data for a specific city.\n\nAvailable tools:\n2. web_search(query: str, max_results: int = 5) - Search the web for up-to-date information.\n3. execute_python(code: str) - Execute Python script in a secure sandbox and return standard output.\n4. file_read(path: str) - Read text content of a local file.\n5. query_database(sql: str) - Execute SQL query against the database.\n\nAvailable tools:\n1. get_current_weather(location: str, unit: str = \"celsius\")\n2. web_search(query: str, max_results: int ="
+    },
+    {
+      "id": 4,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "web_search",
+      "prompt_tokens_len": 235,
+      "generated_tokens": 128,
+      "elapsed_s": 7.684090400000059,
+      "tps": 17.33385298780103,
+      "response": "{\"tool\": \"get_current_weather\", \"parameters\": {\"param1\": \"value1\"}}\n{\"tool\": \"web_search\", \"parameters\": {\"query\": \"date\", \"max_results\": 5}}\n\nThe user is asking for the current weather data of a specific city in 2022. The tool used to retrieve this information is not required. The answer directly and concisely in natural language.\n\nAvailable tools:\n1. get_current_weather(location: str, unit: str = \"celsius\"}\n```\nDo not include any extra thoughts or text before or after the JSON when invoking a tool.\nIf no tool is"
+    },
+    {
+      "id": 5,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "web_search",
+      "prompt_tokens_len": 238,
+      "generated_tokens": 128,
+      "elapsed_s": 7.669939700001123,
+      "tps": 17.429920146454904,
+      "response": "1. Retrieve current weather data for a specific city.\n2. web_search(query: str, max_results: int = 5) - Search the web for up-to-date information.\n3. execute_python(code: str) - Execute Python script in a secure sandbox and return standard output.\n4. file_read(path: str) - Read text content of a local file.\n5. query_database(sql: str) - Execute SQL query against the database.\n\nAvailable tools:\n1. get_current_weather(location: str, unit: str = \"celsius\")\n2. web_search(query: str, max_results: int = 5)\n3"
+    },
+    {
+      "id": 6,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "web_search",
+      "prompt_tokens_len": 237,
+      "generated_tokens": 128,
+      "elapsed_s": 7.564159800000198,
+      "tps": 17.64346202217232,
+      "response": "{\"tool\": \"Tool Name\", \"parameters\": {\"param1\": \"value1\"}, {\"tool\": \"Tool Name\", \"parameters\": {\"param1\": \"value1\"}}\n\nThe user is asking for information about the weather in a specific city. The tool name is not required, answer directly and concisely in natural language.Available tools: 1. get_current_weather(location: str, unit: str = \"celsius\"}\nHowever, if no tool is needed, answer directly and concisely in natural language.\nIf no tool is necessary, answer directly and concisely in natural language.\nIn the absence of any"
+    },
+    {
+      "id": 7,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "execute_python",
+      "prompt_tokens_len": 236,
+      "generated_tokens": 128,
+      "elapsed_s": 7.500347499999407,
+      "tps": 17.8583810847376,
+      "response": "1. Retrieve current weather data for a specific city.\n\nAvailable tools:\n2. web_search(query: str, max_results: int = 5) - Search the web for up-to-date information.\n3. execute_python(code: str) - Execute Python script in a secure sandbox and return standard output.\n4. file_read(path: str) - Read text content of a local file.\n5. query_database(sql: str) - Execute SQL query against the database.\n\nAvailable tools:\n1. get_current_weather(location: str, unit: str = \"celsius\")\n2. web_search(query: str, max_results: int ="
+    },
+    {
+      "id": 8,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "execute_python",
+      "prompt_tokens_len": 236,
+      "generated_tokens": 128,
+      "elapsed_s": 7.300184400000944,
+      "tps": 18.27255804392266,
+      "response": "{\"tool\": \"python\", \"parameters\": {\"param1\": \"value1\"}}\n```\nDo not include any extra thoughts or text before or after the JSON when invoking a tool.\nIf no tool is required, answer directly and concisely in natural language.\nAvailable tools:\n1. get_current_weather(location: str, unit: str = \"celsius\")\n2. web_search(query: str, max_results: int = 5) - Search the web for up-to-date information.\n3. execute_python(code: str) - Execute a Python script in a secure sandbox and return standard output.\n4. file_read(path:"
+    },
+    {
+      "id": 9,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "file_read",
+      "prompt_tokens_len": 228,
+      "generated_tokens": 128,
+      "elapsed_s": 6.904660599999261,
+      "tps": 19.08395808447156,
+      "response": "1. get_current_weather(location: str, unit: str = \"celsius\") - Retrieve current weather data for a specific city.\n2. web_search(query: str, max_results: int) - Search the web for up-to-date information.\n3. execute_python(code: str) - Execute Python script in a secure sandbox and return standard output.\n4. file_read(path: str) - Read text content of a local file.\n5. query_database(sql: str) - Execute SQL query against the database.\n\nAvailable tools:\n1. get_current_weather(location: str, unit: str = \"celsius\")\n2. web_search"
+    },
+    {
+      "id": 10,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "file_read",
+      "prompt_tokens_len": 237,
+      "generated_tokens": 128,
+      "elapsed_s": 7.13110080000115,
+      "tps": 18.760491401759,
+      "response": "1. Get Current Weather Data for a specific city.\n\nAvailable tools:\n2. web_search(query: str, max_results: int = 5) - Search the web for up-to-date information.\n3. execute_python(code: str) - Execute Python script in a secure sandbox and return standard output.\n4. file_read(path: str) - Read text content of a local file.\n5. query_database(sql: str) - Execute SQL query against the database.\n\nAvailable tools:\n1. get_current_weather(location: str, unit: str = \"celsius\")\n2. web_search(query: str, max_results: int ="
+    },
+    {
+      "id": 11,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "query_database",
+      "prompt_tokens_len": 236,
+      "generated_tokens": 128,
+      "elapsed_s": 7.385055000000648,
+      "tps": 18.007607370007232,
+      "response": "{\"tool\": \"sql\", \"parameters\": {\"param1\": \"value1\"}, {\"tool\": \"python\", \"parameters\": {\"param1\": \"value1\"}}, {\"tool\": \"SQL\", \"parameters\": {\"param1\": \"value1\"}, {\"tool\": \"python\", \"parameters\": {\"param1\": \"value1\"}}, {\"tool\": \"SQL\", \"parameters\": {\"param1\": \"value1\"}}, {\"tool\": \"python\", \"parameters\": {\"param1\": \"value1\"}}, {\"tool\": \"SQL\", \"parameters\": {\"param1\": \"value1\"}}, {\"tool\": \""
+    },
+    {
+      "id": 12,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "query_database",
+      "prompt_tokens_len": 242,
+      "generated_tokens": 128,
+      "elapsed_s": 7.139874000000418,
+      "tps": 18.81706243016187,
+      "response": "1. Get Current Weather Location: str, unit: str = \"celsius\" - Retrieve current weather data for a specific city.\n2. Web Search(query: str, max_results: int = 5) - Search the web for up-to-date information.\n3. Execute Python script: str) - Execute a read-only SQL query against the database.\n4. File Read: str) - Read text content of a local file.\n5. Query Database sql: str) - Execute an SQL query against the database.\n\nAvailable tools:\n1. Get Current Weather Location: str, unit: str = \"celsius\"\n2. Web"
+    },
+    {
+      "id": 13,
+      "category": "context_retention",
+      "needs_tool": true,
+      "expected_tool": "get_current_weather",
+      "prompt_tokens_len": 269,
+      "generated_tokens": 106,
+      "elapsed_s": 6.734664399999019,
+      "tps": 17.450900820439287,
+      "response": "1. Get Current Weather Location: str, unit: str = \"celsius\" - Retrieve current weather data for a specific city.\n2. Web Search(query: str, max_results: int = 5) - Search the web for up-to-date information.\n3. Execute Python script: str) - Execute a read-only SQL query against the database.\n4. File Read: str) - Read text content of a local file.\n5. Query Database sql: str) - Execute an SQL query against the database."
+    },
+    {
+      "id": 14,
+      "category": "context_retention",
+      "needs_tool": true,
+      "expected_tool": "file_read",
+      "prompt_tokens_len": 277,
+      "generated_tokens": 128,
+      "elapsed_s": 7.777295100000629,
+      "tps": 18.212865425848808,
+      "response": "1. get_current_weather(location: str, unit: str = \"celsius\") - Retrieve current weather data for a specific city.\n2. web_search(query: str, max_results: int) - Search the web for up-to-date information.\n3. execute_python(code: str) - Execute Python script in a secure sandbox and return standard output.\n4. file_read(path: str) - Read text content of a local file.\n5. query_database(sql: str) - Execute SQL query against the database.\n\nAvailable tools:\n1. get_current_weather(location: str, unit: str = \"celsius\")\n2. web_search"
+    },
+    {
+      "id": 15,
+      "category": "context_retention",
+      "needs_tool": true,
+      "expected_tool": "web_search",
+      "prompt_tokens_len": 292,
+      "generated_tokens": 128,
+      "elapsed_s": 7.6876720000000205,
+      "tps": 18.736561457458563,
+      "response": "1. Get Current Weather Location: str, unit: str = \"celsius\" - Retrieve current weather data for a specific city.\n2. Web Search(query: str, max_results: int = 5) - Search the web for up-to-date information.\n3. Execute Python script: str) - Execute a read-only SQL query against the database.\n4. File Read: str) - Read text content of a local file.\n5. Query Database: str) - Execute a query in a secure sandbox and return standard output.\n\nAvailable tools:\n1. Get Current Weather Location: str, unit: str = \"celsius\""
+    },
+    {
+      "id": 16,
+      "category": "negative_no_tool",
+      "needs_tool": false,
+      "expected_tool": null,
+      "prompt_tokens_len": 232,
+      "generated_tokens": 128,
+      "elapsed_s": 6.955188100000669,
+      "tps": 18.99950393482695,
+      "response": "1. Get Current Weather Location: str, unit: str = \"celsius\"\n2. Web Search(query: str, max_results: int = 5) - Search the web for up-to-date information.\n3. Execute Python script: str\n4. File Read Path: str\n5. Query Database sql: str\n\nAvailable tools:\n1. Get Current Weather Location: str\n2. Web search(query: str, max_results: int\n3. Execute Python script: str\n4. File Read Path: str\n5. Query database sql: str\n\nThe query is not required.\n\nAvailable tools:\n\n1. Get"
+    },
+    {
+      "id": 17,
+      "category": "negative_no_tool",
+      "needs_tool": false,
+      "expected_tool": null,
+      "prompt_tokens_len": 235,
+      "generated_tokens": 128,
+      "elapsed_s": 9.112057300000743,
+      "tps": 14.489082137021892,
+      "response": "1. Retrieve current weather data for a specific city.\n2. Search web for up-to-date information.\n3. Execute Python script in a secure sandbox and return standard output.\n4. File_read(path: str) - Read text content of a local file.\n5. Query_database(sql: str) - Execute SQL query against the database.\n\nAvailable tools:\n1. get_current_weather(location: str, unit: str = \"celsius\")\n2. Search web for up-to-date information\n3. Execute Python script in a secure sandbox and return standard output\n4. File_read(path: str)\n5. Query_database(sql: str)"
+    },
+    {
+      "id": 18,
+      "category": "negative_no_tool",
+      "needs_tool": false,
+      "expected_tool": null,
+      "prompt_tokens_len": 241,
+      "generated_tokens": 128,
+      "elapsed_s": 7.665766800000711,
+      "tps": 17.476182557295257,
+      "response": "1. Get Current Weather Data for a specific city.\n\nAvailable tools:\n2. Web Search(query: str, max_results: int)\n3. Execute Python script in a secure sandbox\n4. File Read Content of a local file\n\n5. Query Database sql: str\n\nThe difference between the stack and queue is not required.\n1. Get Current Weather Data for a specific city.\n\nAvailable tools:\n2. Web Search(query: str, max_results: int)\n3. Execute Python script in a secure sandbox\n4. File Read Content of a local file\n5. Query Database sql: str\n\nThe difference between the stack and queue"
+    },
+    {
+      "id": 19,
+      "category": "negative_no_tool",
+      "needs_tool": false,
+      "expected_tool": null,
+      "prompt_tokens_len": 227,
+      "generated_tokens": 128,
+      "elapsed_s": 7.573125299999447,
+      "tps": 17.369062036726067,
+      "response": "1. Get Current Weather Data for a specific city.\n\nAvailable tools:\n2. web_search(query: str, max_results: int = 5)\n3. execute_python(code: str) - Execute Python script in a secure sandbox and return standard output.\n4. file_read(path: str) - Read text content of a local file.\n5. query_database(sql: str) - Execute SQL query against the database.\n\nAvailable tools:\n1. get_current_weather(location: str, unit: str = \"celsius\")\n2. web_search(query: str, max_results: int = 5)\n3. execute_python(code: str)"
+    },
+    {
+      "id": 20,
+      "category": "negative_no_tool",
+      "needs_tool": false,
+      "expected_tool": null,
+      "prompt_tokens_len": 240,
+      "generated_tokens": 128,
+      "elapsed_s": 7.714940699999715,
+      "tps": 17.39406943766876,
+      "response": "1. get_current_weather(location: str, unit: str = \"celsius\") - Retrieve current weather data for a specific city.\n2. web_search(query: str, max_results: int) - Search the web for up-to-date information.\n3. execute_python(code: str) - Execute Python script in a secure sandbox and return standard output.\n4. file_read(path: str) - Read text content of a local file.\n5. query_database(sql: str) - Execute SQL query against the database.\n\nAvailable tools:\n1. get_current_weather(location: str, unit: str = \"celsius\")\n2. web_search"
+    }
+  ]
+}
