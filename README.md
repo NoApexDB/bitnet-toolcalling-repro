@@ -122,3 +122,11 @@ To verify byte-level integrity of the artifact repository:
 ```bash
 python runners/revise_manifest_review18_r2.py --verify
 ```
+
+## Artifact inventory
+
+- `paper_artifacts/` — 69 result JSONs, audit reports, and engine binaries (`binaries/`), plus the modified graph source (`bitnet.cpp`) and model `config.json`.
+- `runners/` — all benchmark/experiment scripts.
+- `data/` — canonical test suites.
+- **Byte-exactness:** all 69 hosted files are stored without line-ending normalization (`.gitattributes: * -text`) and their SHA-256 matches `BENCHMARK_ARTIFACTS_MANIFEST.json` exactly (verified 2026-10-19).
+- **Not hosted (by size):** the two model checkpoints and two GGUF files (~1.2 GB each) — obtain from Hugging Face per Section 3; their SHA-256 are in the manifest and README.
