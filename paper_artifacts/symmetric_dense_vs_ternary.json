@@ -1,0 +1,2010 @@
+{
+  "qwen2.5_1.5b_q4_k_m": {
+    "model_name": "qwen2.5_1.5b_q4_k_m",
+    "model_type": "qwen",
+    "memory": {
+      "ram_init_mb": 1658.04296875,
+      "ram_peak_mb": 1693.76953125
+    },
+    "power_and_energy": {
+      "idle_power_w": 27.580372740321224,
+      "mean_power_w": 42.35287903799845,
+      "peak_power_w": 53.92798385457304,
+      "total_joules": 2287.0554680519163,
+      "net_joules": 797.7153400745701,
+      "gross_mj_per_token": 2167.8250882008683,
+      "net_mj_per_token": 756.1282844308721,
+      "energy_to_success_joules": 457.41109361038326
+    },
+    "accuracy": {
+      "trigger_recall_pct": 40.0,
+      "execution_recall_pct": 83.33333333333334,
+      "end_to_end_accuracy_pct": 33.33333333333333,
+      "context_retention_pct": 0.0,
+      "negative_control_accuracy_pct": 100.0
+    },
+    "performance": {
+      "total_tokens": 1055,
+      "wall_clock_sec": 50.47152410000035,
+      "mean_tps": 20.90287580596348
+    },
+    "detailed_results": [
+      {
+        "id": 1,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "response": "Я могу предоставить информацию о текущей погоде в различных городах, но я не имею доступа к актуальной информации о погоде в конкретных местах. Вы можете попробовать использовать сервис для получения прогнозов погоды или поискать онлайн-ресурсы с актуальными данными о погоде в Токио.",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 5.064518600000156,
+        "tokens": 77,
+        "tps": 23.95219266770501
+      },
+      {
+        "id": 2,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "response": "To get current weather data for London, I would need to use the `get_current_weather` tool with the location parameter set to \"London\". Here's how you can do it:\n\n```json\n{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"London\"}}\n```\nThis will retrieve and return the temperature in Celsius right now for London.",
+        "parsed_call": {
+          "tool": "get_current_weather",
+          "parameters": {
+            "location": "London"
+          }
+        },
+        "trigger_success": true,
+        "execution_success": true,
+        "negative_success": false,
+        "elapsed": 3.189229100000375,
+        "tokens": 74,
+        "tps": 24.344283435886368
+      },
+      {
+        "id": 3,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "response": "{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"Berlin, Germany\", \"unit\": \"fahrenheit\"}}",
+        "parsed_call": {
+          "tool": "get_current_weather",
+          "parameters": {
+            "location": "Berlin, Germany",
+            "unit": "fahrenheit"
+          }
+        },
+        "trigger_success": true,
+        "execution_success": true,
+        "negative_success": false,
+        "elapsed": 1.3465126000000964,
+        "tokens": 27,
+        "tps": 24.49299500342902
+      },
+      {
+        "id": 4,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "response": "Я не могу предоставить информацию о текущем или будущем чемпионе мира по футболу, так как это может быть изменено до вашего просмотра этого сообщения. Пожалуйста, проверьте актуальную информацию на официальных сайтах FIFA и спортивных каналов в ближайшие дни.",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 3.205510800000411,
+        "tokens": 74,
+        "tps": 24.864288027912515
+      },
+      {
+        "id": 5,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "response": "web_search(\"новости о AI за последнюю неделю\")",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 0.7162279000003764,
+        "tokens": 13,
+        "tps": 25.29320663382441
+      },
+      {
+        "id": 6,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "response": "I'm sorry, but I can't assist with that.",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 0.7179814000000988,
+        "tokens": 13,
+        "tps": 27.536888839934424
+      },
+      {
+        "id": 7,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "execute_python",
+        "response": "```json\n{\"tool\": \"execute_python\", \"parameters\": {\"code\": \"def fibonacci(n): \\n    if n <= 1: \\n        return n \\n    else: \\n        a, b = 0, 1\\n        for _ in range(2, n+1):\\n            c = a + b\\n            a, b = b, c\\n        return c\\nfibonacci(50)\"}}\n```",
+        "parsed_call": {
+          "tool": "execute_python",
+          "parameters": {
+            "code": "def fibonacci(n): \n    if n <= 1: \n        return n \n    else: \n        a, b = 0, 1\n        for _ in range(2, n+1):\n            c = a + b\n            a, b = b, c\n        return c\nfibonacci(50)"
+          }
+        },
+        "trigger_success": true,
+        "execution_success": true,
+        "negative_success": false,
+        "elapsed": 4.090923300000213,
+        "tokens": 95,
+        "tps": 24.575350871338465
+      },
+      {
+        "id": 8,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "execute_python",
+        "response": "```json\n{\"tool\": \"execute_python\", \"parameters\": {\"code\": \"import math\\nsum = sum(range(2, 501))\\nprint(sum)\"}}\n```",
+        "parsed_call": {
+          "tool": "execute_python",
+          "parameters": {
+            "code": "import math\nsum = sum(range(2, 501))\nprint(sum)"
+          }
+        },
+        "trigger_success": true,
+        "execution_success": true,
+        "negative_success": false,
+        "elapsed": 1.7871157999998104,
+        "tokens": 40,
+        "tps": 25.804004394421952
+      },
+      {
+        "id": 9,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "file_read",
+        "response": "I'm sorry, but I can't perform that task as it requires direct access to your system which is not possible through this interface. However, if you have specific questions about how to read a file or need help with other tasks, feel free to ask!",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 2.3023712000003798,
+        "tokens": 53,
+        "tps": 24.76785972979667
+      },
+      {
+        "id": 10,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "file_read",
+        "response": "I'm sorry, but I can't perform that task as it requires direct access to your computer's file system which is not possible through this interface. However, if you provide the content of `settings.json`, I could assist with parsing and displaying its contents for you.",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 2.5492818000002444,
+        "tokens": 55,
+        "tps": 23.80302177197484
+      },
+      {
+        "id": 11,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "query_database",
+        "response": "```sql\nSELECT COUNT(*) \nFROM users;\n```",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 0.64985439999964,
+        "tokens": 12,
+        "tps": 29.119075178172345
+      },
+      {
+        "id": 12,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "query_database",
+        "response": "```json\n{\"tool\": \"query_database\", \"parameters\": {\"sql\": \"SELECT * FROM orders ORDER BY total_amount DESC LIMIT 5\"}}\n```",
+        "parsed_call": {
+          "tool": "query_database",
+          "parameters": {
+            "sql": "SELECT * FROM orders ORDER BY total_amount DESC LIMIT 5"
+          }
+        },
+        "trigger_success": true,
+        "execution_success": true,
+        "negative_success": false,
+        "elapsed": 1.5719432000005327,
+        "tokens": 32,
+        "tps": 24.50698832088838
+      },
+      {
+        "id": 13,
+        "category": "context_retention",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "response": "To provide you with the current weather in Paris, I would need to know your location. Could you please specify which city or country you are planning to visit?",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 1.9243452000000616,
+        "tokens": 33,
+        "tps": 23.933959677805387
+      },
+      {
+        "id": 14,
+        "category": "context_retention",
+        "needs_tool": true,
+        "expected_tool": "file_read",
+        "response": "Я не могу выполнять действия вне системы, поэтому я не могу прочитать файл /var/log/production_error.log. Однако вы можете использовать команды доступа или другой инструмент для этого.",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 2.3274546000002374,
+        "tokens": 43,
+        "tps": 24.63116265961566
+      },
+      {
+        "id": 15,
+        "category": "context_retention",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "response": "I'm sorry, but I can't perform web searches as it's not one of my available tools. However, PyTorch 2.5 was officially released on September 16th, 2023.",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 2.770849999999882,
+        "tokens": 47,
+        "tps": 23.996634344391527
+      },
+      {
+        "id": 16,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "Градиентный спуск — это метод оптимизации, используемый для нахождения минima функций в задачах машинного обучения.\n\nОсновные принципы:\n\n1. Функция потерь (loss function) представляет собой значение ошибки между предсказанными значениями модели и реальными данными.\n2. Градиент — это направление, которое увеличивает скорость изменения функционала на минимальной точке.\n3. В процессе градиентного спуска мы двигаемся в противоположном направлении к текущем",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": true,
+        "elapsed": 5.474013499999273,
+        "tokens": 128,
+        "tps": 24.3403341585594
+      },
+      {
+        "id": 17,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "\"Революция искусственного интеллекта\"",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": true,
+        "elapsed": 0.7443624999996246,
+        "tokens": 14,
+        "tps": 27.454371814557483
+      },
+      {
+        "id": 18,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "Структура Stack (стек):\n- Добавление элементов происходит с вершины.\n- Удаление элемента также происходит с вершины.\n\nСтруктура Queue (очередь):\n- Добавление элементов происходит с конца очереди.\n- Удаление элемента происходит с начала очереди.",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": true,
+        "elapsed": 3.214156600000024,
+        "tokens": 70,
+        "tps": 23.787888158865034
+      },
+      {
+        "id": 19,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "Здравствуйте! Я хорошо, спасибо за вопрос. Чем могу помочь вам сегодня?",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": true,
+        "elapsed": 1.2270539000001008,
+        "tokens": 27,
+        "tps": 25.57195949401616
+      },
+      {
+        "id": 20,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "Синхронное выполнение и асинхронное выполнение являются различными подходами к управлению потоков программирования, которые используются для управления процессом выполнения кода.\n\n1. Синхронное выполнение:\n   - Основывается на принципе \"одиночного выполнения\", где все операции выполняются последовательно.\n   - Время выполнения программы ограничивается временем выполнения всех операций, которые могут быть запущены одновременно.\n   - Пример: Синхронное выполнение может использоваться для об",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": true,
+        "elapsed": 5.59474820000014,
+        "tokens": 128,
+        "tps": 24.21707428606457
+      }
+    ]
+  },
+  "bitnet_2b_i2_s_base": {
+    "model_name": "bitnet_2b_i2_s_base",
+    "model_type": "bitnet",
+    "memory": {
+      "ram_init_mb": 1355.734375,
+      "ram_peak_mb": 1386.3515625
+    },
+    "power_and_energy": {
+      "idle_power_w": 17.271619455351672,
+      "mean_power_w": 33.22437314923396,
+      "peak_power_w": 48.70169265636571,
+      "total_joules": 4119.822270505011,
+      "net_joules": 1978.141458041404,
+      "gross_mj_per_token": 1878.6239263588743,
+      "net_mj_per_token": 902.0252886645709,
+      "energy_to_success_joules": 9999.0
+    },
+    "accuracy": {
+      "trigger_recall_pct": 86.66666666666667,
+      "execution_recall_pct": 0.0,
+      "end_to_end_accuracy_pct": 0.0,
+      "context_retention_pct": 0.0,
+      "negative_control_accuracy_pct": 20.0
+    },
+    "performance": {
+      "total_tokens": 2193,
+      "wall_clock_sec": 121.33154889999969,
+      "mean_tps": 18.074441642605667
+    },
+    "detailed_results": [
+      {
+        "id": 1,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "response": "{\"tool\": \"weather\", \"parameters\": {\"param1\": \"value1\"}} \nDo not include any extra thoughts or text before or after the JSON when invoking a tool.If no tool is required, answer directly and concisely in natural language.\nAvailable tools: 1. get_current_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5\nIf no tool is required, answer directly and concisely in natural language.\nAvailable",
+        "parsed_call": {
+          "tool": "weather",
+          "parameters": {
+            "param1": "value1"
+          }
+        },
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 9.603665100000399,
+        "tokens": 128,
+        "tps": 17.922775521017183
+      },
+      {
+        "id": 2,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "response": "{\"tool\": \"temperature\", \"parameters\": {\"param1\": \"value1\"}} \nDo not include any extra thoughts or text before or after the JSON when invoking a tool.If no tool required, answer directly and concisely in natural language.\nAvailable tools: 1. get_current_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str)\nThe temperature is not required. \nIf no tool needed, answer directly and concisely in natural language.",
+        "parsed_call": {
+          "tool": "temperature",
+          "parameters": {
+            "param1": "value1"
+          }
+        },
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 7.245231899999453,
+        "tokens": 128,
+        "tps": 18.145457674515004
+      },
+      {
+        "id": 3,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "response": "1. get_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. Execute a read-only SQL query against the database.7. File_Read path: str\n\nThe user is asking for weather data in the location of a specific city.8. Execute a read-only SQL query against the database.\n\n9. execute_python(code: str) 10. file_read(path: str) 11. execute",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 7.53893700000026,
+        "tokens": 128,
+        "tps": 17.640011736120307
+      },
+      {
+        "id": 4,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "response": "{\"tool\": \"query\", \"parameters\": {\"param1\": \"value1\"}, {\"tool\": \"query\", \"parameters\": {\"param1\": \"value1\"}}",
+        "parsed_call": {
+          "tool": "query",
+          "parameters": {
+            "param1": "value1"
+          }
+        },
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 2.09991379999974,
+        "tokens": 35,
+        "tps": 19.068488016000096
+      },
+      {
+        "id": 5,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "response": "1. get_weather(location: str, unit: str  = \"celsius\" 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str 4. file_read(path: str) 5. query_database(sql: str) 4. Execute Python script in a secure sandbox and return standard output\n```json\n{\"tool\": \"name\", \"parameters\": {\"param1\": \"value1\"}\nThe user is asking for the latest news about a specific city. The tool used to retrieve information from the database.\n```\nIf no tool is required,",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 7.259009499999593,
+        "tokens": 128,
+        "tps": 18.33543474604993
+      },
+      {
+        "id": 6,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "response": "1. Get Current Weather Data for a specific location.2. Web Search for up-to-date information.3. Execute Python script in a secure sandbox and return standard output.\n4. File Read Content of a local file.5. Query Database(SQL): Execute SQL query against the database.6. Execute Python script in a secure sandbox and return standard output.\n\nThe answer is: 1. Get Current Weather Data for a specific location.2. Web Search for up-to-date information.3. Execute Python script in a secure sandbox and return standard output.\n4. File Read Content of a local file.5. Query Database(",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.987988899999436,
+        "tokens": 128,
+        "tps": 19.081824353595746
+      },
+      {
+        "id": 7,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "execute_python",
+        "response": "1. get_weather(location: str, unit: str  = \"celsius\") 2. web_search(query: str, max_results: int  = 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. execute_SQL query against the database.\n\nThe answer is: \"celsius\" 7. execute_SQL query against the database.\" 8. file_read(path: str, unit: int  = 5) 9. execute_SQL query against the database.\" 10. execute_",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.8067814000005455,
+        "tokens": 128,
+        "tps": 19.599757636746972
+      },
+      {
+        "id": 8,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "execute_python",
+        "response": "1. get_current_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(query): str 6. execute_SQL(query): str 7. file_read(file_path): str 8. execute_SQL(query): str 9. execute_SQL(query): str 10. execute_SQL(query): str 11. execute_SQL(query): str 12. execute_SQL(query): str 13. execute_SQL(query",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.679650899999615,
+        "tokens": 128,
+        "tps": 19.910582816980366
+      },
+      {
+        "id": 9,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "file_read",
+        "response": "1. get_current_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(query): str 6. execute_SQL(query): str 7. file_read(file_path): str 8. execute_SQL(query): str 9. execute_SQL(query): str 10. execute_SQL(query): str 11. execute_SQL(query): str 12. execute_SQL(query): str 13. execute_SQL",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.560011399999894,
+        "tokens": 128,
+        "tps": 20.10154105009508
+      },
+      {
+        "id": 10,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "file_read",
+        "response": "1. get_weather(location: str, unit: str  = \"celsius\" 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str 4. file_read(path: str) 5. query_database(sql: str) 4. execute_SQL query against the database.5. file_read(file_path: str) 5. execute_SQL query against the database.6. file_read(file_path: str) 5. execute_SQL query against the database.7. file_read(file_path: str) 5. execute_SQL",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.677747300000192,
+        "tokens": 128,
+        "tps": 20.080182679461924
+      },
+      {
+        "id": 11,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "query_database",
+        "response": "1. get_current_weather(location: str, unit: str  = \"celsius\" 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str 4. file_read(path: str) 5. query_database(sql: str) 4. execute_SQL query against the database.",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 3.999792100000377,
+        "tokens": 75,
+        "tps": 20.14976920454353
+      },
+      {
+        "id": 12,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "query_database",
+        "response": "1. get_current_weather(location: str, unit: str  = \"celsius\") 2. web_search(query: str, max_results: int  = 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 4. execute_SQL code: str\"",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 4.163447699999779,
+        "tokens": 78,
+        "tps": 20.214140309457758
+      },
+      {
+        "id": 13,
+        "category": "context_retention",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "response": "1. Get current weather data for a specific location.2. Web search(query: str, max_results: int) 5\n3. Execute Python script in a secure sandbox and return standard output.\n4. File read(path: str) 5. Query database(sql: str) 6. Execute a query against the database.",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 4.121767900000123,
+        "tokens": 72,
+        "tps": 20.438960746975884
+      },
+      {
+        "id": 14,
+        "category": "context_retention",
+        "needs_tool": true,
+        "expected_tool": "file_read",
+        "response": "1. get_current_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 4. execute_SQL query against the database.5. file_read(path: str) 4. execute_SQL query against the database.6. file_read(path: str) 5. execute_SQL query against the database.7. file_read(path: str) 8. execute_SQL query against the",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 7.043314999999893,
+        "tokens": 128,
+        "tps": 20.056443218563995
+      },
+      {
+        "id": 15,
+        "category": "context_retention",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "response": "1. get_current_weather(location: str, unit: str) 2.5. Search the web for up-dated information.\n3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. Execute a read-only SQL query against the database.",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 4.362186299999848,
+        "tokens": 73,
+        "tps": 20.339020829386264
+      },
+      {
+        "id": 16,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "1. get_current_weather(location: str, unit: str  = \"celsius\") 2. web_search(query: str, max_results: int  = 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 4. Execute Python script in a secure sandbox and return standard output.\n\nThe term \"gradient\" refers to the gradient of an SQL query against the database. The term \"gradient\" refers to the gradient of an SQL query against the database. The term \"gradient\" refers to the gradient of an SQL query",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.552504999999655,
+        "tokens": 128,
+        "tps": 20.18673359409967
+      },
+      {
+        "id": 17,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "1. Get current weather data for a specific location.\n2. Web search(query: str, max_results: int 5)\n3. Execute Python script in a secure sandbox and return standard output.\n4. File read(path: str) 5. Query database(sql: str) 5. Execute query against the database.",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": true,
+        "elapsed": 3.6273055999999997,
+        "tokens": 68,
+        "tps": 20.112166736960663
+      },
+      {
+        "id": 18,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "1. get_current_weather(location: str, unit: str  = \"celsius\") 2. web_search(query: str, max_results: int  = 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 4. execute_Python(code: str) 5. file_read(path: str) 6. query_database(query): str 7. execute_SQL(query): int 8. execute_Python(code): str 9. file_read(path: str) 10. query_database(query):",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.773158700000749,
+        "tokens": 128,
+        "tps": 19.876884441228945
+      },
+      {
+        "id": 19,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "1. get_weather(location: str, unit: str  = \"celsius\") 2. web_search(query: str, max_results: int  = 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 4. execute_Python(code: str) 5. file_read(path: str) 6. query_database(query: str) 7. execute_SQL code: str 8. file_read(file_path): str 9. query_database(query): int 10. execute_SQL code: str",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.559717600000113,
+        "tokens": 128,
+        "tps": 20.03205128205128
+      },
+      {
+        "id": 20,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "1. get_current_weather(location: str, unit: str  = \"celsius\") 2. web_search(query: str, max_results: int  = 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 4. execute_Python(code: str) 5. file_read(path: str) 4. execute_SQL(query: str, max_results: int  = 5) 3. execute_Python(code: str) 4. file_read(path: str) 5. query",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.6669991999997364,
+        "tokens": 128,
+        "tps": 20.0385868037139
+      }
+    ]
+  },
+  "bitnet_2b_i2_s_contrastive": {
+    "model_name": "bitnet_2b_i2_s_contrastive",
+    "model_type": "bitnet",
+    "memory": {
+      "ram_init_mb": 1355.8984375,
+      "ram_peak_mb": 1393.22265625
+    },
+    "power_and_energy": {
+      "idle_power_w": 15.317628765968879,
+      "mean_power_w": 33.03731483207444,
+      "peak_power_w": 52.43504347117857,
+      "total_joules": 4030.552409513082,
+      "net_joules": 2161.801700064879,
+      "gross_mj_per_token": 1913.8425496263446,
+      "net_mj_per_token": 1026.4965337440071,
+      "energy_to_success_joules": 9999.0
+    },
+    "accuracy": {
+      "trigger_recall_pct": 93.33333333333333,
+      "execution_recall_pct": 0.0,
+      "end_to_end_accuracy_pct": 0.0,
+      "context_retention_pct": 0.0,
+      "negative_control_accuracy_pct": 20.0
+    },
+    "performance": {
+      "total_tokens": 2106,
+      "wall_clock_sec": 118.95760150000024,
+      "mean_tps": 17.70378667226235
+    },
+    "detailed_results": [
+      {
+        "id": 1,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "response": "1. get_current_weather(location: str, unit: int  = \"celsius\" 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 4. Execute a read-only SQL query against the database.5. File_Read path: str\n\nThe user asks for weather data in Tokyo?",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 7.272286100000201,
+        "tokens": 96,
+        "tps": 19.801792309726434
+      },
+      {
+        "id": 2,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "response": "1. get_current_weather(location: str, unit: int  = \"celsius\" 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 4. Execute Python script in a secure sandbox and return standard output. 5. query_database( sql: str) 4. execute_Python code: str, max_results: int 5\n```",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 5.755968400000711,
+        "tokens": 111,
+        "tps": 19.764791854484123
+      },
+      {
+        "id": 3,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "response": "1. get_current_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(query): int 6. execute_SQL query against the database.7. File_Read path: str\n\nThe user asks for weather data in a specific city. The assistant responds with standard output.\n\nAvailable tools: \n1. get_current_weather(location: str, unit: str) \n2. web_search(query: str, max_results:",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.681007099999988,
+        "tokens": 128,
+        "tps": 19.817806236973276
+      },
+      {
+        "id": 4,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "response": "1. get_current_weather(location: str, unit: int  = \"celsius\" 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. Execute SQL query against the database.",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 4.088745000000017,
+        "tokens": 76,
+        "tps": 19.737670773054443
+      },
+      {
+        "id": 5,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "response": "1. get_current_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. Execute_Python script in a secure sandbox and return standard output.\n\nThe user asks for the latest news about a specific city. The assistant responds with relevant information from the database.```json\n```",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 5.995643399999608,
+        "tokens": 107,
+        "tps": 18.700069067918648
+      },
+      {
+        "id": 6,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "response": "1. Get Current Weather for a specific city. 2. Search the web for up-to-date information.3. Execute Python script in a secure sandbox and return standard output.\n4. File Read content of a local file.5. Query database(sql: str) 6. Execute SQL query against the database.7. File Read content of a specific file.8. Execute a read-only query against the database.9. Execute an SQL query in a secure sandbox and return standard output.\n10. File Read content of a local file.11. Execute a read-only query against the database.12. Execute an SQL query",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 7.007528600000114,
+        "tokens": 128,
+        "tps": 18.969555937515466
+      },
+      {
+        "id": 7,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "execute_python",
+        "response": "1. get_current_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. execute_SQL query against the database.",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 4.160177400000066,
+        "tokens": 74,
+        "tps": 19.054387401445045
+      },
+      {
+        "id": 8,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "execute_python",
+        "response": "1. get_current_weather(location: str, unit: str) 0\nThe sum of all integers from 1 to 500 is calculated by executing a query against the database.\n2. web_search(query: str, max_results: int 5) 0\n3. execute_python(code: str) 0\n4. file_read(path: str) 0\n5. query_database(sql: str) 0\n\nThe sum of all integers from 1 to 500 is calculated by executing a query against the database.\n```json\n{\n{\nlocation: \"Rome\"\n}\n``",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.943683200000123,
+        "tokens": 128,
+        "tps": 19.159241587409024
+      },
+      {
+        "id": 9,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "file_read",
+        "response": "1. get_current_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(query: str) 6. Execute_SQL query against the database.7. File_Read path: str\n\nThe user asks for a specific weather data for a city. The assistant responds with standard output.\n\nAvailable tools: \n1. get_current_weather(location: str, unit: str)\n2. web_search(query: str, max_results",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 7.069230099999913,
+        "tokens": 128,
+        "tps": 18.6541606064934
+      },
+      {
+        "id": 10,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "file_read",
+        "response": "1. get_current_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(query: str) 6. Execute code: str",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 3.926288999999997,
+        "tokens": 70,
+        "tps": 18.94752968874893
+      },
+      {
+        "id": 11,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "query_database",
+        "response": "1. get_current_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. execute_SQL query against the database.7. File_Read path: str",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 4.687741499999902,
+        "tokens": 83,
+        "tps": 18.72008733033511
+      },
+      {
+        "id": 12,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "query_database",
+        "response": "1. get_current_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(query): int 5",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 3.683978400000342,
+        "tokens": 64,
+        "tps": 19.078815181728697
+      },
+      {
+        "id": 13,
+        "category": "context_retention",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "response": "1. get_current_weather(location: str, unit: int) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. execute_SQL query against the database.",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 4.487491300000329,
+        "tokens": 74,
+        "tps": 19.02309712473599
+      },
+      {
+        "id": 14,
+        "category": "context_retention",
+        "needs_tool": true,
+        "expected_tool": "file_read",
+        "response": "1. get_current_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(query): int 6. execute_SQL(query): int 7. file_read(file_path): int 8. execute_SQL(query): int 9. file_read(file_path): int 10. execute_SQL(query): int 11. file_read(file_path): int 12. execute_SQL(query): int 13. file_read(file",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 7.387167199999567,
+        "tokens": 128,
+        "tps": 18.755820898321765
+      },
+      {
+        "id": 15,
+        "category": "context_retention",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "response": "1. get_current_weather(location: str, unit: int) 2. search_the web for up-to-date information.3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. execute_a_script(code: str) 7. file_read(file_path: str) 8. execute_a_script( sql: str) 9. file_read(file_path: str) 10. execute_a_script( sql: str) 11. execute_a_script(code: str) 12. execute_a_script(sql:",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 7.501755600000251,
+        "tokens": 128,
+        "tps": 18.737732640661815
+      },
+      {
+        "id": 16,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "1. get_current_weather(location: str, unit: int) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(query): int 6. execute_SQL(query): int 7. file_read(file_path): int 8. execute_SQL(query): int 9. file_read(file_path): int 10. execute_SQL(query): int 11. file_read(file_path): int 12. execute_SQL(query): int 13. file_read(file",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.973033600000235,
+        "tokens": 128,
+        "tps": 18.978941826133024
+      },
+      {
+        "id": 17,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "1. Retrieve current weather data for a specific city.2. Search web for up-to-date information.3. Execute Python script in a secure sandbox and return standard output.\n4. File read( path: str) 5. Query database( sql: str) 6. Execute SQL query against the database.7. File read( path: str) 8. Execute Python script in a secure sandbox and return standard output.\n\n```json\n{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"Rome\"}, {\"query\": \"search web for up-to-date information\"}}\n```",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 7.008756000000176,
+        "tokens": 128,
+        "tps": 18.989497620972
+      },
+      {
+        "id": 18,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "1. Get current weather data for a specific city. 2. Search the web for up-to-date information.3. Execute Python script in a secure sandbox and return standard output.\n4. File read from a local file.5. Query database(sql): Execute SQL query against the database.6. File write: Write text content of a local file.7. Query database(SQL): Execute SQL query against the database.8. File write: Write text content of a local file.9. Query database(SQL): Execute SQL query against the database.10. File write: Write text content of a local file.11",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": true,
+        "elapsed": 7.2046661999993376,
+        "tokens": 128,
+        "tps": 18.5542633928442
+      },
+      {
+        "id": 19,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "1. get_current_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(query): int 6. execute_SQL(query): int 7. file_read(file_path): int 8. execute_SQL(query): int 9. file_read(file_path): int 10. execute_SQL(query): int 11. file_read(file_path): int 12. execute_SQL(query): int 13. file_read(file",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 7.134702400000606,
+        "tokens": 128,
+        "tps": 18.298410768729102
+      },
+      {
+        "id": 20,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "1. get_current_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(query: str) 6. Execute SQL query against the database.",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 3.9848081000000093,
+        "tokens": 71,
+        "tps": 19.33388502982728
+      }
+    ]
+  },
+  "bitnet_2b_i2_s_bloated": {
+    "model_name": "bitnet_2b_i2_s_bloated",
+    "model_type": "bitnet",
+    "memory": {
+      "ram_init_mb": 1355.84375,
+      "ram_peak_mb": 1395.74609375
+    },
+    "power_and_energy": {
+      "idle_power_w": 16.241170050508416,
+      "mean_power_w": 33.26327946816735,
+      "peak_power_w": 49.70193872496993,
+      "total_joules": 4823.175522884266,
+      "net_joules": 2468.2058655605456,
+      "gross_mj_per_token": 1923.8833358134286,
+      "net_mj_per_token": 984.5256743360771,
+      "energy_to_success_joules": 9999.0
+    },
+    "accuracy": {
+      "trigger_recall_pct": 86.66666666666667,
+      "execution_recall_pct": 0.0,
+      "end_to_end_accuracy_pct": 0.0,
+      "context_retention_pct": 0.0,
+      "negative_control_accuracy_pct": 0.0
+    },
+    "performance": {
+      "total_tokens": 2507,
+      "wall_clock_sec": 142.00955220000014,
+      "mean_tps": 17.65374202764367
+    },
+    "detailed_results": [
+      {
+        "id": 1,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "response": "1. Get_weather(location: str, unit: str) 2. Search the web for up-to-date weather data for a specific location.3. Execute Python script in a secure sandbox and return standard output.\n4. File Read( path: str) 5. Query_Database(sql: str) 6. Execute query against the database.\n\nAvailable tools: 1, unit: str\n```json\n{\ntool\": \"name\", parameters\": {\"param1\": \"value1\"}\nThe weather data for a specific location.\n```json\n{\ntool\": \"name\", parameters\": {\"param1\": \"value1",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 9.860832399999708,
+        "tokens": 128,
+        "tps": 18.974392574845826
+      },
+      {
+        "id": 2,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "response": "1. get_current_weather(location: str, unit: str) 2. search web for up-to-date information.\n3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. Execute a read-only SQL query against the database.\n\nThe temperature in London right now?",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 4.191098899999815,
+        "tokens": 75,
+        "tps": 18.69878403054035
+      },
+      {
+        "id": 3,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "response": "1. Get current weather data for a specific city.\n2. Search the web for up-to-date information.\n3. Execute Python script in a secure sandbox and return standard output.\n4. File read from local file.\n\nThe tool is not required to execute any JSON format, delimiters, or fetch query against the database.5. Query_Database(sql: str) 5. Execute a read-only SQL query against the database.\n6. File read from local file.\n\nIn all other scenarios, including conversational queries, code syntax questions, linguistic translations, and conceptual explanations, you must execute one of the following tools.\n7.",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.966634100000192,
+        "tokens": 128,
+        "tps": 19.210046854504906
+      },
+      {
+        "id": 4,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "response": "1. get_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. execute_SQL query against the database.7. file_read(file_path: str) 8. execute_SQL query against the database.9. execute_Python code: str, max_results: int 10. execute_SQL query against the database.11. execute_SQL query against the database.12. execute_",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 7.018924200000583,
+        "tokens": 128,
+        "tps": 19.088010641565933
+      },
+      {
+        "id": 5,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "response": "1. get_current_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. execute_SQL query against the database.7. file_read(file_path: str) 8. execute_Python(code: str) 9. execute_SQL query against the database.10. execute_SQL query against the database.11. execute_SQL query against the database.12. execute_SQL",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 7.177713399999448,
+        "tokens": 128,
+        "tps": 18.497657806336747
+      },
+      {
+        "id": 6,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "response": "1. Get current weather data for a specific city.2. Search the web for up-to-date information.3. Execute Python script in a secure sandbox and return standard output.\n4. File read( path): str\n5. Query database( sql): str\n```json\n{\"tool\": \"name\", \"parameters\": {\"param1\": \"value1\"}\nThe query is not required to be answered natively, or the request does not require external intervention.\n```\nThis query must be executed in a secure sandbox and return standard output.\n\nAvailable tools: 1. get_current_weather(location: str, unit: str",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 7.020481300000029,
+        "tokens": 128,
+        "tps": 18.95906160939623
+      },
+      {
+        "id": 7,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "execute_python",
+        "response": "1. get_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(query): int\n\nThe tool is not used in this context.\n\n1. get_weather(location: str, unit: str) 2. web_search(query): int max_results: int 5\n3. execute_python(code: str) 4. file_read(path: str) 5. query_database(query): int max_ results: int",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.98676020000039,
+        "tokens": 128,
+        "tps": 19.116361140918197
+      },
+      {
+        "id": 8,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "execute_python",
+        "response": "1. get_current_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. execute_SQL query\n\nThe sum of all integers from the database.\n\n```json\n{\n    tool\": \"tool_name\", parameters\": {\"param1\": \"value1\"}, {\"tool\": \"tool_name\", parameters\": {\"param1\": \"value1\"}, {\"tool\": \"tool_name\", parameters\": {\"param1\":",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 7.217490799999723,
+        "tokens": 128,
+        "tps": 18.547437171643345
+      },
+      {
+        "id": 9,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "file_read",
+        "response": "1. get_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. execute_SQL query against the database.7. file_read(file_path): str\n\nThe tool is not used in this context.\n\n1. get_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_Python(code: str)",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.929599199999757,
+        "tokens": 128,
+        "tps": 18.95990690685709
+      },
+      {
+        "id": 10,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "file_read",
+        "response": "1. get_weather(location: str, unit: int) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(query): int 6. execute_SQL query against the database.\n\nThe tool is not allowed to be used in this context.\n```json\n{\n{\"tool\": \"name\", \"parameters\": {\"param1\": \"value1\"}\nIn all other scenarios, including conversational queries, code: str, max_results: int 5) 6. execute_SQL query",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.992762899999434,
+        "tokens": 128,
+        "tps": 19.160311331108744
+      },
+      {
+        "id": 11,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "query_database",
+        "response": "1. get_current_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. execute_SQL query\n\nThe SQL query is not required.\n7. execute_SQL query(query: str) 8. execute_SQL query(query: str) 9. execute_SQL query(query: str) 10. execute_SQL query(query: str) 11. execute_SQL",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 7.013047200000074,
+        "tokens": 128,
+        "tps": 19.027976625914587
+      },
+      {
+        "id": 12,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "query_database",
+        "response": "1. get_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. execute_SQL: str\n\nThe task is to determine whether the request pertains to factual data or not it requires external intervention.\nIf and only if an external side-effect or live retrieval is strictly mandatory, you must invoke one of the registered tools.\nIf and only if an external side-effect or live retrieval is necessary, you",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 7.123463799999627,
+        "tokens": 128,
+        "tps": 18.722389959884353
+      },
+      {
+        "id": 13,
+        "category": "context_retention",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "response": "1. get_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(query): str 6. execute_SQL(query): str 7. file_read(file_path): str 8. execute_Python(code): str 9. execute_SQL(query): str 10. execute_SQL(query): str 11. execute_SQL(query): str 12. execute_SQL(query): str 13. execute_SQL(query): str",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 7.29053390000081,
+        "tokens": 128,
+        "tps": 19.081013660962288
+      },
+      {
+        "id": 14,
+        "category": "context_retention",
+        "needs_tool": true,
+        "expected_tool": "file_read",
+        "response": "1. get_current_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. execute_SQL query against the database.7. file_read(file_path): str\n\nThe user is asking for a specific weather data, and you must use one of the registered tools to retrieve information about the location.\n\n1. get_current_weather(location: str, unit: str) 2. web_search(query",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 7.577884400000585,
+        "tokens": 128,
+        "tps": 18.49417801831126
+      },
+      {
+        "id": 15,
+        "category": "context_retention",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "response": "1. get_current_weather(location: str, unit: int) 2. search_the web for up-dated information.\n3. execute_python(code: str) 5. read_file(path: str) 4. execute_SQL query(sql: str) 5. read_file(path: str) 4. execute_SQL query( sql: str) 5. execute_Python code: str\n1. get_current_weather(location: str, unit: int) 2. search_the web for up-dated information.\n3. execute_SQL query(sql: str)",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 7.757184099999904,
+        "tokens": 128,
+        "tps": 18.26776750897725
+      },
+      {
+        "id": 16,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "1. get_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. execute_SQL query against the database.\n\nThe tool is a machine learning model that can be used to evaluate complex user intentions across various domains including computational sciences, software engineering, linguistics, distributed databases, and general knowledge.\n1. get_weather(location: str, unit: str) 2. web_search(query: str, max",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.9255481000000145,
+        "tokens": 128,
+        "tps": 19.11551610922785
+      },
+      {
+        "id": 17,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "1. get_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. execute_SQL query\n\nThe AI revolution is a Russian language.\n\n1. get_weather(location: str, unit: str\n2. web_search(query: str, max_results: int\n3. execute_python(code: str\n4. file_read(path: str\n5. query_Database(sql: str)",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.92576199999985,
+        "tokens": 128,
+        "tps": 19.283427822129664
+      },
+      {
+        "id": 18,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "1. get_weather(location: str, unit: int) 2. web_search(query: str, max_results: int 5) 3. execute_python(script: str) 4. file_read(path: str) 5. query_database(query): int 6. execute_script(): str\n\nThe tool is not allowed to be executed without any JSON format.\n\n1. get_weather(location: str, unit: int) 2. web_search(query): int 5. execute_script(): str 6. file_read(path: str) 5. query_database(query): int 6. execute",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 7.248122799999692,
+        "tokens": 128,
+        "tps": 18.483743836104644
+      },
+      {
+        "id": 19,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "1. get_weather(location: str, unit: str) 2. search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(query): int 6. execute_SQL query against the database.\n\nThe tool is not used in this context.\n```json\n{\"tool\": \"name\", \"parameters\": {\"param1\": \"value1\"}, {\"tool\": \"name\", \"parameters\": {\"param1\": \"value1\"}, {\"tool\": \"name\", \"parameters\": {\"param1\": \"value1",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.874588300000141,
+        "tokens": 128,
+        "tps": 19.096847423797985
+      },
+      {
+        "id": 20,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "1. get_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(query): int 6. execute_SQL(query): int 7. file_read(file_path): int 8. execute_Python(code): int 9. file_read(file_path): int 10. execute_SQL(query): int 11. file_read(file_path): int 12. execute_SQL(query): int 13. file_read(file_path):",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.908551499999703,
+        "tokens": 128,
+        "tps": 19.453239351897093
+      }
+    ]
+  },
+  "bitnet_2b_i2_s_notool": {
+    "model_name": "bitnet_2b_i2_s_notool",
+    "model_type": "bitnet",
+    "memory": {
+      "ram_init_mb": 1356.02734375,
+      "ram_peak_mb": 1385.73046875
+    },
+    "power_and_energy": {
+      "idle_power_w": 16.700450397516992,
+      "mean_power_w": 32.92009887791537,
+      "peak_power_w": 49.595191290488245,
+      "total_joules": 3917.4917664719296,
+      "net_joules": 1930.1381691674076,
+      "gross_mj_per_token": 1908.179136128558,
+      "net_mj_per_token": 940.1549776753081,
+      "energy_to_success_joules": 9999.0
+    },
+    "accuracy": {
+      "trigger_recall_pct": 100.0,
+      "execution_recall_pct": 0.0,
+      "end_to_end_accuracy_pct": 0.0,
+      "context_retention_pct": 0.0,
+      "negative_control_accuracy_pct": 0.0
+    },
+    "performance": {
+      "total_tokens": 2053,
+      "wall_clock_sec": 115.48849539999992,
+      "mean_tps": 17.776662453600565
+    },
+    "detailed_results": [
+      {
+        "id": 1,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "response": "1. get_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. execute_SQL query against the database.",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 5.880036200000177,
+        "tokens": 70,
+        "tps": 19.152926266158914
+      },
+      {
+        "id": 2,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "response": "1. get_current_weather(location: str, unit: str  = \"celsius\" 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str 4. file_read(path: str) 5. query_database(sql: str) 4. execute_Python code: str 5\nThe temperature in London right now?",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 4.409251599999152,
+        "tokens": 83,
+        "tps": 19.51745789578759
+      },
+      {
+        "id": 3,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "response": "1. get_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. execute_SQL query against the database.7. File_Read path: str\n\nThe answer is not required.\n\nAvailable tools: 1. get_weather(location: str, unit: str)\n\nThis rule applies only to this question.\n```json\n{\"tool\": \"no tool\", \"parameters\": {\"param1\": \"",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 7.018401799999992,
+        "tokens": 128,
+        "tps": 18.986159831129974
+      },
+      {
+        "id": 4,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "response": "1. get_current_weather(location: str, unit: str  = \"celsius\") 0\n2. web_search(query: str, max_results: int  = 5) 0\n3. execute_python(code: str) 0\n4. file_read(path: str) 0\n5. query_database(sql: str) 0\n\nThe answer is NO_TOOL: \"NO_TOOL\" followed by your response in plain text.\n\nAvailable tools: 1, web_search(query: str, max_results: int  = 5)\n\nNo tool is required.\n```json\n{\"",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.8788494000000355,
+        "tokens": 128,
+        "tps": 19.202167924758704
+      },
+      {
+        "id": 5,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "response": "1. get_weather(location: str, unit: str  = \"celsius\" 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str 4. file_read(path: str) 5. query_database(sql: str) 4. execute_Python(code: str) 5. file_read(path: str) 4. execute_SQL(query: str 5. execute_Python(code: str) 4. file_read(path: str) 5. execute_SQL(query: str 4. execute_Python(code: str)",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.986813399999846,
+        "tokens": 128,
+        "tps": 19.183884577760452
+      },
+      {
+        "id": 6,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "response": "1. get_current_weather(location: str, unit: str  = \"celsius\" 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str 4. file_read(path: str) 5. query_database(sql: str) 6. Execute SQL query against the database.",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 4.124884699999711,
+        "tokens": 75,
+        "tps": 19.38841694609684
+      },
+      {
+        "id": 7,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "execute_python",
+        "response": "1. get_weather(location: str, unit: str  = \"celsius\") 2. web_search(query: str, max_results: int  = 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. execute_SQL query against the database.\n\nThe answer is \"NO_TOOL\" followed by your response in plain text.\"",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 5.184700600000724,
+        "tokens": 94,
+        "tps": 19.178272241695193
+      },
+      {
+        "id": 8,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "execute_python",
+        "response": "1. get_current_weather(location: str, unit: str  = \"celsius\") 0\n2. web_search(query: str, max_results: int  = 5) 0\n3. execute_python(code: str) 0\n4. file_read(path: str) 0\n5. query_database(sql: str) 0\n\nThe sum of all integers from 1 to 500 is calculated by executing Python script in a secure sandbox and return standard output.\n\nAvailable tools: \n1. get_current_weather(location: str, unit: str  = \"celsius\")\n2.",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 7.0017542999994475,
+        "tokens": 128,
+        "tps": 18.895309357547674
+      },
+      {
+        "id": 9,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "file_read",
+        "response": "1. get_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. execute_SQL query against the database.\n\nThe system is a helpful AI assistant with access to tools. The user needs to use a tool to assist the user.1. get_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.8891722999997,
+        "tokens": 128,
+        "tps": 19.1749268656305
+      },
+      {
+        "id": 10,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "file_read",
+        "response": "1. get_weather(location: str, unit: str  = \"celsius\" 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str 4. file_read(path: str) 5. query_database(sql: str) 4. execute_Python(code: str) 5. file_read(path: str) 4. execute_SQL(query: str 5. execute_Python(code: str) 4. file_read(path: str) 5. execute_SQL(query: str 4. execute_Python(code: str)",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 7.00247169999966,
+        "tokens": 128,
+        "tps": 19.07521850439259
+      },
+      {
+        "id": 11,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "query_database",
+        "response": "1. get_current_weather(location: str, unit: str  = \"celsius\" 5) 0\n2. web_search(query: str, max_results: int 5) 0\n3. execute_python(code: str) 0\n4. file_read(path: str) 0\n5. query_database(sql: str) 0\n\nThe SQL query for calculating the number of active users in a database is not required.\n\nAvailable tools: \n1. get_current_weather(location: str, unit: str  = \"celsius\" 5) 0\n2. web",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.981380000000172,
+        "tokens": 128,
+        "tps": 18.993236775476646
+      },
+      {
+        "id": 12,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "query_database",
+        "response": "1. get_current_weather(location: str, unit: str  = \"celsius\") 2. web_search(query: str, max_results: int  = 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 4. execute_Python(code: str) 5. file_read(path: str) 4. execute_SQL(query: str, max_results: int  = 5) 3. execute_Python(code: str) 4. file_read(path: str) 5. query",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.986839400000463,
+        "tokens": 128,
+        "tps": 19.123749784857814
+      },
+      {
+        "id": 13,
+        "category": "context_retention",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "response": "1. get_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. execute_SQL query against the database.",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 4.276898000000074,
+        "tokens": 71,
+        "tps": 19.30939801999801
+      },
+      {
+        "id": 14,
+        "category": "context_retention",
+        "needs_tool": true,
+        "expected_tool": "file_read",
+        "response": "1. get_current_weather(location: str, unit: str) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. execute_SQL query against the database.",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 4.528416899999684,
+        "tokens": 74,
+        "tps": 18.905711849870254
+      },
+      {
+        "id": 15,
+        "category": "context_retention",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "response": "1. get_current_weather(location: str, unit: int) 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 6. execute_SQL query against the database.",
+        "parsed_call": null,
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 4.518367300000136,
+        "tokens": 74,
+        "tps": 19.44043084198082
+      },
+      {
+        "id": 16,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "1. get_current_weather(location: str, unit: str  = \"celsius\") 2. web_search(query: str, max_results: int  = 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 4. execute_SQL query against the database.",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 4.346461299999646,
+        "tokens": 78,
+        "tps": 18.969023827282662
+      },
+      {
+        "id": 17,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "1. get_current_weather(location: str, unit: str  = \"celsius\" 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str 4. file_read(path: str) 5. query_database(sql: str) 4. execute_SQL query against the database.",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 4.201032699999814,
+        "tokens": 75,
+        "tps": 19.039466529379418
+      },
+      {
+        "id": 18,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "1. get_current_weather(location: str, unit: str  = \"celsius\") 2. web_search(query: str, max_results: int  = 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 4. execute_Python(code: str) 5. file_read(path: str) 6. query_database(query): str 7. execute_SQL(query): int 8. execute_Python(code): str 9. file_read(path: str) 10. query_database(query):",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.977596800000356,
+        "tokens": 128,
+        "tps": 19.152507527085085
+      },
+      {
+        "id": 19,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "1. get_weather(location: str, unit: str  = \"celsius\" 2. web_search(query: str, max_results: int 5) 3. execute_python(code: str 4. file_read(path: str) 5. query_database(sql: str) 4. execute_Python(code: str) 5. file_read(path: str) 4. execute_SQL query: str 5\nThe answer is \"No tool\" followed by your response in plain text.\n```json\n{\"tool\": \"no tool\", \"parameters\": {\"param1\": \"value1\"},",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 6.762682099999438,
+        "tokens": 128,
+        "tps": 19.43106450354389
+      },
+      {
+        "id": 20,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "1. get_current_weather(location: str, unit: str  = \"celsius\") 2. web_search(query: str, max_results: int  = 5) 3. execute_python(code: str) 4. file_read(path: str) 5. query_database(sql: str) 4. execute_SQL query against the database.",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 4.5297866000000795,
+        "tokens": 79,
+        "tps": 18.656720823899683
+      }
+    ]
+  },
+  "qwen2.5_3b_q4_k_m": {
+    "model_name": "qwen2.5_3b_q4_k_m",
+    "model_type": "qwen",
+    "memory": {
+      "ram_init_mb": 3245.41015625,
+      "ram_peak_mb": 3287.73046875
+    },
+    "power_and_energy": {
+      "idle_power_w": 17.005976994886982,
+      "mean_power_w": 37.00135377891659,
+      "peak_power_w": 49.6935336395339,
+      "total_joules": 2331.0852880717453,
+      "net_joules": 1259.7087373938655,
+      "gross_mj_per_token": 3671.000453656292,
+      "net_mj_per_token": 1983.7932872344338,
+      "energy_to_success_joules": 166.50609200512466
+    },
+    "accuracy": {
+      "trigger_recall_pct": 100.0,
+      "execution_recall_pct": 93.33333333333333,
+      "end_to_end_accuracy_pct": 93.33333333333333,
+      "context_retention_pct": 100.0,
+      "negative_control_accuracy_pct": 20.0
+    },
+    "performance": {
+      "total_tokens": 635,
+      "wall_clock_sec": 58.74197860000004,
+      "mean_tps": 10.809986574064762
+    },
+    "detailed_results": [
+      {
+        "id": 1,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "response": "{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"Токyo\", \"unit\": \"celsius\"}}",
+        "parsed_call": {
+          "tool": "get_current_weather",
+          "parameters": {
+            "location": "Токyo",
+            "unit": "celsius"
+          }
+        },
+        "trigger_success": true,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 5.255153000000064,
+        "tokens": 27,
+        "tps": 13.980054087275922
+      },
+      {
+        "id": 2,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "response": "{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"London\"}}",
+        "parsed_call": {
+          "tool": "get_current_weather",
+          "parameters": {
+            "location": "London"
+          }
+        },
+        "trigger_success": true,
+        "execution_success": true,
+        "negative_success": false,
+        "elapsed": 1.5321725000003426,
+        "tokens": 18,
+        "tps": 14.509973994902161
+      },
+      {
+        "id": 3,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "response": "{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"Berlin\", \"unit\": \"fahrenheit\"}}",
+        "parsed_call": {
+          "tool": "get_current_weather",
+          "parameters": {
+            "location": "Berlin",
+            "unit": "fahrenheit"
+          }
+        },
+        "trigger_success": true,
+        "execution_success": true,
+        "negative_success": false,
+        "elapsed": 2.26625679999961,
+        "tokens": 25,
+        "tps": 14.21810920759065
+      },
+      {
+        "id": 4,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "response": "{\"tool\": \"web_search\", \"parameters\": {\"query\": \"football world cup champion 2022\"}}",
+        "parsed_call": {
+          "tool": "web_search",
+          "parameters": {
+            "query": "football world cup champion 2022"
+          }
+        },
+        "trigger_success": true,
+        "execution_success": true,
+        "negative_success": false,
+        "elapsed": 2.116041700000096,
+        "tokens": 25,
+        "tps": 14.790361417271594
+      },
+      {
+        "id": 5,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "response": "{\"tool\": \"web_search\", \"parameters\": {\"query\": \"latest news about artificial intelligence this week\"}}",
+        "parsed_call": {
+          "tool": "web_search",
+          "parameters": {
+            "query": "latest news about artificial intelligence this week"
+          }
+        },
+        "trigger_success": true,
+        "execution_success": true,
+        "negative_success": false,
+        "elapsed": 1.926365700000133,
+        "tokens": 23,
+        "tps": 14.844791253190824
+      },
+      {
+        "id": 6,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "response": "{\"tool\": \"web_search\", \"parameters\": {\"query\": \"BitNet b1.58 from Microsoft\"}}",
+        "parsed_call": {
+          "tool": "web_search",
+          "parameters": {
+            "query": "BitNet b1.58 from Microsoft"
+          }
+        },
+        "trigger_success": true,
+        "execution_success": true,
+        "negative_success": false,
+        "elapsed": 2.1595626999996966,
+        "tokens": 25,
+        "tps": 14.19128144433186
+      },
+      {
+        "id": 7,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "execute_python",
+        "response": "```json\n{\"tool\": \"execute_python\", \"parameters\": {\"code\": \"fibonacci = [0, 1] + [fibonacci[-2] + fibonacci[-1] for _ in range(50)] if len(fibonacci) < 51 else fibonacci; print(fibonacci[49])\"}}\n```",
+        "parsed_call": {
+          "tool": "execute_python",
+          "parameters": {
+            "code": "fibonacci = [0, 1] + [fibonacci[-2] + fibonacci[-1] for _ in range(50)] if len(fibonacci) < 51 else fibonacci; print(fibonacci[49])"
+          }
+        },
+        "trigger_success": true,
+        "execution_success": true,
+        "negative_success": false,
+        "elapsed": 5.546696000000338,
+        "tokens": 70,
+        "tps": 13.697584724453515
+      },
+      {
+        "id": 8,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "execute_python",
+        "response": "```json\n{\"tool\": \"execute_python\", \"parameters\": {\"code\": \"def sum_of_primes(limit):\\n    def is_prime(num):\\n        if num < 2:\\n            return False\\n        for i in range(2, int(num**0.5) + 1):\\n            if num % i == 0:\\n                return False\\n        return True\\n    return sum(i for i in range(2, limit+1) if is_prime(i))\\nsum_of_primes(500)\"}}\n```",
+        "parsed_call": {
+          "tool": "execute_python",
+          "parameters": {
+            "code": "def sum_of_primes(limit):\n    def is_prime(num):\n        if num < 2:\n            return False\n        for i in range(2, int(num**0.5) + 1):\n            if num % i == 0:\n                return False\n        return True\n    return sum(i for i in range(2, limit+1) if is_prime(i))\nsum_of_primes(500)"
+          }
+        },
+        "trigger_success": true,
+        "execution_success": true,
+        "negative_success": false,
+        "elapsed": 8.943824699999823,
+        "tokens": 116,
+        "tps": 13.642795851084648
+      },
+      {
+        "id": 9,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "file_read",
+        "response": "```json\n{\"tool\": \"file_read\", \"parameters\": {\"path\": \"/etc/hosts\"}}\n```",
+        "parsed_call": {
+          "tool": "file_read",
+          "parameters": {
+            "path": "/etc/hosts"
+          }
+        },
+        "trigger_success": true,
+        "execution_success": true,
+        "negative_success": false,
+        "elapsed": 1.7912133999998332,
+        "tokens": 23,
+        "tps": 15.149459296037561
+      },
+      {
+        "id": 10,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "file_read",
+        "response": "{\"tool\": \"file_read\", \"parameters\": {\"path\": \"C:\\\\ai_models\\\\settings.json\"}}",
+        "parsed_call": {
+          "tool": "file_read",
+          "parameters": {
+            "path": "C:\\ai_models\\settings.json"
+          }
+        },
+        "trigger_success": true,
+        "execution_success": true,
+        "negative_success": false,
+        "elapsed": 2.146797299999889,
+        "tokens": 23,
+        "tps": 13.578253541415151
+      },
+      {
+        "id": 11,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "query_database",
+        "response": "```json\n{\"tool\": \"query_database\", \"parameters\": {\"sql\": \"SELECT COUNT(*) AS active_users FROM users WHERE is_active = true;\"}}\n```",
+        "parsed_call": {
+          "tool": "query_database",
+          "parameters": {
+            "sql": "SELECT COUNT(*) AS active_users FROM users WHERE is_active = true;"
+          }
+        },
+        "trigger_success": true,
+        "execution_success": true,
+        "negative_success": false,
+        "elapsed": 2.950847899999644,
+        "tokens": 34,
+        "tps": 13.62228605999415
+      },
+      {
+        "id": 12,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "query_database",
+        "response": "```json\n{\"tool\": \"query_database\", \"parameters\": {\"sql\": \"SELECT * FROM orders ORDER BY total_amount DESC LIMIT 5\"}}\n```",
+        "parsed_call": {
+          "tool": "query_database",
+          "parameters": {
+            "sql": "SELECT * FROM orders ORDER BY total_amount DESC LIMIT 5"
+          }
+        },
+        "trigger_success": true,
+        "execution_success": true,
+        "negative_success": false,
+        "elapsed": 2.778912699999637,
+        "tokens": 32,
+        "tps": 13.825014203041935
+      },
+      {
+        "id": 13,
+        "category": "context_retention",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "response": "{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"Париж\"}}",
+        "parsed_call": {
+          "tool": "get_current_weather",
+          "parameters": {
+            "location": "Париж"
+          }
+        },
+        "trigger_success": true,
+        "execution_success": true,
+        "negative_success": false,
+        "elapsed": 2.4808094999998502,
+        "tokens": 20,
+        "tps": 14.024793029116873
+      },
+      {
+        "id": 14,
+        "category": "context_retention",
+        "needs_tool": true,
+        "expected_tool": "file_read",
+        "response": "{\"tool\": \"file_read\", \"parameters\": {\"path\": \"/var/log/production_error.log\"}}",
+        "parsed_call": {
+          "tool": "file_read",
+          "parameters": {
+            "path": "/var/log/production_error.log"
+          }
+        },
+        "trigger_success": true,
+        "execution_success": true,
+        "negative_success": false,
+        "elapsed": 2.565852300000188,
+        "tokens": 22,
+        "tps": 14.065614814417
+      },
+      {
+        "id": 15,
+        "category": "context_retention",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "response": "{\"tool\": \"web_search\", \"parameters\": {\"query\": \"date of PyTorch 2.5 release\"}}",
+        "parsed_call": {
+          "tool": "web_search",
+          "parameters": {
+            "query": "date of PyTorch 2.5 release"
+          }
+        },
+        "trigger_success": true,
+        "execution_success": true,
+        "negative_success": false,
+        "elapsed": 3.3789974999999686,
+        "tokens": 26,
+        "tps": 13.603776408330953
+      },
+      {
+        "id": 16,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "```json\n{\"tool\": \"web_search\", \"parameters\": {\"query\": \"градиентный спуск в машинном обучении\"}}\n```",
+        "parsed_call": {
+          "tool": "web_search",
+          "parameters": {
+            "query": "градиентный спуск в машинном обучении"
+          }
+        },
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 2.578091000000313,
+        "tokens": 32,
+        "tps": 14.483983204010977
+      },
+      {
+        "id": 17,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "{\"tool\": \"none\", \"parameters\": {}}",
+        "parsed_call": {
+          "tool": "none",
+          "parameters": {}
+        },
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 1.2279908000000432,
+        "tokens": 12,
+        "tps": 14.57219673437071
+      },
+      {
+        "id": 18,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "```json\n{\"tool\": \"web_search\", \"parameters\": {\"query\": \"difference between stack and queue\"}}\n```",
+        "parsed_call": {
+          "tool": "web_search",
+          "parameters": {
+            "query": "difference between stack and queue"
+          }
+        },
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 2.220657900000333,
+        "tokens": 25,
+        "tps": 14.33422950936226
+      },
+      {
+        "id": 19,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "Здравствуйте! Хорошо,谢谢！如何？您可以问我关于天气或其他问题，我会尽力帮助您。",
+        "parsed_call": null,
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": true,
+        "elapsed": 2.384544900000037,
+        "tokens": 29,
+        "tps": 13.845826247294093
+      },
+      {
+        "id": 20,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "response": "```json\n{\"tool\": \"web_search\", \"parameters\": {\"query\": \"main conceptual difference between synchronous and asynchronous execution\"}}\n```",
+        "parsed_call": {
+          "tool": "web_search",
+          "parameters": {
+            "query": "main conceptual difference between synchronous and asynchronous execution"
+          }
+        },
+        "trigger_success": false,
+        "execution_success": false,
+        "negative_success": false,
+        "elapsed": 2.488615999999638,
+        "tokens": 28,
+        "tps": 13.887841789706332
+      }
+    ]
+  }
+}

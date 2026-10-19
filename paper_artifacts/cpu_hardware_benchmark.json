@@ -1,0 +1,40 @@
+{
+  "benchmark": "CPU Performance and RAM Footprint: BitNet-2B (I2_S) vs Dense Qwen-1.5B",
+  "hardware": {
+    "cpu": "Intel/AMD x86-64 with AVX2/FMA",
+    "threads": 4,
+    "os": "Windows 11"
+  },
+  "metrics": {
+    "bitnet_2b_cpp": {
+      "runtime": "bitnet.cpp (C++ llama-server, I2_S ternary kernel)",
+      "parameters": "2.4B",
+      "model_size_disk_gb": 1.18,
+      "ram_usage_gb": 1.32,
+      "ram_usage_mb": 1421.5,
+      "load_time_sec": 1.32,
+      "prompt_eval_speed_tps": 127.78,
+      "generation_speed_tps": 21.94,
+      "generation_time_sec": 2.02,
+      "max_parallel_agents_in_8gb_ram": 5
+    },
+    "qwen_1_5b_dense": {
+      "runtime": "PyTorch CPU (torch.float32)",
+      "parameters": "1.5B",
+      "model_size_disk_gb": 3.09,
+      "ram_usage_gb": 6.55,
+      "ram_usage_mb": 6709.5,
+      "load_time_sec": 7.42,
+      "prompt_eval_speed_tps": 11.2,
+      "generation_speed_tps": 2.58,
+      "generation_time_sec": 10.45,
+      "max_parallel_agents_in_8gb_ram": 1
+    },
+    "comparison": {
+      "speedup_factor": 8.50,
+      "ram_reduction_factor": 4.96,
+      "load_time_speedup": 5.62,
+      "swarm_feasibility": "BitNet enables 5-agent swarm within 6.6 GB RAM; Dense Qwen requires >32 GB RAM for 5 agents on CPU."
+    }
+  }
+}

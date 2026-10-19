@@ -1,0 +1,56 @@
+============================================================
+BITNET b1.58 GGUF F32 C++ BENCHMARK (DIAGNOSTIC RUN)
+============================================================
+Model: C:\ai_models\BitNet\models\BitNet-b1.58-2B-4T\ggml-model-f32.gguf
+Server binary: C:\ai_models\BitNet\build\bin\llama-server.exe
+Threads: 4, Ctx: 2048, Temp: 0.0, Repeat Penalty: 1.15 (window 64)
+============================================================
+Starting llama-server with GGUF F32...
+Server ready in 6.75 s
+Case 01 [single_turn       ]: 128 tokens in 50.79s ( 2.8 t/s)
+    Raw preview: '1, 0. The 2. A 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1'
+Case 02 [single_turn       ]: 128 tokens in 49.10s ( 2.6 t/s)
+    Raw preview: '1, 0, 2. The 3. A 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1'
+Case 03 [single_turn       ]: 128 tokens in 49.02s ( 2.6 t/s)
+    Raw preview: '1, 0. A 2. The 1, 1. 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1'
+Case 04 [single_turn       ]: 128 tokens in 49.31s ( 2.6 t/s)
+    Raw preview: '1, 0. A 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1,'
+Case 05 [single_turn       ]: 128 tokens in 51.17s ( 2.6 t/s)
+    Raw preview: '1, 0. A: "a 2. The 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '
+Case 06 [single_turn       ]: 128 tokens in 45.69s ( 2.8 t/s)
+    Raw preview: '0, 2. A 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,'
+Case 07 [single_turn       ]: 128 tokens in 50.48s ( 2.6 t/s)
+    Raw preview: '1, 0. A 2. The 1, 1. 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1'
+Case 08 [single_turn       ]: 128 tokens in 53.20s ( 2.4 t/s)
+    Raw preview: '0, 2. A 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,'
+Case 09 [single_turn       ]: 128 tokens in 52.20s ( 2.5 t/s)
+    Raw preview: '1, 0. The 2. A 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1'
+Case 10 [single_turn       ]: 128 tokens in 54.44s ( 2.4 t/s)
+    Raw preview: '1. A: "a. The 0, 2. A. 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,'
+Case 11 [single_turn       ]: 128 tokens in 45.83s ( 2.8 t/s)
+    Raw preview: '1, 0. A: "a. The 2. A. 1. 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,'
+Case 12 [single_turn       ]: 128 tokens in 44.19s ( 2.9 t/s)
+    Raw preview: '1, 0. A 2. The 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1'
+Case 13 [context_retention ]: 128 tokens in 45.77s ( 2.9 t/s)
+    Raw preview: '1. A. a 0, the 2. The 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. '
+Case 14 [context_retention ]: 128 tokens in 46.15s ( 2.9 t/s)
+    Raw preview: '1. A. 0. 2. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1, 1. 1. 1'
+Case 15 [context_retention ]: 128 tokens in 41.83s ( 3.2 t/s)
+    Raw preview: '1. A. 0. 0. 0, 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 1. 0'
+Case 16 [negative_no_tool  ]: 128 tokens in 52.95s ( 2.5 t/s)
+    Raw preview: '1, 0, 2. A: "a, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '
+Case 17 [negative_no_tool  ]: 128 tokens in 50.57s ( 2.6 t/s)
+    Raw preview: '1, 0. A. The 2. 1, 1. 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '
+Case 18 [negative_no_tool  ]: 128 tokens in 48.89s ( 2.7 t/s)
+    Raw preview: '1, 0, 2. A: "a, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '
+Case 19 [negative_no_tool  ]: 128 tokens in 53.01s ( 2.4 t/s)
+    Raw preview: '1, 0. A: "a, 2. The 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,'
+Case 20 [negative_no_tool  ]: 128 tokens in 51.29s ( 2.5 t/s)
+    Raw preview: '1, 0. A. The 2. 1. 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '
+============================================================
+GGUF F32 C++ BENCHMARK COMPLETED
+Total time:       985.88 s
+Total tokens:     2560
+Mean rate:        2.60 t/s
+============================================================
+Results saved to: C:\ai_models\benchmark_results_bitnet_f32_cpp.json

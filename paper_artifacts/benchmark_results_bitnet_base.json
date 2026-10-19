@@ -1,0 +1,368 @@
+{
+  "variant": "bitnet_base",
+  "repetition_penalty": 1.15,
+  "total_test_cases": 20,
+  "positive_cases": 15,
+  "trigger_attempts": 14,
+  "trigger_recall_pct": 93.33,
+  "correct_executions": 12,
+  "execution_recall_pct": 85.71,
+  "end_to_end_accuracy_pct": 80.0,
+  "context_retention": {
+    "cases": 3,
+    "trigger_recall_pct": 66.67,
+    "execution_recall_pct": 100.0
+  },
+  "negative_cases": 5,
+  "negative_direct_success": 1,
+  "negative_accuracy_pct": 20.0,
+  "detailed_results": [
+    {
+      "id": 1,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "get_current_weather",
+      "user_query": "Какая сейчас погода в Токио?",
+      "model_response": "{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"Tokyo\"}}",
+      "attempted_tool": true,
+      "parsed_call": {
+        "tool": "get_current_weather",
+        "parameters": {
+          "location": "Tokyo"
+        }
+      },
+      "trigger_success": true,
+      "execution_success": true,
+      "negative_success": false
+    },
+    {
+      "id": 2,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "get_current_weather",
+      "user_query": "What is the temperature in London right now?",
+      "model_response": "```json\n{\n  \"tool\": \"get_current_weather\",\n  \"parameters\": {\n    \"location\": \"London\"\n  }\n}\n```",
+      "attempted_tool": true,
+      "parsed_call": {
+        "tool": "get_current_weather",
+        "parameters": {
+          "location": "London"
+        }
+      },
+      "trigger_success": true,
+      "execution_success": true,
+      "negative_success": false
+    },
+    {
+      "id": 3,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "get_current_weather",
+      "user_query": "Посмотри погоду в Берлине в градусах Фаренгейта",
+      "model_response": "```json\n{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"Belfast\", \"unit\": \"fahrenheit\"}}\n```",
+      "attempted_tool": true,
+      "parsed_call": {
+        "tool": "get_current_weather",
+        "parameters": {
+          "location": "Belfast",
+          "unit": "fahrenheit"
+        }
+      },
+      "trigger_success": true,
+      "execution_success": false,
+      "negative_success": false
+    },
+    {
+      "id": 4,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "web_search",
+      "user_query": "Найди последние новости про искусственный интеллект за сегодня",
+      "model_response": "```json\n{\n  \"tool\": \"web_search\",\n  \"parameters\": {\n    \"query\": \"latest news on artificial intelligence today\"\n  }\n}\n```",
+      "attempted_tool": true,
+      "parsed_call": {
+        "tool": "web_search",
+        "parameters": {
+          "query": "latest news on artificial intelligence today"
+        }
+      },
+      "trigger_success": true,
+      "execution_success": true,
+      "negative_success": false
+    },
+    {
+      "id": 5,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "web_search",
+      "user_query": "Какой сейчас курс биткоина к доллару?",
+      "model_response": "{\"tool\": \"web_search\", \"parameters\": {\"query\": \"Bitcoin price today\"}}",
+      "attempted_tool": true,
+      "parsed_call": {
+        "tool": "web_search",
+        "parameters": {
+          "query": "Bitcoin price today"
+        }
+      },
+      "trigger_success": true,
+      "execution_success": true,
+      "negative_success": false
+    },
+    {
+      "id": 6,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "web_search",
+      "user_query": "Who won the recent UEFA Champions League match yesterday?",
+      "model_response": "{\n  \"tool\": \"web_search\",\n  \"parameters\": {\n    \"query\": \"recent UEFA Champions League match winner\",\n    \"max_results\": 1\n  }\n}",
+      "attempted_tool": true,
+      "parsed_call": {
+        "tool": "web_search",
+        "parameters": {
+          "query": "recent UEFA Champions League match winner",
+          "max_results": 1
+        }
+      },
+      "trigger_success": true,
+      "execution_success": true,
+      "negative_success": false
+    },
+    {
+      "id": 7,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "execute_python",
+      "user_query": "Вычисли 50-е число Фибоначчи с помощью Python скрипта",
+      "model_response": "```json\n{\"tool\": \"execute_python\", \"parameters\": {\"code\": \"def fibonacci(n): if n <= 0: return 0 else: a, b = 0, 1 for _ in range(1, n): a, b = b, a + b return b\"}}}\n```",
+      "attempted_tool": true,
+      "parsed_call": {
+        "tool": "execute_python",
+        "parameters": {
+          "code": "def fibonacci(n): if n <= 0: return 0 else: a, b = 0, 1 for _ in range(1, n): a, b = b, a + b return b"
+        }
+      },
+      "trigger_success": true,
+      "execution_success": true,
+      "negative_success": false
+    },
+    {
+      "id": 8,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "execute_python",
+      "user_query": "Посчитай сумму всех простых чисел от 1 до 500 через Python",
+      "model_response": "```json\n{\"tool\": \"execute_python\", \"parameters\": {\"code\": \"sum = 0; for i in range(1, 501): if all(i % j != 0 for j in range(2, int(i**0.5) + 1)): sum += i; print(sum)}}}\n```",
+      "attempted_tool": true,
+      "parsed_call": null,
+      "trigger_success": true,
+      "execution_success": false,
+      "negative_success": false
+    },
+    {
+      "id": 9,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "file_read",
+      "user_query": "Прочитай системный файл /etc/hosts",
+      "model_response": "{\"tool\": \"file_read\", \"parameters\": {\"path\": \"/etc/hosts\"}}",
+      "attempted_tool": true,
+      "parsed_call": {
+        "tool": "file_read",
+        "parameters": {
+          "path": "/etc/hosts"
+        }
+      },
+      "trigger_success": true,
+      "execution_success": true,
+      "negative_success": false
+    },
+    {
+      "id": 10,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "file_read",
+      "user_query": "Пожалуйста, открой и прочитай файл C:\\ai_models\\settings.json",
+      "model_response": "{\"tool\": \"file_read\", \"parameters\": {\"path\": \"C:\\\\ai_models\\\\settings.json\"}}",
+      "attempted_tool": true,
+      "parsed_call": {
+        "tool": "file_read",
+        "parameters": {
+          "path": "C:\\ai_models\\settings.json"
+        }
+      },
+      "trigger_success": true,
+      "execution_success": true,
+      "negative_success": false
+    },
+    {
+      "id": 11,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "query_database",
+      "user_query": "Сделай SQL запрос для подсчета всех активных пользователей в таблице users",
+      "model_response": "```json\n{\"tool\": \"query_database\", \"parameters\": {\"sql\": \"SELECT COUNT(*) FROM users WHERE status = 'active';\"}}\n```",
+      "attempted_tool": true,
+      "parsed_call": {
+        "tool": "query_database",
+        "parameters": {
+          "sql": "SELECT COUNT(*) FROM users WHERE status = 'active';"
+        }
+      },
+      "trigger_success": true,
+      "execution_success": true,
+      "negative_success": false
+    },
+    {
+      "id": 12,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "query_database",
+      "user_query": "Выведи топ 10 товаров по сумме продаж из таблицы orders",
+      "model_response": "```json\n{\"tool\": \"query_database\", \"parameters\": {\"sql\": \"SELECT order_id, SUM(price * quantity) as total_sales FROM orders GROUP BY order_id ORDER BY total_sales DESC LIMIT 10\"}\n}\n```",
+      "attempted_tool": true,
+      "parsed_call": {
+        "tool": "query_database",
+        "parameters": {
+          "sql": "SELECT order_id, SUM(price * quantity) as total_sales FROM orders GROUP BY order_id ORDER BY total_sales DESC LIMIT 10"
+        }
+      },
+      "trigger_success": true,
+      "execution_success": true,
+      "negative_success": false
+    },
+    {
+      "id": 13,
+      "category": "context_retention",
+      "needs_tool": true,
+      "expected_tool": "get_current_weather",
+      "user_query": "Какая там сейчас погода?",
+      "model_response": "{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"Rome\"}}",
+      "attempted_tool": true,
+      "parsed_call": {
+        "tool": "get_current_weather",
+        "parameters": {
+          "location": "Rome"
+        }
+      },
+      "trigger_success": true,
+      "execution_success": true,
+      "negative_success": false
+    },
+    {
+      "id": 14,
+      "category": "context_retention",
+      "needs_tool": true,
+      "expected_tool": "file_read",
+      "user_query": "Пожалуйста, прочти его.",
+      "model_response": "JSON:\n```json\n{\n  \"tool\": \"file_read\",\n  \"parameters\": {\n    \"path\": \"C:\\\\logs\\\\production_error.log\"\n  }\n}\n```",
+      "attempted_tool": true,
+      "parsed_call": {
+        "tool": "file_read",
+        "parameters": {
+          "path": "C:\\logs\\production_error.log"
+        }
+      },
+      "trigger_success": true,
+      "execution_success": true,
+      "negative_success": false
+    },
+    {
+      "id": 15,
+      "category": "context_retention",
+      "needs_tool": true,
+      "expected_tool": "web_search",
+      "user_query": "Поищи в интернете дату официального релиза этой версии.",
+      "model_response": "Проверьте официальную страницу PyTorch на сайте: https://pytorch.org/docs/stable/2.5.html",
+      "attempted_tool": false,
+      "parsed_call": null,
+      "trigger_success": false,
+      "execution_success": false,
+      "negative_success": false
+    },
+    {
+      "id": 16,
+      "category": "negative_no_tool",
+      "needs_tool": false,
+      "expected_tool": null,
+      "user_query": "Что такое градиентный спуск в машинном обучении?",
+      "model_response": "{\n  \"tool\": \"query_database\",\n  \"parameters\": {\n    \"sql\": \"SELECT * FROM machine_learning_data WHERE concept='gradient descent'\"\n  }\n}",
+      "attempted_tool": true,
+      "parsed_call": {
+        "tool": "query_database",
+        "parameters": {
+          "sql": "SELECT * FROM machine_learning_data WHERE concept='gradient descent'"
+        }
+      },
+      "trigger_success": false,
+      "execution_success": false,
+      "negative_success": false
+    },
+    {
+      "id": 17,
+      "category": "negative_no_tool",
+      "needs_tool": false,
+      "expected_tool": null,
+      "user_query": "Переведи фразу 'Artificial intelligence revolution' на русский язык.",
+      "model_response": "\"Итоговый революция в искусства\"",
+      "attempted_tool": false,
+      "parsed_call": null,
+      "trigger_success": false,
+      "execution_success": false,
+      "negative_success": true
+    },
+    {
+      "id": 18,
+      "category": "negative_no_tool",
+      "needs_tool": false,
+      "expected_tool": null,
+      "user_query": "Объясни простыми словами разницу между структурой стек (Stack) и очередь (Queue).",
+      "model_response": "{\n  \"tool\": \"query_database\",\n  \"parameters\": {\n    \"sql\": \"SELECT * FROM table_name WHERE column_name = 'value'\"\n  }\n}",
+      "attempted_tool": true,
+      "parsed_call": {
+        "tool": "query_database",
+        "parameters": {
+          "sql": "SELECT * FROM table_name WHERE column_name = 'value'"
+        }
+      },
+      "trigger_success": false,
+      "execution_success": false,
+      "negative_success": false
+    },
+    {
+      "id": 19,
+      "category": "negative_no_tool",
+      "needs_tool": false,
+      "expected_tool": null,
+      "user_query": "Привет! Как поживаешь?",
+      "model_response": "{\"tool\": \"web_search\", \"parameters\": {\"query\": \"Привет\"}}",
+      "attempted_tool": true,
+      "parsed_call": {
+        "tool": "web_search",
+        "parameters": {
+          "query": "Привет"
+        }
+      },
+      "trigger_success": false,
+      "execution_success": false,
+      "negative_success": false
+    },
+    {
+      "id": 20,
+      "category": "negative_no_tool",
+      "needs_tool": false,
+      "expected_tool": null,
+      "user_query": "В чем главное концептуальное отличие синхронного выполнения от асинхронного?",
+      "model_response": "```json\n{\n  \"tool\": \"query_database\",\n  \"parameters\": {\n    \"sql\": \"SELECT * FROM table_name WHERE condition\"\n  }\n}\n```",
+      "attempted_tool": true,
+      "parsed_call": {
+        "tool": "query_database",
+        "parameters": {
+          "sql": "SELECT * FROM table_name WHERE condition"
+        }
+      },
+      "trigger_success": false,
+      "execution_success": false,
+      "negative_success": false
+    }
+  ]
+}

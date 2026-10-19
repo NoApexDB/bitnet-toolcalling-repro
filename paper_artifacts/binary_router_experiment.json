@@ -1,0 +1,118 @@
+{
+  "title": "Binary tool-router: keyword heuristic vs char-ngram logistic regression",
+  "protocol": {
+    "train_set": "C:\\ai_models\\test_suite_standardized.json (15 pos / 5 neg)",
+    "test_set": "C:\\ai_models\\heldout_test_suite_30.json (20 pos / 10 neg)",
+    "features": "char n-grams 2-4, hashed to 2^16, L2-normalized",
+    "classifier": "logistic regression, full-batch GD, L2=1e-3, deterministic",
+    "input": "concatenated user turns of the conversation"
+  },
+  "keyword_baseline": {
+    "train": {
+      "positives": 15,
+      "negatives": 5,
+      "FN (tool missed)": 0,
+      "FN rate": 0.0,
+      "FP (false trigger)": 0,
+      "FP rate %": 0.0,
+      "TN (correct direct)": 5,
+      "accuracy %": 100.0
+    },
+    "test": {
+      "positives": 20,
+      "negatives": 10,
+      "FN (tool missed)": 0,
+      "FN rate": 0.0,
+      "FP (false trigger)": 0,
+      "FP rate %": 0.0,
+      "TN (correct direct)": 10,
+      "accuracy %": 100.0
+    }
+  },
+  "ngram_logreg": {
+    "train": {
+      "positives": 15,
+      "negatives": 5,
+      "FN (tool missed)": 0,
+      "FN rate": 0.0,
+      "FP (false trigger)": 0,
+      "FP rate %": 0.0,
+      "TN (correct direct)": 5,
+      "accuracy %": 100.0
+    },
+    "test": {
+      "positives": 20,
+      "negatives": 10,
+      "FN (tool missed)": 0,
+      "FN rate": 0.0,
+      "FP (false trigger)": 8,
+      "FP rate %": 80.0,
+      "TN (correct direct)": 2,
+      "accuracy %": 73.3
+    },
+    "test_errors": [
+      {
+        "id": 21,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "router_pred": true,
+        "query": "Привет! Как твои дела и как тебя зовут?"
+      },
+      {
+        "id": 23,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "router_pred": true,
+        "query": "Напиши красивое короткое стихотворение про золотую осень."
+      },
+      {
+        "id": 24,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "router_pred": true,
+        "query": "Кто был первым президентом Соединенных Штатов Америки?"
+      },
+      {
+        "id": 25,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "router_pred": true,
+        "query": "Что такое инвариант цикла в доказательстве корректности программ?"
+      },
+      {
+        "id": 26,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "router_pred": true,
+        "query": "Посоветуй классический рецепт итальянской пасты карбонара без сливок."
+      },
+      {
+        "id": 28,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "router_pred": true,
+        "query": "Что такое термодинамическая энтропия и чем она отличается от информационной?"
+      },
+      {
+        "id": 29,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "router_pred": true,
+        "query": "Большое спасибо за подробный ответ, теперь мне всё понятно!"
+      },
+      {
+        "id": 30,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "router_pred": true,
+        "query": "Расскажи забавный анекдот или шутку про программистов."
+      }
+    ]
+  },
+  "baseline_vs_lr_agreement_test_pct": 73,
+  "notes": [
+    "Router is a pre-LLM gate: FP -> false tool invocation avoided only if router is correct;",
+    "when router says 'no tool', stage 2 = generation WITHOUT tool schema (laziness protocol showed BitNet answers directly);",
+    "when router says 'tool', stage 2 = existing tool-calling path (C++ ReLU2+HF: S2 18/20, exec 2/8)."
+  ]
+}

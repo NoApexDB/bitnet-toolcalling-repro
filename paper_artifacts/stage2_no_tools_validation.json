@@ -1,0 +1,97 @@
+{
+  "title": "Stage-2 (no-tools prompt) validation: can BitNet answer directly when the router blocks tools?",
+  "protocol": {
+    "model": "BitNet-b1.58-2B-4T gguf i2_s, llama-server-relu2.exe, exact HF token IDs",
+    "system_prompt": "You are a helpful AI assistant. You have no external tools.\nAnswer the user directly and concisely in natural language.\nNever output JSON or tool calls.",
+    "cases": "10 negatives of the 30-case challenge suite",
+    "valid_direct_answer": "no tool-call syntax AND non-degenerate text"
+  },
+  "summary": {
+    "valid_direct_answers": "10/10 (100.0%)",
+    "valid_n": 10,
+    "total": 10,
+    "elapsed_s": 38.0
+  },
+  "cases": [
+    {
+      "id": 21,
+      "query": "Привет! Как твои дела и как тебя зовут?",
+      "response": "Привет! Я здесь, как ты иешь. Я назуюсь AI Assistant. Ты можешь мне помочь с что-то?",
+      "s1_tool_syntax": false,
+      "echo_or_degenerate": false,
+      "state": "VALID_DIRECT_ANSWER"
+    },
+    {
+      "id": 22,
+      "query": "Объясни простыми словами разницу между стеком и кучей в оперативной памяти.",
+      "response": "Стек и кучу - это два способа хранения данных в оперативной памяти (RAM). \n\nС택 - это структура данных, которая хранит данные в-linearnie. Она имеет фиксированные размеры и она добавляет данные в конец стека. Это делает стека более эффективным для выполненных задач, которые требуют большого количества памяти для хранения данных. Например, при выполнении программы с большим количеством данных, стек может помочь вам освободить память, чтобы использовать её для других задач.\n\nКуча -",
+      "s1_tool_syntax": false,
+      "echo_or_degenerate": false,
+      "state": "VALID_DIRECT_ANSWER"
+    },
+    {
+      "id": 23,
+      "query": "Напиши красивое короткое стихотворение про золотую осень.",
+      "response": "Вечерняя звезда, сияющая золото,\nСветит на земле, вечно Oscuro.\nМорocco, где shines the golden sun,\nИ retrieves its warmth in winter's run.\n\nВечерняя звезда, сияющая золото,\nСветит на земле, вечно Oscuro.\nМорocco, где shines the golden sun,\nИ retrieves its warmth in winter's run.",
+      "s1_tool_syntax": false,
+      "echo_or_degenerate": false,
+      "state": "VALID_DIRECT_ANSWER"
+    },
+    {
+      "id": 24,
+      "query": "Кто был первым президентом Соединенных Штатов Америки?",
+      "response": "В 1789 году_first president of the United States was George Washington.",
+      "s1_tool_syntax": false,
+      "echo_or_degenerate": false,
+      "state": "VALID_DIRECT_ANSWER"
+    },
+    {
+      "id": 25,
+      "query": "Что такое инвариант цикла в доказательстве корректности программ?",
+      "response": "Инвариант цикл в доказательстве корректности программ - это фрагмент кода, который выполняет одну и ту же операцию для всех значений переменной, что позволяет проверить корректность функции или алгоритма. Это помогает убедиться, что код работает правильно для всех возможных значений.",
+      "s1_tool_syntax": false,
+      "echo_or_degenerate": false,
+      "state": "VALID_DIRECT_ANSWER"
+    },
+    {
+      "id": 26,
+      "query": "Посоветуй классический рецепт итальянской пасты карбонара без сливок.",
+      "response": "Конечно! Вот классический рецепт итальянской пасты карбonaра без сливок:\n\n### Ingredients:\n- 500克 тесто, нарезанное\n- 100克 сиротка\n- 1杯 кофе\n- 1湯匙 сахру\n- 1湯匙 сахру\n- 1湯匙 сахру\n- 1湯匙 сахру\n- 1湯匙 сахру\n- 1湯匙 сахру\n- 1湯匙 сахру\n- 1湯匙 сахру\n- 1湯",
+      "s1_tool_syntax": false,
+      "echo_or_degenerate": false,
+      "state": "VALID_DIRECT_ANSWER"
+    },
+    {
+      "id": 27,
+      "query": "Как математически устроен стохастический градиентный спуск (SGD)?",
+      "response": "Стохастический градиентный спуск (SGD) основывается на использовании градиентов, которые показывают направление-largestessian-estimator. В данном случае, градиент-largestessian-estimator используется для оптимизации функцииobjektivable.",
+      "s1_tool_syntax": false,
+      "echo_or_degenerate": false,
+      "state": "VALID_DIRECT_ANSWER"
+    },
+    {
+      "id": 28,
+      "query": "Что такое термодинамическая энтропия и чем она отличается от информационной?",
+      "response": "Термодинамическая энтропия - это процесс, при котором квантовые частиц (элементы изision) вewater или разperse, в зависимости от температуры. Энтропия - это衡量я, quantify,衡量,衡量,衡量,衡量,衡量,衡量,衡量,衡量,衡量,衡量,衡量,衡量,衡量,衡量,衡量,衡量,衡量,衡量,衡量,衡量,衡量,衡量,衡量,衡量,衡",
+      "s1_tool_syntax": false,
+      "echo_or_degenerate": false,
+      "state": "VALID_DIRECT_ANSWER"
+    },
+    {
+      "id": 29,
+      "query": "Большое спасибо за подробный ответ, теперь мне всё понятно!",
+      "response": "Добро пожаловать! Если у вас есть еще вопросы, не стесняйтесь спрашивать.",
+      "s1_tool_syntax": false,
+      "echo_or_degenerate": false,
+      "state": "VALID_DIRECT_ANSWER"
+    },
+    {
+      "id": 30,
+      "query": "Расскажи забавный анекдот или шутку про программистов.",
+      "response": "Этот шуток о программистах: \"Понял, что он программист, когда он не может найти ошибку в коде, и он начал пирATESать на компьютеры!\"",
+      "s1_tool_syntax": false,
+      "echo_or_degenerate": false,
+      "state": "VALID_DIRECT_ANSWER"
+    }
+  ]
+}

@@ -1,0 +1,1114 @@
+{
+  "title": "EXTERNAL BLIND HOLDOUT: BFCL v3 (simple + irrelevance subsets)",
+  "source": "huggingface.co/datasets/gorilla-llm/Berkeley-Function-Calling-Leaderboard (BFCL_v3_simple.json first 40, BFCL_v3_irrelevance.json first 20; deterministic sample)",
+  "blindness": "neither prompts nor tool docs nor ground truth were seen at any stage of the project",
+  "protocol": {
+    "engine": "llama-server-relu2.exe, 4 threads, T=0.0, rep_pen 1.15/64, 128 max tokens",
+    "bitnet_input": "exact HF token IDs",
+    "matcher": "strict: name match; every GT param in acceptable values; no extra params"
+  },
+  "bitnet_2b_fixed_runtime": {
+    "summary": {
+      "label": "bitnet_2b_i2_s_relu2_hf",
+      "simple_strict": "10/40",
+      "simple_lenient_optional": "18/40",
+      "irrelevance_correct_refusal_json_only": "19/20",
+      "false_positive_rate_pct_json_only": 5.0,
+      "elapsed_s": 224.1
+    },
+    "cases": [
+      {
+        "id": "simple_0",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"calculate_triangle_area\", \"parameters\": {\"base\": 10, \"height\": 5}}"
+      },
+      {
+        "id": "simple_1",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "no call parsed",
+        "syntax": null,
+        "output": "{\n\"name\": \"math.factorial\",\n\"parameters\": {\n    \"number\": 5\n}"
+      },
+      {
+        "id": "simple_2",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "no call parsed",
+        "syntax": null,
+        "output": "{\n\"name\": \"math.hypot\",\n\"parameters\": {\n\"x\": 4,\n\"y\": 5\n}"
+      },
+      {
+        "id": "simple_3",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "no call parsed",
+        "syntax": null,
+        "output": "{\n\"name\": \"algebra.quadratic_roots\",\n\"parameters\": {\n    \"a\": 1,\n    \"b\": -3,\n    \"c\": 2\n}"
+      },
+      {
+        "id": "simple_4",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\n  \"name\": \"solve_quadratic_equation\",\n  \"parameters\": {\n    \"a\": 2,\n    \"b\": 6,\n    \"c\": 5\n  }\n}"
+      },
+      {
+        "id": "simple_5",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"solve_quadratic\", \"parameters\": {\"a\": 3, \"b\": -11, \"c\": -4}}"
+      },
+      {
+        "id": "simple_6",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "no call parsed",
+        "syntax": null,
+        "output": "{\n\"function_name\": \"solve_quadratic\",\n\"parameters\": {\n    \"a\": 2,\n    \"b\": 5,\n    \"c\": 3\n}\n}"
+      },
+      {
+        "id": "simple_7",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "no call parsed",
+        "syntax": null,
+        "output": "{\n\"function_name\": \"calculate_circumference\",\n\"parameters\": {\n\"radius\": 4,\n\"unit\": \"inches\"\n}\n}"
+      },
+      {
+        "id": "simple_8",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "no call parsed",
+        "syntax": null,
+        "output": "{\n\"function_name\": \"geometry.area_circle\",\n\"parameters\": {\n    \"radius\": 10,\n    \"units\": \"meters\"\n}\n}"
+      },
+      {
+        "id": "simple_9",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "no call parsed",
+        "syntax": null,
+        "output": "{\n\"function_name\": \"geometry.calculate_area_circle\",\n\"parameters\": {\n    \"radius\": 5\n}"
+      },
+      {
+        "id": "simple_10",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"calculate_area\", \"parameters\": {\"base\": 6, \"height\": 10}}"
+      },
+      {
+        "id": "simple_11",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"calculate_triangle_area\", \"parameters\": {\"base\": 10, \"height\": 5}}"
+      },
+      {
+        "id": "simple_12",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "no call parsed",
+        "syntax": null,
+        "output": "{\n\"function_name\": \"geometry.circumference\",\n\"parameters\": {\n    \"radius\": 3\n}"
+      },
+      {
+        "id": "simple_13",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "no call parsed",
+        "syntax": null,
+        "output": "{\n\"function_name\": \"calculate_area_under_curve\",\n\"parameters\": {\n    \"type\": \"dict\",\n    \"properties\": {\n        \"function\": \"x^2\",\n        \"interval\": [1, 3],\n        \"method\": \"trapezoidal\"\n    },\n    \"required\": [\"function\", \"interval\"]\n}"
+      },
+      {
+        "id": "simple_14",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "no call parsed",
+        "syntax": null,
+        "output": "{\n\"name\": \"calculate_derivative\",\n\"parameters\": {\n    \"function\": \"3*x**2 + 2*x - 1\"\n}"
+      },
+      {
+        "id": "simple_15",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "extra params ['properties', 'type']",
+        "syntax": "json",
+        "output": "{\"name\": \"integrate\", \"parameters\": {\"type\": \"dict\", \"properties\": {\"function\": \"x^3\", \"start_x\": \"-2\", \"end_x\": \"3\", \"method\": \"simpson\"}}}"
+      },
+      {
+        "id": "simple_16",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "no call parsed",
+        "syntax": null,
+        "output": "{\n\"name\": \"calculus.derivative\",\n\"parameters\": {\n    \"function\": \"2*x**2\",\n    \"value\": 1,\n    \"function_variable\": \"x\"\n}"
+      },
+      {
+        "id": "simple_17",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\n  \"name\": \"get_prime_factors\",\n  \"parameters\": {\n    \"number\": 450,\n    \"formatted\": true\n  }\n}"
+      },
+      {
+        "id": "simple_18",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "no call parsed",
+        "syntax": null,
+        "output": "{\n\"name\": \"number_analysis.prime_factors\",\n\"parameters\": {\n    \"number\": 123456\n}"
+      },
+      {
+        "id": "simple_19",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "no call parsed",
+        "syntax": null,
+        "output": "{\n\"name\": \"math.gcd\",\n\"parameters\": {\n    \"num1\": 40,\n    \"num2\": 50\n}"
+      },
+      {
+        "id": "simple_20",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "no call parsed",
+        "syntax": null,
+        "output": "{\n\"name\": \"math.hcf\",\n\"parameters\": {\n\"number1\": 36,\n\"number2\": 24\n}"
+      },
+      {
+        "id": "simple_21",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "no call parsed",
+        "syntax": null,
+        "output": "{\n\"name\": \"number_theory.gcd\",\n\"parameters\": {\n    \"number1\": 36,\n    \"number2\": 48\n}"
+      },
+      {
+        "id": "simple_22",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\n  \"name\": \"math.gcd\",\n  \"parameters\": {\n    \"num1\": 12,\n    \"num2\": 15\n  }\n}"
+      },
+      {
+        "id": "simple_23",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "no call parsed",
+        "syntax": null,
+        "output": "{\n\"number\": 60,\n\"return_type\": \"dictionary\"\n}"
+      },
+      {
+        "id": "simple_24",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "no call parsed",
+        "syntax": null,
+        "output": "{\n\"name\": \"math.gcd\",\n\"parameters\": {\n\"num1\": 12,\n\"num2\": 18\n}"
+      },
+      {
+        "id": "simple_25",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"calculate_final_velocity\", \"parameters\": {\"height\": 150}}"
+      },
+      {
+        "id": "simple_26",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"calculate_velocity\", \"parameters\": {\"distance\": 50, \"duration\": 2}}"
+      },
+      {
+        "id": "simple_27",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"final_velocity\", \"parameters\": {\"initial_velocity\": 10, \"acceleration\": 2, \"time\": 5}}"
+      },
+      {
+        "id": "simple_28",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"calculate_displacement\", \"parameters\": {\"initial_velocity\": 10, \"time\": 5, \"acceleration\": 9.8}}"
+      },
+      {
+        "id": "simple_29",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"calculate_final_speed\", \"parameters\": {\"initial_speed\": 0, \"time\": 5}}"
+      },
+      {
+        "id": "simple_30",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"kinematics.final_velocity_from_distance\", \"parameters\": {\"acceleration\": 4, \"distance\": 300}}"
+      },
+      {
+        "id": "simple_31",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"calculate_final_velocity\", \"parameters\": {\"initial_velocity\": 0, \"acceleration\": 9.8, \"time\": 5}}"
+      },
+      {
+        "id": "simple_32",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "no call parsed",
+        "syntax": null,
+        "output": "{\n\"function_name\": \"calculate_final_speed\",\n\"parameters\": {\n    \"initial_velocity\": 0,\n    \"height\": 100\n}"
+      },
+      {
+        "id": "simple_33",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\n\"name\": \"get_directions\",\n\"parameters\": {\n\"start_location\": \"Sydney\",\n\"end_location\": \"Melbourne\",\n\"route_type\": \"fastest\"\n}\n}"
+      },
+      {
+        "id": "simple_34",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "no call parsed",
+        "syntax": null,
+        "output": "{\n\"function_name\": \"travel_itinerary_generator\",\n\"parameters\": {\n    \"destination\": \"Tokyo\",\n    \"days\": 7,\n    \"daily_budget\": 100,\n    \"exploration_type\": \"nature\"\n}"
+      },
+      {
+        "id": "simple_35",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "param operating_hours: 24 not in [23]",
+        "syntax": "json",
+        "output": "{\n\"name\": \"vegan_restaurant.find_nearby\",\n\"parameters\": {\n\"location\": \"New York, NY\",\n\"operating_hours\": 24\n}\n}"
+      },
+      {
+        "id": "simple_36",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\n\"name\": \"get_shortest_driving_distance\",\n\"parameters\": {\n\"origin\": \"New York City\",\n\"destination\": \"Washington D.C.\",\n\"unit\": \"km\"\n}\n}"
+      },
+      {
+        "id": "simple_37",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\n\"route.estimate_time\": {\n    \"name\": \"route.estimate_time\",\n    \"parameters\": {\n        \"start_location\": \"San Francisco\",\n        \"end_location\": \"Los Angeles\",\n        \"stops\": [\"Santa Barbara\", \"Monterey\"]\n    }\n}"
+      },
+      {
+        "id": "simple_38",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"calculate_electrostatic_potential\", \"parameters\": {\"charge1\": 1e-9, \"charge2\": 2e-9, \"distance\": 0.05}}"
+      },
+      {
+        "id": "simple_39",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "no call parsed",
+        "syntax": null,
+        "output": "{\n\"name\": \"calculate_electric_field\",\n\"parameters\": {\n\"charge\": 2,\n\"distance\": 3000\n}"
+      },
+      {
+        "id": "irrelevance_0",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "The formula for calculating the area of a triangle is (base * height) / 2.\n\nSo, if the base is 10 meters and the height is 5 meters, the calculation would be:\n\nArea = (10 * 5) / 2\nArea = 50 / 2\nArea = 25 square meters\n\nTherefore, the area of the triangle is 25 square meters."
+      },
+      {
+        "id": "irrelevance_1",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "{\n\"function_name\": \"math.sqrt\",\n\"parameters\": {\n    \"type\": \"float\",\n    \"properties\": {\n        \"a\": 1,\n        \"b\": 2,\n        \"c\": 3\n    }\n}\n}"
+      },
+      {
+        "id": "irrelevance_2",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "The given quadratic equation is 3x^2 - 2x - 5 = 0.\n\nTo solve this, we can use the quadratic formula:\n\nx = (-b ± √(b² - 4ac)) / (2a)\n\nHere, a = 3, b = -2, and c = -5.\n\nFirst, calculate the discriminant: \nDiscriminant = b² - 4ac\n= (-2)² - 4*3*(-5)\n= 4 + 60\n= 64\n\nNow, apply the quadratic formula:\nx = (2 ± √(64))"
+      },
+      {
+        "id": "irrelevance_3",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "The slope of a line that is perpendicular to another line can be found by taking the negative reciprocal of the original line's slope. The given line has an equation of y = 3x + 2, so its slope is 3.\n\nTherefore, the slope of the line perpendicular to this one would be -1/3."
+      },
+      {
+        "id": "irrelevance_4",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "The roots of the linear equation bx + c = 0 are given by x = -c/b."
+      },
+      {
+        "id": "irrelevance_5",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "The perimeter of a rectangle can be calculated using the formula P = 2(l + w), where l is the length and w is the width.\n\nSo, for this case, the perimeter would be P = 2(5 + 4) = 18 meters."
+      },
+      {
+        "id": "irrelevance_6",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "The area of a rectangle can be calculated using the formula: Area = Width * Length. \n\nSo for this case, the area would be: \nArea = 5m * 7m = 35 square meters."
+      },
+      {
+        "id": "irrelevance_7",
+        "category": "irrelevance",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "false call to 'math.integral_calculator'",
+        "syntax": "json",
+        "output": "{\"name\": \"math.integral_calculator\", \"parameters\": {\"function\": \"f(x) = 3x^2\", \"lower_bound\": 1, \"upper_bound\": 5}}"
+      },
+      {
+        "id": "irrelevance_8",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "{\n\"function_name\": \"integrate\",\n\"parameters\": {\n    \"type\": \"formula\",\n    \"properties\": {\n        \"formula\": \"∫x^3 dx from 1 to 5\"\n    }\n}"
+      },
+      {
+        "id": "irrelevance_9",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "I'm sorry for the confusion, but as an AI assistant with access to mathematical functions and data, I don't have the capability to perform definite integrals or provide detailed explanations on calculus topics like integration. However, you can use a function like `integrate.quad` in Python's SciPy library to calculate this integral:\n\n```python\nfrom scipy.integrate import quad\n\ndef f(x):\n    return x**2\n\nresult, error = quad(f, 1, 3)\nprint(\"The definite integral is:\", result)\n```\n\nThis code will give you the value of the definite integral from x=1 to x="
+      },
+      {
+        "id": "irrelevance_10",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "The requested information does not specify a particular interval or number of partitions for approximation. Therefore, I cannot compute the definite integral or approximate derivative of the function '2x' within a given interval. Please provide more details."
+      },
+      {
+        "id": "irrelevance_11",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "The closest prime number less than 30 is 29."
+      },
+      {
+        "id": "irrelevance_12",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "I'm sorry for the misunderstanding, but as an AI assistant with access to information and data up until October 2021, I don't have real-time capabilities or current databases. However, you can use various navigation tools like Google Maps, Waze, or other GPS services to find the fastest route from New York to Boston."
+      },
+      {
+        "id": "irrelevance_13",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "The prime factors of 100 are 2 and 5."
+      },
+      {
+        "id": "irrelevance_14",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "The maximum height an object will reach when thrown straight up can be calculated using the formula:\n\nh = (v^2 - g * t^2) / (2g)\n\nwhere:\n- h is the maximum height\n- v is the initial velocity\n- g is the acceleration due to gravity\n- t is the time of flight\n\nHowever, we don't have the value for 't' or 'g'. We only know the initial velocity. \n\nIf we assume that the ball reaches its maximum height when it's thrown straight up and then falls back down under the influence of gravity, the total upward distance covered by the object"
+      },
+      {
+        "id": "irrelevance_15",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "I'm sorry for the confusion, but as an AI assistant with access to information up until October 2021, I don't have real-time data or updates on recent movie releases. I recommend checking a reliable entertainment news website or app for the most current information."
+      },
+      {
+        "id": "irrelevance_16",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "The distance traveled by a projectile (or a car) can be calculated using the kinematic equation:\n\nd = v * t * sin(theta)\n\nwhere:\n- d is the distance traveled,\n- v is the initial velocity,\n- t is the time of flight, and\n- theta is the launch angle.\n\nSo, if you want to calculate the distance a car will travel in time 't' when launched with an initial velocity 'v' at an angle 'theta', you would use this formula."
+      },
+      {
+        "id": "irrelevance_17",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "I'm sorry for the confusion, but as an AI, I don't have real-time capabilities or access to current data such as the current time. I can help you with calculations based on given parameters like distance and speed."
+      },
+      {
+        "id": "irrelevance_18",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "To calculate the angle of the force based on its X and Y components, you can use the following formula:\n\ncos(theta) = (X_component^2 + Y_component^2 - P^2) / (2 * P * sqrt(X_component^2 + Y_component^2))\n\nWhere:\n- theta is the angle\n- P is the magnitude of the momentum vector\n\nIf you want the result in degrees, set the \"use_degrees\" parameter to true. If not, it will be in radians by default.\n\nHere's an example:\n\n```json\n{\n  \"name\": \"calculate_vector_angle\",\n  \"parameters\":"
+      },
+      {
+        "id": "irrelevance_19",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "The formula for the volume of a cone is V = (1/3)πr²h, where r is the radius of the base and h is the height.\n\nSo, in this case, the volume would be V = (1/3) * π * (3)² * 5. \n\nThis simplifies to V = (1/3) * π * 9 * 5 = (1/3) * 45π cubic cm. \n\nTherefore, the volume of the cone is approximately 14.13 cubic centimeters."
+      }
+    ]
+  },
+  "qwen2.5_3b": {
+    "summary": {
+      "label": "qwen2.5_3b_q4_k_m",
+      "simple_strict": "20/40",
+      "simple_lenient_optional": "35/40",
+      "irrelevance_correct_refusal_json_only": "13/20",
+      "false_positive_rate_pct_json_only": 35.0,
+      "elapsed_s": 346.4
+    },
+    "cases": [
+      {
+        "id": "simple_0",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"calculate_triangle_area\", \"parameters\": {\"base\": 10, \"height\": 5}}"
+      },
+      {
+        "id": "simple_1",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"math.factorial\", \"parameters\": {\"number\": 5}}"
+      },
+      {
+        "id": "simple_2",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"math.hypot\", \"parameters\": {\"x\": 4, \"y\": 5}}"
+      },
+      {
+        "id": "simple_3",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"algebra.quadratic_roots\", \"parameters\": {\"a\": 1, \"b\": -3, \"c\": 2}}"
+      },
+      {
+        "id": "simple_4",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"solve_quadratic_equation\", \"parameters\": {\"a\": 2, \"b\": 6, \"c\": 5}}"
+      },
+      {
+        "id": "simple_5",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"solve_quadratic\", \"parameters\": {\"a\": 3, \"b\": -11, \"c\": -4}}"
+      },
+      {
+        "id": "simple_6",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"solve_quadratic\", \"parameters\": {\"a\": 2, \"b\": 5, \"c\": 3}}"
+      },
+      {
+        "id": "simple_7",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"calculate_circumference\", \"parameters\": {\"radius\": 4, \"unit\": \"inches\"}}"
+      },
+      {
+        "id": "simple_8",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"geometry.area_circle\", \"parameters\": {\"radius\": 10}}"
+      },
+      {
+        "id": "simple_9",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"geometry.calculate_area_circle\", \"parameters\": {\"radius\": 5}}"
+      },
+      {
+        "id": "simple_10",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"calculate_area\", \"parameters\": {\"base\": 6, \"height\": 10}}"
+      },
+      {
+        "id": "simple_11",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"calculate_triangle_area\", \"parameters\": {\"base\": 10, \"height\": 5}}"
+      },
+      {
+        "id": "simple_12",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"geometry.circumference\", \"parameters\": {\"radius\": 3}}"
+      },
+      {
+        "id": "simple_13",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "param function: 'x ^ 2' not in ['x**2', 'lambda x: x**2', 'y=x**2']",
+        "syntax": "json",
+        "output": "{\"name\": \"calculate_area_under_curve\", \"parameters\": {\"function\": \"x ^ 2\", \"interval\": [1, 3]}}"
+      },
+      {
+        "id": "simple_14",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "param function: '3*x**2 + 2*x - 1' not in ['3x**2 + 2x - 1', 'lambda x: 3x**2 + 2x - 1']",
+        "syntax": "json",
+        "output": "{\"name\": \"calculate_derivative\", \"parameters\": {\"function\": \"3*x**2 + 2*x - 1\"}}"
+      },
+      {
+        "id": "simple_15",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "param function: 'x^3' not in ['x**3', 'lambda x: x**3']",
+        "syntax": "json",
+        "output": "{\"name\": \"integrate\", \"parameters\": {\"function\": \"x^3\", \"start_x\": -2, \"end_x\": 3, \"method\": \"simpson\"}}"
+      },
+      {
+        "id": "simple_16",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "param function: '2*x^2' not in ['2x**2', 'lambda x: 2x**2']",
+        "syntax": "json",
+        "output": "{\"name\": \"calculus.derivative\", \"parameters\": {\"function\": \"2*x^2\", \"value\": 1}}"
+      },
+      {
+        "id": "simple_17",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"get_prime_factors\", \"parameters\": {\"number\": 450, \"formatted\": true}}"
+      },
+      {
+        "id": "simple_18",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"number_analysis.prime_factors\", \"parameters\": {\"number\": 123456}}"
+      },
+      {
+        "id": "simple_19",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"math.gcd\", \"parameters\": {\"num1\": 40, \"num2\": 50}}"
+      },
+      {
+        "id": "simple_20",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"math.hcf\", \"parameters\": {\"number1\": 36, \"number2\": 24}}"
+      },
+      {
+        "id": "simple_21",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"number_theory.gcd\", \"parameters\": {\"number1\": 36, \"number2\": 48}}"
+      },
+      {
+        "id": "simple_22",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"math.gcd\", \"parameters\": {\"num1\": 12, \"num2\": 15}}"
+      },
+      {
+        "id": "simple_23",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"prime_factorize\", \"parameters\": {\"number\": 60, \"return_type\": \"dictionary\"}}"
+      },
+      {
+        "id": "simple_24",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"math.gcd\", \"parameters\": {\"num1\": 12, \"num2\": 18}}"
+      },
+      {
+        "id": "simple_25",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"calculate_final_velocity\", \"parameters\": {\"height\": 150}}"
+      },
+      {
+        "id": "simple_26",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"calculate_velocity\", \"parameters\": {\"distance\": 50, \"duration\": 2}}"
+      },
+      {
+        "id": "simple_27",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"final_velocity\", \"parameters\": {\"initial_velocity\": 10, \"acceleration\": 2, \"time\": 5}}"
+      },
+      {
+        "id": "simple_28",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"calculate_displacement\", \"parameters\": {\"initial_velocity\": 10, \"time\": 5, \"acceleration\": 9.8}}"
+      },
+      {
+        "id": "simple_29",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"calculate_final_speed\", \"parameters\": {\"time\": 5}}"
+      },
+      {
+        "id": "simple_30",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"kinematics.final_velocity_from_distance\", \"parameters\": {\"acceleration\": 4, \"distance\": 300}}"
+      },
+      {
+        "id": "simple_31",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"calculate_final_velocity\", \"parameters\": {\"initial_velocity\": 0, \"acceleration\": 9.8, \"time\": 5}}"
+      },
+      {
+        "id": "simple_32",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"calculate_final_speed\", \"parameters\": {\"initial_velocity\": 0, \"height\": 100}}"
+      },
+      {
+        "id": "simple_33",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"get_directions\", \"parameters\": {\"start_location\": \"Sydney\", \"end_location\": \"Melbourne\", \"route_type\": \"fastest\"}}"
+      },
+      {
+        "id": "simple_34",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"travel_itinerary_generator\", \"parameters\": {\"destination\": \"Tokyo\", \"days\": 7, \"daily_budget\": 100, \"exploration_type\": \"nature\"}}"
+      },
+      {
+        "id": "simple_35",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "param operating_hours: 24 not in [23]",
+        "syntax": "json",
+        "output": "{\"name\": \"vegan_restaurant.find_nearby\", \"parameters\": {\"location\": \"New York, NY\", \"operating_hours\": 24}}"
+      },
+      {
+        "id": "simple_36",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"get_shortest_driving_distance\", \"parameters\": {\"origin\": \"New York City\", \"destination\": \"Washington D.C.\"}}"
+      },
+      {
+        "id": "simple_37",
+        "category": "simple",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"route.estimate_time\", \"parameters\": {\"start_location\": \"San Francisco\", \"end_location\": \"Los Angeles\", \"stops\": [\"Santa Barbara\", \"Monterey\"]}}"
+      },
+      {
+        "id": "simple_38",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"calculate_electrostatic_potential\", \"parameters\": {\"charge1\": 1e-9, \"charge2\": 2e-9, \"distance\": 0.05}}"
+      },
+      {
+        "id": "simple_39",
+        "category": "simple",
+        "ok": false,
+        "ok_lenient": true,
+        "detail": "match",
+        "syntax": "json",
+        "output": "{\"name\": \"calculate_electric_field\", \"parameters\": {\"charge\": 2, \"distance\": 3}}"
+      },
+      {
+        "id": "irrelevance_0",
+        "category": "irrelevance",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "false call to 'determine_body_mass_index'",
+        "syntax": "json",
+        "output": "The calculation for the area of a triangle when you have its base (b) and height (h) can be done using the formula: Area = 0.5 * b * h.\n\nGiven:\n- Base (b) = 10 meters\n- Height (h) = 5 meters\n\nLet's calculate it.\n{\"name\": \"determine_body_mass_index\", \"parameters\": {\"weight\": 102.0, \"height\": 1.73}}"
+      },
+      {
+        "id": "irrelevance_1",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "None of the provided functions can solve a quadratic equation. The math.sum function is for summing numbers in a list, not solving equations."
+      },
+      {
+        "id": "irrelevance_2",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "No suitable function found for the task."
+      },
+      {
+        "id": "irrelevance_3",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "None of the provided functions can be used to solve this problem. We would need a different approach to find the slope of a line that is perpendicular to another given line, specifically using the property that the slopes of two perpendicular lines are negative reciprocals of each other. For the line y = 3x + 2, its slope (m) is 3. The slope of any line perpendicular to it would be -1/3."
+      },
+      {
+        "id": "irrelevance_4",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "It seems there might be a misunderstanding as the given function only works for quadratic equations (ax^2 + bx + c = 0). For a linear equation, we can directly solve it without needing any functions. Let's assume you provide values for b and c to find the root of the equation.\n\nCould you please provide me with the values of b and c?"
+      },
+      {
+        "id": "irrelevance_5",
+        "category": "irrelevance",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "false call to 'solve_quadratic_equation'",
+        "syntax": "json",
+        "output": "The perimeter of a rectangle can be calculated using the formula P = 2(l + w), where l is the length and w is the width. For this rectangle, l = 5 meters and w = 4 meters.\n\nP = 2(5 + 4) = 2 * 9 = 18 meters.\n{\"name\": \"solve_quadratic_equation\", \"parameters\": {\"a\": 0, \"b\": 0, \"c\": 0}}"
+      },
+      {
+        "id": "irrelevance_6",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "The question seems to be about geometry rather than using one of the provided functions. Calculating the area of a rectangle is straightforward: Area = Length × Width.\n\nFor this rectangle:\n- Length = 7 meters\n- Width = 5 meters\n\nArea = 7 m * 5 m = 35 square meters"
+      },
+      {
+        "id": "irrelevance_7",
+        "category": "irrelevance",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "false call to 'math.integral_calculator'",
+        "syntax": "json",
+        "output": "{\"name\": \"math.integral_calculator\", \"parameters\": {\"function\": \"3*x**2\", \"lower_bound\": 1, \"upper_bound\": 5}}"
+      },
+      {
+        "id": "irrelevance_8",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "This question seems to be a mathematical one rather than an information retrieval task that can be handled by the provided functions. The function list does not include any integration or calculus-related operations. Therefore, I cannot use the given functions to solve this problem."
+      },
+      {
+        "id": "irrelevance_9",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "None of the provided functions can calculate integrals."
+      },
+      {
+        "id": "irrelevance_10",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "The given task involves computing a derivative rather than an integral as specified by your query and available functions. The provided function is for integration, not differentiation. Therefore, I cannot directly use these resources to answer your question about finding the derivative of the function '2x'. To find the derivative of 2x with respect to x, you can do it manually or using a different approach that doesn't involve any specific functions from this list.\n\nThe derivative of 2x is simply 2."
+      },
+      {
+        "id": "irrelevance_11",
+        "category": "irrelevance",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "false call to 'get_closest_prime'",
+        "syntax": "json",
+        "output": "{\"name\": \"get_closest_prime\", \"parameters\": {\"number\": 30, \"skip\": 1}}"
+      },
+      {
+        "id": "irrelevance_12",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "None of the provided functions can be used to find a route between two cities. The task requires mapping or routing services which are not included in the given list of functions."
+      },
+      {
+        "id": "irrelevance_13",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "None of the provided functions can be used to calculate the prime factors of a number."
+      },
+      {
+        "id": "irrelevance_14",
+        "category": "irrelevance",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "false call to 'calculate_maximum_height'",
+        "syntax": "json",
+        "output": "{\"name\": \"calculate_maximum_height\", \"parameters\": {\"initial_velocity\": 5}}"
+      },
+      {
+        "id": "irrelevance_15",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "It seems that one of the available functions doesn't match the requirement to fetch information about latest movie releases. The provided function calculates velocity based on given parameters and isn't relevant for querying current entertainment news or data. Please provide a different task or query related to the available functions."
+      },
+      {
+        "id": "irrelevance_16",
+        "category": "irrelevance",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "false call to 'calculate_projectile_range'",
+        "syntax": "json",
+        "output": "{\"name\": \"calculate_projectile_range\", \"parameters\": {\"initial_velocity\": 20.0, \"angle\": 45.0}}"
+      },
+      {
+        "id": "irrelevance_17",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "The current timestamp can be obtained using various methods depending on the context and available functions. However, since a specific function for getting the current time isn't provided here, I cannot call an appropriate function to get this information directly. Please provide more details or relevant functions if available."
+      },
+      {
+        "id": "irrelevance_18",
+        "category": "irrelevance",
+        "ok": true,
+        "ok_lenient": true,
+        "detail": "no call",
+        "syntax": null,
+        "output": "The concept you're referring to involves vectors and their angles rather than forces and momenta directly. However, if we consider a vector representing both force (F) and momentum (p), we can calculate its direction using trigonometry.\n\nLet's assume F = <Fx, Fy> represents the force in terms of X and Y components, and p = <px, py> represents the momentum with similar X and Y components. The angle θ that this resultant vector makes with the positive x-axis (or any given axis) can be calculated using:\n\nθ = atan2(Fy, Fx)\n\nIf you provide me with specific"
+      },
+      {
+        "id": "irrelevance_19",
+        "category": "irrelevance",
+        "ok": false,
+        "ok_lenient": false,
+        "detail": "false call to 'investment_calculator.calculate_return'",
+        "syntax": "json",
+        "output": "The formula for the volume V of a cone is given by:\n\n\\[ V = \\frac{1}{3} \\pi r^2 h \\]\n\nwhere \\( r \\) is the radius of the base, and \\( h \\) is the height of the cone.\n\nGiven:\n- Radius (\\( r \\)) = 3 cm\n- Height (\\( h \\)) = 5 cm\n\nLet's calculate it.\n{\"name\": \"investment_calculator.calculate_return\", \"parameters\": {\"initial_investment\": 100.0, \"annual_rate\": 0.05, \"years\": 10}}"
+      }
+    ]
+  }
+}

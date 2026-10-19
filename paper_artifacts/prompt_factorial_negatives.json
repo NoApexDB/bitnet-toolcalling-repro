@@ -1,0 +1,242 @@
+{
+  "title": "Mini-factorial on negative-control prompt factors (tool menu x framing)",
+  "protocol": {
+    "model": "BitNet-b1.58-2B-4T i2_s, llama-server-relu2.exe, exact HF token IDs, T=0",
+    "cases": "10 negatives of the heldout 30-case suite",
+    "refusal_criterion": "no JSON tool envelope AND non-degenerate text",
+    "factor_A": "tool menu: 5 tools vs 1 (weather, irrelevant to all 10 queries)",
+    "factor_B": "framing: MUST-ONLY-JSON vs may-JSON + plain-text-affordance"
+  },
+  "cells": {
+    "A1B1_5tools_aggressive": {
+      "valid_refusals": "0/10",
+      "refusals_n": 0,
+      "cases": [
+        {
+          "id": 21,
+          "refusal": false,
+          "output": "{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"Moscow\"}}"
+        },
+        {
+          "id": 22,
+          "refusal": false,
+          "output": "{\"tool\": \"query_database\", \"parameters\": {\"sql\": \"What is the difference between stack and heap in operating system memory management?\"}}"
+        },
+        {
+          "id": 23,
+          "refusal": false,
+          "output": "```json\n{\"tool\": \"query_database\", \"sql\": \"SELECT 'Верminatingen' as 'Golden Earrings', 'In the morning light, they shine bright and gold.'\"}\n```"
+        },
+        {
+          "id": 24,
+          "refusal": false,
+          "output": "{\"tool\": \"web_search\", \"parameters\": {\"query\": \"who was the first president of the United States\"}}"
+        },
+        {
+          "id": 25,
+          "refusal": false,
+          "output": "{\"tool\": \"query_database\", \"parameters\": {\"sql\": \"What is an invariant cycle in proof of correctness for programming?\"}}"
+        },
+        {
+          "id": 26,
+          "refusal": false,
+          "output": "{\"tool\": \"web_search\", \"parameters\": {\"query\": \"classical italian pumpkin pie recipe without cream\"}}"
+        },
+        {
+          "id": 27,
+          "refusal": false,
+          "output": "{\n  \"tool\": \"query_database\",\n  \"parameters\": {\n    \"sql\": \"SELECT * FROM your_table WHERE some_column = 'your_value'\"\n  }\n}"
+        },
+        {
+          "id": 28,
+          "refusal": false,
+          "output": "{\"tool\": \"query_database\", \"sql\": \"SELECT definition FROM thermodynamic_properties WHERE type = 'entropy'\"}"
+        },
+        {
+          "id": 29,
+          "refusal": false,
+          "output": "{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"Moscow\"}}"
+        },
+        {
+          "id": 30,
+          "refusal": false,
+          "output": "```json\n{\"tool\": \"web_search\", \"parameters\": {\"query\": \"funny quotes about programmers\"}}\n```"
+        }
+      ]
+    },
+    "A1B2_5tools_soft": {
+      "valid_refusals": "7/10",
+      "refusals_n": 7,
+      "cases": [
+        {
+          "id": 21,
+          "refusal": true,
+          "output": "Привет! Я здесь какAssistant AI, и мне назвать меня не имеет, но я помогу тебе с cualquier другом. Ты можешь мне помочь с что-то?"
+        },
+        {
+          "id": 22,
+          "refusal": true,
+          "output": "Конечно! Давайте разберем, что'estack' и'kuch' это и как они отличаются.\n\n'Stack' - это структура данных, которая хранит информацию о том, какие элементы данных будут выделяться Priority. Это означает"
+        },
+        {
+          "id": 23,
+          "refusal": false,
+          "output": "```json\n{\"tool\": \"query_database\", \"sql\": \"SELECT * FROM treasures WHERE gemstone = 'gold'\"}\n```\nThis is a short, simple poem about the golden age of gold. The SQL query retrieves all records from the"
+        },
+        {
+          "id": 24,
+          "refusal": true,
+          "output": "The first president of the United States was George Washington."
+        },
+        {
+          "id": 25,
+          "refusal": true,
+          "output": "В программировании инвариант цикла — это способ проверки корректности программы, который используется для определения того, что все возможные случаи, которые могут возникнуть при выполнении программы,"
+        },
+        {
+          "id": 26,
+          "refusal": false,
+          "output": "Конечно, вот рецепт классического итальянской пасты карбonaра без сливок:\n\n```json\n{\"tool\": \"execute_python\", \"code\": \"def get_ingredients():\\n    ingredients = {'flour': '2 cups', 'sugar': '1 cup', '"
+        },
+        {
+          "id": 27,
+          "refusal": false,
+          "output": "Stochastic Gradient Descent (SGD) is an optimization algorithm used in machine learning to minimize the cost function of a model. It's based on the idea of taking steps proportional to the negative gr"
+        },
+        {
+          "id": 28,
+          "refusal": true,
+          "output": "Термодинамическая энтропия - это вычисление энергоинтенсивности потока или объекта в зависимости от температуры. Она основывается на том, что энергоинтенсивность потока зависит от температуры, и при э"
+        },
+        {
+          "id": 29,
+          "refusal": true,
+          "output": "Дорогой, я рад помочь! Если у вас есть еще вопросы, не стесняйтесь задавать их."
+        },
+        {
+          "id": 30,
+          "refusal": true,
+          "output": "Этот шуток о программистах: \"Понял, что он не может писать код, когда он не знает, что await him.\""
+        }
+      ]
+    },
+    "A2B1_1tool_aggressive": {
+      "valid_refusals": "0/10",
+      "refusals_n": 0,
+      "cases": [
+        {
+          "id": 21,
+          "refusal": false,
+          "output": "{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"Moscow\"}}"
+        },
+        {
+          "id": 22,
+          "refusal": false,
+          "output": "{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"New York\"}}"
+        },
+        {
+          "id": 23,
+          "refusal": false,
+          "output": "```json\n{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"Moscow\"}}\n```\nThis command retrieves the current temperature in Moscow, Russia."
+        },
+        {
+          "id": 24,
+          "refusal": false,
+          "output": "{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"Washington, D.C.\"}}"
+        },
+        {
+          "id": 25,
+          "refusal": false,
+          "output": "{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"Moscow\"}}"
+        },
+        {
+          "id": 26,
+          "refusal": false,
+          "output": "{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"Italy\"}}"
+        },
+        {
+          "id": 27,
+          "refusal": false,
+          "output": "{\n  \"tool\": \"get_current_weather\",\n  \"parameters\": {\n    \"location\": \"Moscow\"\n  }\n}"
+        },
+        {
+          "id": 28,
+          "refusal": false,
+          "output": "{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"Moscow\"}}"
+        },
+        {
+          "id": 29,
+          "refusal": false,
+          "output": "{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"Moscow\"}}"
+        },
+        {
+          "id": 30,
+          "refusal": false,
+          "output": "```json\n{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"Moscow\"}}\n```"
+        }
+      ]
+    },
+    "A2B2_1tool_soft": {
+      "valid_refusals": "7/10",
+      "refusals_n": 7,
+      "cases": [
+        {
+          "id": 21,
+          "refusal": true,
+          "output": "Привет! Я здесь какAssistant AI, и мне назвать меня не имеет значения, но я помогу тебе с cualquier другом. Ты можешь мне задавать вопросы или задачи, и я постараюсь помочь тебе."
+        },
+        {
+          "id": 22,
+          "refusal": false,
+          "output": "Конечно! Давайте разберем это на простом языке.\n\n1. Стек (Stack):\nСтек - это структура данных, которая хранит элементы в последовательном порядке. Она имеет следующий вид:\n\n- Каждый элемент имеет указ"
+        },
+        {
+          "id": 23,
+          "refusal": false,
+          "output": "{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"Moscow, Russia\"}}"
+        },
+        {
+          "id": 24,
+          "refusal": true,
+          "output": "Соединенных Штатов Америки не имели президентом в Beginnings. В Beginnings имел Премьер-министр, olan Марк Деплес, который был в роли 首相 США."
+        },
+        {
+          "id": 25,
+          "refusal": true,
+          "output": "Инвариант цикла в доказательстве корректности программ - это пример, который показывает, что функция или алгоритм работает правильно, если он выполняет одинаковые действия для разных входных данных. В"
+        },
+        {
+          "id": 26,
+          "refusal": true,
+          "output": "Конечно! Вот рецепт классического итальянского пасты карбонара без сливок:\n\n### Ingredients:\n- 500克 тесто, divisibil\n- 100克 fulik\n- 1杯 кофе\n- 2湯匙 сахру\n- 1湯匙 сахру\n- 1湯匙 сахру\n- 1湯匙 сахру\n- 1湯匙 сахру\n"
+        },
+        {
+          "id": 27,
+          "refusal": false,
+          "output": "Stochastic Gradient Descent (SGD) is an optimization algorithm used in machine learning to minimize the cost function of a model. It's based on the idea of taking small steps towards the minimum of th"
+        },
+        {
+          "id": 28,
+          "refusal": true,
+          "output": "Термодинамическая энтропия - это процесс, при котором"
+        },
+        {
+          "id": 29,
+          "refusal": true,
+          "output": "Добро пожаловать! Если у вас есть еще вопросы, не стесняйтесь задавать их."
+        },
+        {
+          "id": 30,
+          "refusal": true,
+          "output": "Конечно! Вот интересный анекдот о программистах:\n\n\"Понял, что он программист, и он не разговаривал с ним. Он просто добавлял `print(\"Hello World!\")` в код, и он все еще не разговаривал с ним.\""
+        }
+      ]
+    }
+  },
+  "effects": {
+    "framing_effect_5tools (B2-B1)": 7,
+    "framing_effect_1tool (B2-B1)": 7,
+    "menu_effect_aggressive (A2-A1)": 0,
+    "menu_effect_soft (A2-A1)": 0
+  }
+}

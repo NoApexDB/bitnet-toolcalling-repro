@@ -1,0 +1,344 @@
+{
+  "metadata": {
+    "title": "Upstream microsoft/BitNet SiLU vs ReLU² Repro Artifact (Task T2)",
+    "timestamp": "2026-10-19T20:43:00",
+    "task_id": "T2",
+    "upstream_status": "БАГ ЖИВ В АКТУАЛЬНОМ АПСТРИМЕ",
+    "verdict": "Баг вычислительного графа (LLM_FFN_SILU вместо LLM_FFN_RELU_SQR) подтверждён на актуальном коммите 0b341e5 репозитория microsoft/BitNet.",
+    "components": {
+      "bitnet_repo": "https://github.com/microsoft/BitNet",
+      "bitnet_commit": "0b341e582afbf9e1011f24744b554c96a3477eb5",
+      "llama_cpp_submodule": "https://github.com/isHuangXin/llama.cpp",
+      "llama_cpp_submodule_commit": "390c307752ab78fd8189f359d6954c9ba1be74af",
+      "source_file_with_bug": "3rdparty/llama.cpp/src/models/bitnet.cpp",
+      "bug_line": 133,
+      "upstream_code": "LLM_FFN_SILU, LLM_FFN_PAR, il);",
+      "fixed_code": "LLM_FFN_RELU_SQR, LLM_FFN_PAR, il);",
+      "hf_model": "microsoft/BitNet-b1.58-2B-4T",
+      "hf_config_hidden_act": "relu2"
+    },
+    "binaries": {
+      "upstream_silu_binary": {
+        "path": "C:\\ai_models\\BitNet\\build\\bin\\llama-server-silu.exe",
+        "sha256": "a3f88d60281321e7778a289cac19388cafd96b947040e1afb4f83bd8532a0fcd",
+        "size_bytes": 20959232
+      },
+      "fixed_relu2_binary": {
+        "path": "C:\\ai_models\\BitNet\\build\\bin\\llama-server-relu2.exe",
+        "sha256": "501133268b13765096fb7f4e5dff77bcd71d537b6727e1c166cf6a37495b5059",
+        "size_bytes": 20959232
+      },
+      "gguf_model": {
+        "path": "C:\\ai_models\\BitNet\\models\\BitNet-b1.58-2B-4T\\ggml-model-i2_s.gguf",
+        "sha256": "4221b252fdd5fd25e15847adfeb5ee88886506ba50b8a34548374492884c2162",
+        "size_bytes": 1187801280
+      }
+    },
+    "test_protocol": {
+      "temperature": 0.0,
+      "repetition_penalty": 1.15,
+      "repetition_penalty_window": 64,
+      "threads": 4,
+      "context_size": 2048,
+      "input_format": "Aligned HuggingFace Token IDs (exact 1:1 input matching)"
+    },
+    "summary_results_10_cases": {
+      "total_tool_cases": 10,
+      "upstream_silu_valid_schema": "0/10 (0.0%)",
+      "fixed_relu2_valid_schema": "10/10 (100.0%)",
+      "delta": "+10 cases recovered"
+    }
+  },
+  "cases": [
+    {
+      "case_id": 1,
+      "category": "single_turn",
+      "expected_tool": "get_current_weather",
+      "input_tokens_count": 228,
+      "input_tokens_sha256": "5c65ccf3c67acbd7f3e0eee44710669426743bbf677577a172fdcda23f1000c5",
+      "upstream_silu": {
+        "s1_json_attempt": true,
+        "s2_valid_schema": false,
+        "s3_arg_heuristic": false,
+        "s4_executed": "N/A",
+        "s5_result_correct": "N/A",
+        "generated_tokens": 128,
+        "elapsed_seconds": 10.166524700005539,
+        "tps": 16.113862567132177,
+        "response_preview": "{\"tool\": \"weather\", \"parameters\": {\"param1\": \"value1\"}}\n{\"tool\": \"weather\", \"parameters\": {\"param1\": \"value1\"}\nThe weath"
+      },
+      "fixed_relu2": {
+        "s1_json_attempt": true,
+        "s2_valid_schema": true,
+        "s3_arg_heuristic": true,
+        "s4_executed": "N/A (Внешний API)",
+        "s5_result_correct": "N/A (Внешний API)",
+        "generated_tokens": 19,
+        "elapsed_seconds": 3.05374610000581,
+        "tps": 18.842589011398776,
+        "response_preview": "{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"Tokyo\"}}"
+      }
+    },
+    {
+      "case_id": 2,
+      "category": "single_turn",
+      "expected_tool": "get_current_weather",
+      "input_tokens_count": 227,
+      "input_tokens_sha256": "279ed1e80c0a276f97a73a4384b60609bec17717ab2c82e37d18be2569dcf27c",
+      "upstream_silu": {
+        "s1_json_attempt": true,
+        "s2_valid_schema": false,
+        "s3_arg_heuristic": false,
+        "s4_executed": "N/A",
+        "s5_result_correct": "N/A",
+        "generated_tokens": 69,
+        "elapsed_seconds": 4.061496100002842,
+        "tps": 17.774599530544492,
+        "response_preview": "{\"tool\": \"temperature\", \"parameters\": {\"param1\": \"value1\"}}\n```\nAvailable tools:\n1. get_current_weather(location: str, u"
+      },
+      "fixed_relu2": {
+        "s1_json_attempt": true,
+        "s2_valid_schema": true,
+        "s3_arg_heuristic": true,
+        "s4_executed": "N/A (Внешний API)",
+        "s5_result_correct": "N/A (Внешний API)",
+        "generated_tokens": 22,
+        "elapsed_seconds": 1.481169200000295,
+        "tps": 16.92031760974364,
+        "response_preview": "```json\n{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"London\"}}\n```"
+      }
+    },
+    {
+      "case_id": 3,
+      "category": "single_turn",
+      "expected_tool": "get_current_weather",
+      "input_tokens_count": 238,
+      "input_tokens_sha256": "2f4eea0a8e74cea0ea03ced040497d9aaf823a206cef1b27943d5811fb9b256e",
+      "upstream_silu": {
+        "s1_json_attempt": false,
+        "s2_valid_schema": false,
+        "s3_arg_heuristic": false,
+        "s4_executed": "N/A",
+        "s5_result_correct": "N/A",
+        "generated_tokens": 128,
+        "elapsed_seconds": 8.107670800003689,
+        "tps": 16.3377273736197,
+        "response_preview": "1. Get Current Weather Data for a specific city.\n\nAvailable tools:\n2. web_search(query: str, max_results: int = 5) - Sea"
+      },
+      "fixed_relu2": {
+        "s1_json_attempt": true,
+        "s2_valid_schema": true,
+        "s3_arg_heuristic": false,
+        "s4_executed": "N/A",
+        "s5_result_correct": "N/A",
+        "generated_tokens": 23,
+        "elapsed_seconds": 1.541912599997886,
+        "tps": 17.986497614443,
+        "response_preview": "```json\n{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"Belfast\"}}\n```"
+      }
+    },
+    {
+      "case_id": 4,
+      "category": "single_turn",
+      "expected_tool": "web_search",
+      "input_tokens_count": 235,
+      "input_tokens_sha256": "6d101e2b3832d6ee16144e5017ff3945f2b5c7437128e7ec2401ed45b839f0b7",
+      "upstream_silu": {
+        "s1_json_attempt": true,
+        "s2_valid_schema": false,
+        "s3_arg_heuristic": false,
+        "s4_executed": "N/A",
+        "s5_result_correct": "N/A",
+        "generated_tokens": 128,
+        "elapsed_seconds": 7.947926599998027,
+        "tps": 16.64183825745392,
+        "response_preview": "{\"tool\": \"get_current_weather\", \"parameters\": {\"param1\": \"value1\"}}\n{\"tool\": \"web_search\", \"parameters\": {\"query\": \"date"
+      },
+      "fixed_relu2": {
+        "s1_json_attempt": true,
+        "s2_valid_schema": true,
+        "s3_arg_heuristic": true,
+        "s4_executed": "N/A (Внешний API)",
+        "s5_result_correct": "N/A (Внешний API)",
+        "generated_tokens": 23,
+        "elapsed_seconds": 1.5312474999955157,
+        "tps": 18.341995274145045,
+        "response_preview": "{\"tool\": \"web_search\", \"parameters\": {\"query\": \"2022 FIFA World Cup football champion\"}}"
+      }
+    },
+    {
+      "case_id": 5,
+      "category": "single_turn",
+      "expected_tool": "web_search",
+      "input_tokens_count": 238,
+      "input_tokens_sha256": "cd83c1c36149fc6cb0cdd1f6cafa6e11c9dc0c78ccd3b8e8ef843b714190cbe0",
+      "upstream_silu": {
+        "s1_json_attempt": false,
+        "s2_valid_schema": false,
+        "s3_arg_heuristic": false,
+        "s4_executed": "N/A",
+        "s5_result_correct": "N/A",
+        "generated_tokens": 128,
+        "elapsed_seconds": 7.600472600002831,
+        "tps": 17.530906097208053,
+        "response_preview": "1. Retrieve current weather data for a specific city.\n2. web_search(query: str, max_results: int = 5) - Search the web f"
+      },
+      "fixed_relu2": {
+        "s1_json_attempt": true,
+        "s2_valid_schema": true,
+        "s3_arg_heuristic": true,
+        "s4_executed": "N/A (Внешний API)",
+        "s5_result_correct": "N/A (Внешний API)",
+        "generated_tokens": 28,
+        "elapsed_seconds": 1.8980236000061268,
+        "tps": 17.4540304473094,
+        "response_preview": "```json\n{\"tool\": \"web_search\", \"parameters\": {\"query\": \"latest news on artificial intelligence for this week\"}}\n```"
+      }
+    },
+    {
+      "case_id": 6,
+      "category": "single_turn",
+      "expected_tool": "web_search",
+      "input_tokens_count": 237,
+      "input_tokens_sha256": "837607a07a770c6d836d8c42792cfeb1ef20a14f79f8bca9f40de4191e8f30e3",
+      "upstream_silu": {
+        "s1_json_attempt": true,
+        "s2_valid_schema": false,
+        "s3_arg_heuristic": false,
+        "s4_executed": "N/A",
+        "s5_result_correct": "N/A",
+        "generated_tokens": 128,
+        "elapsed_seconds": 7.484476199999335,
+        "tps": 17.797701315639454,
+        "response_preview": "{\"tool\": \"Tool Name\", \"parameters\": {\"param1\": \"value1\"}, {\"tool\": \"Tool Name\", \"parameters\": {\"param1\": \"value1\"}}\n\nThe"
+      },
+      "fixed_relu2": {
+        "s1_json_attempt": true,
+        "s2_valid_schema": true,
+        "s3_arg_heuristic": true,
+        "s4_executed": "N/A (Внешний API)",
+        "s5_result_correct": "N/A (Внешний API)",
+        "generated_tokens": 27,
+        "elapsed_seconds": 1.9461808999985806,
+        "tps": 16.585265772741316,
+        "response_preview": "```json\n{\"tool\": \"web_search\", \"parameters\": {\"query\": \"BitNet b1.58 Microsoft\"}}\n```"
+      }
+    },
+    {
+      "case_id": 7,
+      "category": "single_turn",
+      "expected_tool": "execute_python",
+      "input_tokens_count": 236,
+      "input_tokens_sha256": "88e28d85cd5c2d3a804e928b6cad56aa145b6f51518ae3f2e0f4d350acab387b",
+      "upstream_silu": {
+        "s1_json_attempt": false,
+        "s2_valid_schema": false,
+        "s3_arg_heuristic": false,
+        "s4_executed": "N/A",
+        "s5_result_correct": "N/A",
+        "generated_tokens": 128,
+        "elapsed_seconds": 7.514405300004,
+        "tps": 17.651033550753617,
+        "response_preview": "1. Retrieve current weather data for a specific city.\n\nAvailable tools:\n2. web_search(query: str, max_results: int = 5)"
+      },
+      "fixed_relu2": {
+        "s1_json_attempt": true,
+        "s2_valid_schema": true,
+        "s3_arg_heuristic": false,
+        "s4_executed": "N/A",
+        "s5_result_correct": "N/A",
+        "generated_tokens": 61,
+        "elapsed_seconds": 4.016290499996103,
+        "tps": 16.44567897872873,
+        "response_preview": "```json\n{\"tool\": \"execute_python\", \"parameters\": {\"code\": \"def fibonacci(n): if n <= 1: return n else: return fibonacci("
+      }
+    },
+    {
+      "case_id": 8,
+      "category": "single_turn",
+      "expected_tool": "execute_python",
+      "input_tokens_count": 236,
+      "input_tokens_sha256": "b3b8f0e98b0c9f6dd481371604cfbc39965247ff91a9298d9d53b1394edebb5e",
+      "upstream_silu": {
+        "s1_json_attempt": true,
+        "s2_valid_schema": false,
+        "s3_arg_heuristic": false,
+        "s4_executed": "N/A",
+        "s5_result_correct": "N/A",
+        "generated_tokens": 128,
+        "elapsed_seconds": 7.859871499997098,
+        "tps": 16.886456652795587,
+        "response_preview": "{\"tool\": \"python\", \"parameters\": {\"param1\": \"value1\"}}\n```\nDo not include any extra thoughts or text before or after the"
+      },
+      "fixed_relu2": {
+        "s1_json_attempt": true,
+        "s2_valid_schema": true,
+        "s3_arg_heuristic": true,
+        "s4_executed": "Не исполнялось (нет изоляции ОС)",
+        "s5_result_correct": "Не исполнялось (нет изоляции ОС)",
+        "generated_tokens": 104,
+        "elapsed_seconds": 6.642638099998294,
+        "tps": 16.366145934720166,
+        "response_preview": "```json\n{\"tool\": \"execute_python\", \"parameters\": {\"code\": \"def sum_of_primes(n):\\n    total = 0\\n    for i in range(2, n"
+      }
+    },
+    {
+      "case_id": 9,
+      "category": "single_turn",
+      "expected_tool": "file_read",
+      "input_tokens_count": 228,
+      "input_tokens_sha256": "87d17327270fd7081d44e8e232d8c489e71f4a900ba9baf006279cad75fef80e",
+      "upstream_silu": {
+        "s1_json_attempt": false,
+        "s2_valid_schema": false,
+        "s3_arg_heuristic": false,
+        "s4_executed": "N/A",
+        "s5_result_correct": "N/A",
+        "generated_tokens": 128,
+        "elapsed_seconds": 7.480067600001348,
+        "tps": 17.55152400705681,
+        "response_preview": "1. get_current_weather(location: str, unit: str = \"celsius\") - Retrieve current weather data for a specific city.\n2. web"
+      },
+      "fixed_relu2": {
+        "s1_json_attempt": true,
+        "s2_valid_schema": true,
+        "s3_arg_heuristic": true,
+        "s4_executed": "[+]",
+        "s5_result_correct": "[+]",
+        "generated_tokens": 19,
+        "elapsed_seconds": 1.3393904000040493,
+        "tps": 16.78541612371735,
+        "response_preview": "{\"tool\": \"file_read\", \"parameters\": {\"path\": \"/etc/hosts\"}}"
+      }
+    },
+    {
+      "case_id": 10,
+      "category": "single_turn",
+      "expected_tool": "file_read",
+      "input_tokens_count": 237,
+      "input_tokens_sha256": "d2fb99e375e2bbdad8c91a46b45f268cd611cc40159776c6900b8006e353195f",
+      "upstream_silu": {
+        "s1_json_attempt": false,
+        "s2_valid_schema": false,
+        "s3_arg_heuristic": false,
+        "s4_executed": "N/A",
+        "s5_result_correct": "N/A",
+        "generated_tokens": 128,
+        "elapsed_seconds": 7.553791500002262,
+        "tps": 17.60632881497165,
+        "response_preview": "1. Get Current Weather Data for a specific city.\n\nAvailable tools:\n2. web_search(query: str, max_results: int = 5) - Sea"
+      },
+      "fixed_relu2": {
+        "s1_json_attempt": true,
+        "s2_valid_schema": true,
+        "s3_arg_heuristic": true,
+        "s4_executed": "[+]",
+        "s5_result_correct": "[+]",
+        "generated_tokens": 23,
+        "elapsed_seconds": 1.6283519999997225,
+        "tps": 17.106998324257948,
+        "response_preview": "{\"tool\": \"file_read\", \"parameters\": {\"path\": \"C:\\\\ai_models\\\\settings.json\"}}"
+      }
+    }
+  ]
+}

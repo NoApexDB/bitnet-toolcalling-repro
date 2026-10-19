@@ -1,0 +1,210 @@
+{
+  "model": "BitNet-b1.58-2B-4T (i2_s GGUF, rebuilt with LLM_FFN_RELU_SQR)",
+  "timestamp": "2026-10-15T14:15:29",
+  "total_cases": 20,
+  "total_tokens": 671,
+  "total_time_sec": 46.65154989999792,
+  "avg_tps": 14.383230598733654,
+  "detailed_results": [
+    {
+      "id": 1,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "get_current_weather",
+      "response": "```json\n{\"tool\": \"get_thermal_data\",  \"parameters\": {\"location\": \"Tokyo\"}}\n```",
+      "tokens_predicted": 25,
+      "tps": 19.161184651737802,
+      "elapsed_sec": 3.7790969999987283
+    },
+    {
+      "id": 2,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "get_current_weather",
+      "response": "```json\n{\"tool\": \"get_thermal_data\",  \"parameters\": {\"location\": \"London\"}}\n```",
+      "tokens_predicted": 24,
+      "tps": 18.85969565166142,
+      "elapsed_sec": 1.4671062000015809
+    },
+    {
+      "id": 3,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "get_current_weather",
+      "response": "```json\n{\"tool\": \"get_thermal_data\",  \"parameters\": {\"location\": \"Belfast, UK\", \"unit\": \"celsius\"}}\n```",
+      "tokens_predicted": 34,
+      "tps": 18.05208451136458,
+      "elapsed_sec": 2.1815232999979344
+    },
+    {
+      "id": 4,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "web_search",
+      "response": "```json\n{\"tool\": \"web_search\",  \"parameters\": {\"query\": \"2022 FIFA World Cup champion football player\"}}\n```",
+      "tokens_predicted": 29,
+      "tps": 18.823541629885035,
+      "elapsed_sec": 1.7917928000024403
+    },
+    {
+      "id": 5,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "web_search",
+      "response": "```json\n{\"tool\": \"web_search\",  \"parameters\": {\"query\": \"latest news on artificial intelligence for this week\"}}\n```",
+      "tokens_predicted": 29,
+      "tps": 19.13566194543697,
+      "elapsed_sec": 1.8963712000004307
+    },
+    {
+      "id": 6,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "web_search",
+      "response": "```json\n{\"tool\": \"web_search\",  \"parameters\": {\"query\": \"BitNet b1.58 Microsoft\"}}\n```",
+      "tokens_predicted": 28,
+      "tps": 19.695493600723104,
+      "elapsed_sec": 1.7198060000009718
+    },
+    {
+      "id": 7,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "execute_python",
+      "response": "```json\n{\"tool\": \"execute_python\", \"code\": \"def fibonacci(n): if n <= 1: return n else: return fibonacci(n-1) + fibonacci(n-2)}\\nprint(fibonacci(50))\"\n}\n```",
+      "tokens_predicted": 52,
+      "tps": 17.501511188177595,
+      "elapsed_sec": 3.275309799999377
+    },
+    {
+      "id": 8,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "execute_python",
+      "response": "```json\n{\"tool\": \"execute_python\", \"code\": \"sum(range(1, 501))\"\n}\n```",
+      "tokens_predicted": 25,
+      "tps": 17.736735759529594,
+      "elapsed_sec": 1.6939443000010215
+    },
+    {
+      "id": 9,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "file_read",
+      "response": "{\"tool\": \"file_ride\", \"parameters\": {\"path\": \"/etc/hosts\"}}",
+      "tokens_predicted": 20,
+      "tps": 17.660745901603153,
+      "elapsed_sec": 1.3553759000024002
+    },
+    {
+      "id": 10,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "file_read",
+      "response": "```json\n{\"tool\": \"file_robust_read\", \"parameters\": {\"path\": \"C:\\\\ai_ models \\\\ settings.json\"}}\n```",
+      "tokens_predicted": 31,
+      "tps": 17.47840711946266,
+      "elapsed_sec": 2.0618147999994108
+    },
+    {
+      "id": 11,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "query_database",
+      "response": "```json\n{\"tool\": \"query_database\",  \"sql\": \"SELECT COUNT(*) FROM users WHERE status = 'active';\"}\n```",
+      "tokens_predicted": 29,
+      "tps": 18.128081773901563,
+      "elapsed_sec": 1.854170200000226
+    },
+    {
+      "id": 12,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "query_database",
+      "response": "```json\n{\"tool\": \"query_database\",  \"parameters\": {\"sql\": \"SELECT SUM(amount) as total_sum, order_id as order_id FROM orders GROUP BY order_id ORDER BY total_sum DESC LIMIT 5\"}}\n```",
+      "tokens_predicted": 48,
+      "tps": 18.830079325632095,
+      "elapsed_sec": 2.8699223999974492
+    },
+    {
+      "id": 13,
+      "category": "context_retention",
+      "needs_tool": true,
+      "expected_tool": "get_current_weather",
+      "response": "{\"tool\": \"get_thermal_data\",  \"parameters\": {\"location\": \"Paris\"}}",
+      "tokens_predicted": 20,
+      "tps": 18.746444033897323,
+      "elapsed_sec": 1.6805329999988317
+    },
+    {
+      "id": 14,
+      "category": "context_retention",
+      "needs_tool": true,
+      "expected_tool": "file_read",
+      "response": "```json\n{\"tool\": \"file_read\", \"parameters\": {\"path\": \"/var/log/production_error.log\"}}\n```",
+      "tokens_predicted": 27,
+      "tps": 18.40641361256544,
+      "elapsed_sec": 2.223545099997864
+    },
+    {
+      "id": 15,
+      "category": "context_retention",
+      "needs_tool": true,
+      "expected_tool": "web_search",
+      "response": "Проверьте официальную страницу PyTorch 2.5 на сайте PyTorch.",
+      "tokens_predicted": 21,
+      "tps": 18.23374092979923,
+      "elapsed_sec": 1.954105900000286
+    },
+    {
+      "id": 16,
+      "category": "negative_no_tool",
+      "needs_tool": false,
+      "expected_tool": null,
+      "response": "{\"tool\": \"web_search\",  \"parameters\": {\"query\": \"Gradient Boosting in Machine Learning\"}}",
+      "tokens_predicted": 23,
+      "tps": 19.943015002349807,
+      "elapsed_sec": 1.394594600002165
+    },
+    {
+      "id": 17,
+      "category": "negative_no_tool",
+      "needs_tool": false,
+      "expected_tool": null,
+      "response": "{\"tool\": \"translate\", \"parameters\": {\"language\": \"rus\", \"text\": \"Artificial intelligence revolution\"}}",
+      "tokens_predicted": 25,
+      "tps": 19.59129425575416,
+      "elapsed_sec": 1.5521903000008024
+    },
+    {
+      "id": 18,
+      "category": "negative_no_tool",
+      "needs_tool": false,
+      "expected_tool": null,
+      "response": "```json\n{\"tool\": \"explain\", \"parameters\": {\"subject\": \"stack vs queue\"}}\n```\nA stack and a queue are both data structures used to store elements, but they operate differently. \n\n1. A Stack is like a pile of plates where you can only add or remove the top plate. This means that if you want to access an element at the bottom of the stack, you have to first move all other plates up.\n\n2. A Queue, on the other hand, is like a line of people waiting for their turn. You can add new people to the end of the line and remove people from the front",
+      "tokens_predicted": 128,
+      "tps": 18.07175248137162,
+      "elapsed_sec": 7.434462000001076
+    },
+    {
+      "id": 19,
+      "category": "negative_no_tool",
+      "needs_tool": false,
+      "expected_tool": null,
+      "response": "{\"tool\": \"get_thermal_data\", \"parameters\": {\"location\": \"Moscow\"}}",
+      "tokens_predicted": 20,
+      "tps": 18.842877721971455,
+      "elapsed_sec": 1.2290960999998788
+    },
+    {
+      "id": 20,
+      "category": "negative_no_tool",
+      "needs_tool": false,
+      "expected_tool": null,
+      "response": "```json\n{\"tool\": \"query_database\",  \"parameters\": {\"sql\": \"SELECT * FROM table_name WHERE condition = 'specific_condition';\"}}\n```",
+      "tokens_predicted": 33,
+      "tps": 18.77531467142915,
+      "elapsed_sec": 2.065278499998385
+    }
+  ]
+}

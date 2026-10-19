@@ -1,0 +1,177 @@
+{
+  "timestamp": "2026-10-18 14:55:20",
+  "runtime": "llama-server-relu2.exe + exact HF token IDs (corrected path)",
+  "note": "post-fix re-run; original pre-fix artifact swarm_and_energy_benchmark.json untouched",
+  "hardware": {
+    "cpu": "AMD Ryzen 5 5500 (6C/12T)",
+    "tdp_watts": 65,
+    "rapl_interface": "Energy Meter(RAPL_Package0_PKG)"
+  },
+  "memory": {
+    "baseline_ram_mb": 1356.31640625,
+    "peak_ram_mb": 1460.97265625,
+    "delta_ram_mb": 104.65625
+  },
+  "power_and_energy": {
+    "idle_power_watts": 15.577820612177533,
+    "mean_power_watts": 33.60139675923715,
+    "peak_power_watts": 53.37610530010154,
+    "total_energy_benchmark_joules": 940.8391092586402,
+    "net_energy_benchmark_joules": 504.66013211766926,
+    "swarm_task_energy_gross_joules": 439.6604260988742,
+    "swarm_task_energy_net_joules": 235.8310645661874,
+    "energy_per_token_gross_mj": 2424.843065099588,
+    "energy_per_token_net_mj": 1300.6704436022403
+  },
+  "stage_1_cooperative_swarm": {
+    "pipeline_name": "5_agent_incident_response_postfix",
+    "all_success": true,
+    "success_rate": 1.0,
+    "total_wall_clock_sec": 13.084587800000008,
+    "total_tokens": 152,
+    "throughput_tokens_per_sec": 11.61672055118159,
+    "parallel_tier_sec": 5.312177899999369,
+    "parallel_aggregate_tps": 7.529868305051446,
+    "agents": [
+      {
+        "agent_id": "coord_1",
+        "role": "Security Incident Coordinator",
+        "success": true,
+        "details": "Valid response generated",
+        "raw_output": "4. Execute the findings to determine if it's a false positive or an actual threat.\n5. Alert relevant teams and escalate as necessary.\n\nExecution Plan:\n\n**1. SQL Analyst**\n- Query the system for any instances of privilege escalation detected in the database logs.\n- Focus on identifying unauthorized a",
+        "tool_calls": [],
+        "elapsed": 4.274228899997979,
+        "tokens": 64,
+        "tokens_per_sec": 19.17353668466782
+      },
+      {
+        "agent_id": "sql_agent",
+        "role": "Database Forensic Analyst",
+        "success": true,
+        "details": "Correct tool 'query_database' with params: {'sql': \"SELECT * FROM audit_log WHERE action='unauthorized privilege escalation' AND host='srv-app-04';\"}",
+        "raw_output": "SELECT * FROM audit_log WHERE action='unauthorized privilege escalation' AND host='srv-app-04';\"}}",
+        "tool_calls": [
+          {
+            "tool": "query_database",
+            "parameters": {
+              "sql": "SELECT * FROM audit_log WHERE action='unauthorized privilege escalation' AND host='srv-app-04';"
+            }
+          }
+        ],
+        "elapsed": 5.310164500002429,
+        "tokens": 23,
+        "tokens_per_sec": 18.203835468986203
+      },
+      {
+        "agent_id": "log_agent",
+        "role": "System Log Auditor",
+        "success": true,
+        "details": "Correct tool 'read_log_file' with params: {'path': \"'/var/log/auth.log'\"}",
+        "raw_output": "'/var/log/auth.log'\"}}",
+        "tool_calls": [
+          {
+            "tool": "read_log_file",
+            "parameters": {
+              "path": "'/var/log/auth.log'"
+            }
+          }
+        ],
+        "elapsed": 4.545379499999399,
+        "tokens": 8,
+        "tokens_per_sec": 15.973420228739379
+      },
+      {
+        "agent_id": "threat_agent",
+        "role": "Network Threat Intelligence Analyst",
+        "success": true,
+        "details": "Correct tool 'check_ip_reputation' with params: {'ip': '198.51.100.42'}",
+        "raw_output": "198.51.100.42\"}}",
+        "tool_calls": [
+          {
+            "tool": "check_ip_reputation",
+            "parameters": {
+              "ip": "198.51.100.42"
+            }
+          }
+        ],
+        "elapsed": 4.604305300003034,
+        "tokens": 9,
+        "tokens_per_sec": 16.007512859368664
+      },
+      {
+        "agent_id": "commander_5",
+        "role": "Executive Incident Commander",
+        "success": true,
+        "details": "Valid response generated",
+        "raw_output": "Ensure that no further communication with this IP is allowed until the threat has been neutralized. Coordinate with specialized agents for a thorough investigation and mitigation of any potential damage. Monitor logs closely for any additional suspicious activity. Report back to Incident Commander a",
+        "tool_calls": [],
+        "elapsed": 3.4959730000009586,
+        "tokens": 48,
+        "tokens_per_sec": 20.96398518370347
+      }
+    ]
+  },
+  "stage_2_simultaneous_contention": {
+    "test_name": "5_agent_simultaneous_contention_postfix",
+    "elapsed_sec": 7.015550100000837,
+    "total_tokens": 236,
+    "aggregate_tokens_per_sec": 33.63955735986717,
+    "workers": [
+      {
+        "agent_id": "contention_worker_0",
+        "role": "Parallel Agent 1",
+        "success": true,
+        "details": "Valid response generated",
+        "raw_output": "BITNET is a network service that allows users to send and receive messages, files, and other data over the internet. It provides secure communication through encryption and authentication mechanisms to protect user privacy and integrity of transmitted information.",
+        "tool_calls": [],
+        "elapsed": 4.358055099997728,
+        "tokens": 44,
+        "tokens_per_sec": 13.2223139770677
+      },
+      {
+        "agent_id": "contention_worker_1",
+        "role": "Parallel Agent 2",
+        "success": true,
+        "details": "Valid response generated",
+        "raw_output": "Key Security Metric 2 focuses on the detection and prevention of unauthorized access to network resources, emphasizing the importance of monitoring for suspicious activities and implementing robust authentication mechanisms. It also involves regular vulnerability assessments and updates to ensure sy",
+        "tool_calls": [],
+        "elapsed": 4.834050299999944,
+        "tokens": 48,
+        "tokens_per_sec": 12.609853497145838
+      },
+      {
+        "agent_id": "contention_worker_2",
+        "role": "Parallel Agent 3",
+        "success": true,
+        "details": "Valid response generated",
+        "raw_output": "Analytical Agent 3 (AA3) identifies that the third key security metric focuses on ensuring secure communication channels by implementing encryption protocols and authentication mechanisms to protect data integrity and confidentiality during transmission. Additionally, it emphasizes regular monitorin",
+        "tool_calls": [],
+        "elapsed": 4.832732200000464,
+        "tokens": 48,
+        "tokens_per_sec": 12.60983693379205
+      },
+      {
+        "agent_id": "contention_worker_3",
+        "role": "Parallel Agent 4",
+        "success": true,
+        "details": "Valid response generated",
+        "raw_output": "Key Security Metric 4 focuses on the detection and prevention of unauthorized access to network resources, ensuring that only authorized users can interact with sensitive data. It involves implementing robust authentication mechanisms and monitoring systems to identify potential security breaches. I",
+        "tool_calls": [],
+        "elapsed": 4.833125600001949,
+        "tokens": 48,
+        "tokens_per_sec": 12.609754117675802
+      },
+      {
+        "agent_id": "contention_worker_4",
+        "role": "Parallel Agent 5",
+        "success": true,
+        "details": "Valid response generated",
+        "raw_output": "Key Security Metric 5 focuses on the detection and prevention of unauthorized access to network resources through regular monitoring and analysis of system logs, user activities, and potential vulnerabilities. It emphasizes proactive measures to identify and mitigate threats before they can compromi",
+        "tool_calls": [],
+        "elapsed": 7.009780200001842,
+        "tokens": 48,
+        "tokens_per_sec": 19.909164437255026
+      }
+    ]
+  }
+}

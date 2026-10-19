@@ -1,0 +1,131 @@
+{
+  "title": "Energy repetitions: 5 reps x 2 contested 2B-class configs, identical workload",
+  "protocol": {
+    "reps": 5,
+    "workload": "canonical 20-case suite (deterministic)",
+    "sampler": "typeperf \\Energy Meter(RAPL_Package0_PKG)\\Power -si 1, idle = first 3 samples, cooldown 2s"
+  },
+  "available_energy_counters": [],
+  "crosscheck_note": "no PP0/PP1 counter available",
+  "bitnet_2b_i2_s_relu2_hf_ids": {
+    "reps": [
+      {
+        "tokens": 609,
+        "wall_s": 37.7,
+        "idle_w": 19.0,
+        "mean_w": 34.8,
+        "total_j": 1461.7,
+        "net_j": 663.8,
+        "net_mj_per_token": 1089.9,
+        "crosscheck_counter": null
+      },
+      {
+        "tokens": 609,
+        "wall_s": 36.5,
+        "idle_w": 22.84,
+        "mean_w": 34.81,
+        "total_j": 1427.4,
+        "net_j": 491.1,
+        "net_mj_per_token": 806.3,
+        "crosscheck_counter": null
+      },
+      {
+        "tokens": 609,
+        "wall_s": 37.5,
+        "idle_w": 16.9,
+        "mean_w": 34.37,
+        "total_j": 1443.7,
+        "net_j": 734.0,
+        "net_mj_per_token": 1205.3,
+        "crosscheck_counter": null
+      },
+      {
+        "tokens": 609,
+        "wall_s": 37.6,
+        "idle_w": 16.62,
+        "mean_w": 34.55,
+        "total_j": 1450.9,
+        "net_j": 753.1,
+        "net_mj_per_token": 1236.5,
+        "crosscheck_counter": null
+      },
+      {
+        "tokens": 609,
+        "wall_s": 36.5,
+        "idle_w": 16.06,
+        "mean_w": 34.68,
+        "total_j": 1421.9,
+        "net_j": 763.2,
+        "net_mj_per_token": 1253.2,
+        "crosscheck_counter": null
+      }
+    ],
+    "net_mj_per_token_mean": 1118.2,
+    "net_mj_per_token_stdev": 185.7,
+    "tokens_per_rep": 609
+  },
+  "qwen2.5_1.5b_q4_k_m": {
+    "reps": [
+      {
+        "tokens": 1055,
+        "wall_s": 46.6,
+        "idle_w": 17.85,
+        "mean_w": 38.23,
+        "total_j": 1949.9,
+        "net_j": 1039.5,
+        "net_mj_per_token": 985.3,
+        "crosscheck_counter": null
+      },
+      {
+        "tokens": 1055,
+        "wall_s": 44.5,
+        "idle_w": 29.02,
+        "mean_w": 37.66,
+        "total_j": 1845.2,
+        "net_j": 423.1,
+        "net_mj_per_token": 401.1,
+        "crosscheck_counter": null
+      },
+      {
+        "tokens": 1055,
+        "wall_s": 44.7,
+        "idle_w": 16.99,
+        "mean_w": 36.82,
+        "total_j": 1804.2,
+        "net_j": 971.7,
+        "net_mj_per_token": 921.1,
+        "crosscheck_counter": null
+      },
+      {
+        "tokens": 1055,
+        "wall_s": 41.4,
+        "idle_w": 13.32,
+        "mean_w": 35.39,
+        "total_j": 1628.1,
+        "net_j": 1015.4,
+        "net_mj_per_token": 962.4,
+        "crosscheck_counter": null
+      },
+      {
+        "tokens": 1055,
+        "wall_s": 45.3,
+        "idle_w": 17.17,
+        "mean_w": 36.98,
+        "total_j": 1812.3,
+        "net_j": 970.7,
+        "net_mj_per_token": 920.1,
+        "crosscheck_counter": null
+      }
+    ],
+    "net_mj_per_token_mean": 838.0,
+    "net_mj_per_token_stdev": 245.8,
+    "tokens_per_rep": 1055
+  },
+  "conclusion": {
+    "bitnet_mean_vs_qwen_mean_mj": "1118.2 vs 838.0",
+    "difference_mj": 280.2,
+    "pooled_stdev_mj": 308.1,
+    "resolvable": false,
+    "note": "If resolvable=false, the post-fix single-run ordering is not a real difference."
+  }
+}

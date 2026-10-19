@@ -1,0 +1,156 @@
+{
+  "timestamp": "2026-10-14 23:58:48",
+  "hardware": {
+    "cpu": "AMD Ryzen 5 5500 (6 Cores / 12 Threads)",
+    "architecture": "Zen 3 Cezanne",
+    "tdp_watts": 65,
+    "rapl_interface": "Energy Meter(RAPL_Package0_PKG)"
+  },
+  "memory": {
+    "baseline_ram_mb": 1662.01171875,
+    "peak_ram_mb": 1701.51171875,
+    "delta_ram_mb": 39.5
+  },
+  "power_and_energy": {
+    "idle_power_watts": 21.208433805471746,
+    "mean_power_watts": 32.87884371073147,
+    "peak_power_watts": 55.236653210542165,
+    "total_energy_benchmark_joules": 723.3345616360924,
+    "net_energy_benchmark_joules": 256.74901791571403,
+    "swarm_task_energy_gross_joules": 276.5312566416024,
+    "swarm_task_energy_net_joules": 98.15531060086293,
+    "energy_per_token_gross_mj": 2096.621917785775,
+    "energy_per_token_net_mj": 744.2000519296059,
+    "energy_to_success_joules_per_task": 691.328141604006
+  },
+  "stage_1_cooperative_swarm": {
+    "pipeline_name": "5_agent_incident_response",
+    "all_success": false,
+    "success_rate": 0.4,
+    "total_wall_clock_sec": 8.410613800002466,
+    "total_tokens": 105,
+    "throughput_tokens_per_sec": 12.484225586480884,
+    "parallel_tier_sec": 2.9077149000004283,
+    "parallel_aggregate_tps": 5.84651542006319,
+    "agents": [
+      {
+        "agent_id": "coord_1",
+        "role": "Security Incident Coordinator",
+        "success": true,
+        "details": "Valid response generated",
+        "raw_output": "4. Log Auditor: log entries from /var/log/auth.100.42.0\n\nSubtasks:\n- Query auditor: queries to query logs for privilege escalation.\n- Log analyst: examine log entries from /var/log/Auth.100.42.0.\n\nPlan:\n\n1. SQL Analyst:",
+        "tool_calls": [],
+        "elapsed": 3.168314599999576,
+        "tokens": 64,
+        "tokens_per_sec": 22.621171720142172
+      },
+      {
+        "agent_id": "sql_agent",
+        "role": "Database Forensic Analyst",
+        "success": false,
+        "details": "Expected 'query_database', raw: str\"}}",
+        "raw_output": "str\"}}",
+        "tool_calls": [],
+        "elapsed": 2.6653101999982027,
+        "tokens": 4,
+        "tokens_per_sec": 20.646226902033654
+      },
+      {
+        "agent_id": "log_agent",
+        "role": "System Log Auditor",
+        "success": false,
+        "details": "Expected 'read_log_file', raw: ('/var/log/Auth\".}",
+        "raw_output": "('/var/log/Auth\".}",
+        "tool_calls": [],
+        "elapsed": 2.9053073999966728,
+        "tokens": 9,
+        "tokens_per_sec": 20.636805972750246
+      },
+      {
+        "agent_id": "threat_agent",
+        "role": "Network Threat Intelligence Analyst",
+        "success": false,
+        "details": "Expected 'check_ip_reputation', raw: value1\"}}",
+        "raw_output": "value1\"}}",
+        "tool_calls": [],
+        "elapsed": 2.6633040999986406,
+        "tokens": 4,
+        "tokens_per_sec": 20.627381817994298
+      },
+      {
+        "agent_id": "commander_5",
+        "role": "Executive Incident Commander",
+        "success": true,
+        "details": "Valid response generated",
+        "raw_output": "``\n\nThe Incident Commander is isolated in the network, but for host 's srv- app-04'.",
+        "tool_calls": [],
+        "elapsed": 2.3337826000024506,
+        "tokens": 24,
+        "tokens_per_sec": 20.689298460371372
+      }
+    ]
+  },
+  "stage_2_simultaneous_contention": {
+    "test_name": "5_agent_simultaneous_contention",
+    "elapsed_sec": 5.9276107999976375,
+    "total_tokens": 240,
+    "aggregate_tokens_per_sec": 40.488488211826535,
+    "workers": [
+      {
+        "agent_id": "contention_worker_0",
+        "role": "Parallel Agent 1",
+        "success": true,
+        "details": "Valid response generated",
+        "raw_output": "The Key Security Metric 1 is summarized as follows:\n\nThe Key Security Metric 1 is summarized as follows:\nKey Security Metric 1 is summarized as follows:\nKey Security Metric 1 is summarized as follows:\nKey Security Metric 1 is",
+        "tool_calls": [],
+        "elapsed": 3.4547281000013754,
+        "tokens": 48,
+        "tokens_per_sec": 14.278273435480497
+      },
+      {
+        "agent_id": "contention_worker_1",
+        "role": "Parallel Agent 2",
+        "success": true,
+        "details": "Valid response generated",
+        "raw_output": "The Key Security Metric 2 is summarized as follows:\n\nThe Key Security Metric 2 is summarized as follows:\n1. It involves the analysis of a specific data set, which includes an average value for each individual element.\n2. This particular",
+        "tool_calls": [],
+        "elapsed": 3.453262700000778,
+        "tokens": 48,
+        "tokens_per_sec": 14.277993120981897
+      },
+      {
+        "agent_id": "contention_worker_2",
+        "role": "Parallel Agent 3",
+        "success": true,
+        "details": "Valid response generated",
+        "raw_output": "The Key Security Metric 3 is summarized as follows:\n\nThe Key Security Metric 3 is summarized as follows:\n1. This metric indicates that the number of errors or deviations from this metric will be reduced by a factor, which means that if",
+        "tool_calls": [],
+        "elapsed": 3.4540557000000263,
+        "tokens": 48,
+        "tokens_per_sec": 14.278324402935503
+      },
+      {
+        "agent_id": "contention_worker_3",
+        "role": "Parallel Agent 4",
+        "success": true,
+        "details": "Valid response generated",
+        "raw_output": "The Key Security Metric 4 is summarized as follows:\n\nThe Key Security Metric 4 is summarized as follows:\n1. It involves the analysis of a specific data set, which includes an average value for each individual.\n2. This metrics are",
+        "tool_calls": [],
+        "elapsed": 3.451441299999715,
+        "tokens": 48,
+        "tokens_per_sec": 14.27851128671697
+      },
+      {
+        "agent_id": "contention_worker_4",
+        "role": "Parallel Agent 5",
+        "success": true,
+        "details": "Valid response generated",
+        "raw_output": "The Key Security Metric 5 is summarized as follows:\n\nThe Key Security Metric 5 is summarized as follows:\n1. This metric indicates that the number of errors or deviations from this metric will be minimized by using a specific method.\n2.",
+        "tool_calls": [],
+        "elapsed": 5.923963400000503,
+        "tokens": 48,
+        "tokens_per_sec": 19.94728928805631
+      }
+    ]
+  }
+}

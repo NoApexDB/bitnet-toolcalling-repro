@@ -1,0 +1,283 @@
+[
+  {
+    "id": 1,
+    "category": "single_turn",
+    "needs_tool": true,
+    "expected_tool": "get_current_weather",
+    "messages": [
+      {"role": "user", "content": "Какая сейчас погода в Токио?"}
+    ],
+    "expected_parameters": {
+      "location": "Tokyo",
+      "unit": "celsius"
+    },
+    "validator_type": "entity_match",
+    "validation_rules": {
+      "location": ["tokyo", "токио"]
+    }
+  },
+  {
+    "id": 2,
+    "category": "single_turn",
+    "needs_tool": true,
+    "expected_tool": "get_current_weather",
+    "messages": [
+      {"role": "user", "content": "What is the temperature in London right now?"}
+    ],
+    "expected_parameters": {
+      "location": "London"
+    },
+    "validator_type": "entity_match",
+    "validation_rules": {
+      "location": ["london", "лондон"]
+    }
+  },
+  {
+    "id": 3,
+    "category": "single_turn",
+    "needs_tool": true,
+    "expected_tool": "get_current_weather",
+    "messages": [
+      {"role": "user", "content": "Посмотри погоду в Берлине в градусах Фаренгейта"}
+    ],
+    "expected_parameters": {
+      "location": "Berlin",
+      "unit": "fahrenheit"
+    },
+    "validator_type": "entity_match",
+    "validation_rules": {
+      "location": ["berlin", "берлин"],
+      "unit": ["fahrenheit", "фаренгейт", "f"]
+    }
+  },
+  {
+    "id": 4,
+    "category": "single_turn",
+    "needs_tool": true,
+    "expected_tool": "web_search",
+    "messages": [
+      {"role": "user", "content": "Кто стал чемпионом мира по футболу в 2022 году?"}
+    ],
+    "expected_parameters": {
+      "query": "чемпион мира по футболу 2022"
+    },
+    "validator_type": "entity_match",
+    "validation_rules": {
+      "query": ["2022", "чемпион", "world cup", "футбол", "fifa"]
+    }
+  },
+  {
+    "id": 5,
+    "category": "single_turn",
+    "needs_tool": true,
+    "expected_tool": "web_search",
+    "messages": [
+      {"role": "user", "content": "Найди последние новости об искусственном интеллекте за эту неделю"}
+    ],
+    "expected_parameters": {
+      "query": "новости искусственный интеллект"
+    },
+    "validator_type": "entity_match",
+    "validation_rules": {
+      "query": ["искусствен", "ai", "intelligence", "новости", "news"]
+    }
+  },
+  {
+    "id": 6,
+    "category": "single_turn",
+    "needs_tool": true,
+    "expected_tool": "web_search",
+    "messages": [
+      {"role": "user", "content": "Поищи в интернете информацию о BitNet b1.58 от Microsoft"}
+    ],
+    "expected_parameters": {
+      "query": "BitNet b1.58 Microsoft"
+    },
+    "validator_type": "entity_match",
+    "validation_rules": {
+      "query": ["bitnet"]
+    }
+  },
+  {
+    "id": 7,
+    "category": "single_turn",
+    "needs_tool": true,
+    "expected_tool": "execute_python",
+    "messages": [
+      {"role": "user", "content": "Вычисли 50-е число Фибоначчи с помощью Python скрипта"}
+    ],
+    "validator_type": "python_sandbox",
+    "sandbox_expected_output": "12586269025"
+  },
+  {
+    "id": 8,
+    "category": "single_turn",
+    "needs_tool": true,
+    "expected_tool": "execute_python",
+    "messages": [
+      {"role": "user", "content": "Посчитай сумму всех простых чисел от 1 до 500 через Python"}
+    ],
+    "validator_type": "python_sandbox",
+    "sandbox_expected_output": "21536"
+  },
+  {
+    "id": 9,
+    "category": "single_turn",
+    "needs_tool": true,
+    "expected_tool": "file_read",
+    "messages": [
+      {"role": "user", "content": "Прочитай системный файл /etc/hosts"}
+    ],
+    "expected_parameters": {
+      "path": "/etc/hosts"
+    },
+    "validator_type": "entity_match",
+    "validation_rules": {
+      "path": ["hosts"]
+    }
+  },
+  {
+    "id": 10,
+    "category": "single_turn",
+    "needs_tool": true,
+    "expected_tool": "file_read",
+    "messages": [
+      {"role": "user", "content": "Пожалуйста, открой и прочитай файл C:\\ai_models\\settings.json"}
+    ],
+    "expected_parameters": {
+      "path": "C:\\ai_models\\settings.json"
+    },
+    "validator_type": "entity_match",
+    "validation_rules": {
+      "path": ["settings.json"]
+    }
+  },
+  {
+    "id": 11,
+    "category": "single_turn",
+    "needs_tool": true,
+    "expected_tool": "query_database",
+    "messages": [
+      {"role": "user", "content": "Сделай SQL запрос для подсчета всех активных пользователей в таблице users"}
+    ],
+    "validator_type": "sqlite_execution",
+    "sql_setup": "CREATE TABLE users (id INTEGER, name TEXT, is_active INTEGER); INSERT INTO users VALUES (1, 'Alice', 1), (2, 'Bob', 0), (3, 'Charlie', 1);",
+    "sql_expected_scalar": 2
+  },
+  {
+    "id": 12,
+    "category": "single_turn",
+    "needs_tool": true,
+    "expected_tool": "query_database",
+    "messages": [
+      {"role": "user", "content": "Выполни SQL: найди топ 5 заказов с наибольшей суммой из таблицы orders"}
+    ],
+    "validator_type": "sqlite_execution",
+    "sql_setup": "CREATE TABLE orders (id INTEGER, total_amount REAL); INSERT INTO orders VALUES (1, 100), (2, 500), (3, 200), (4, 800), (5, 50), (6, 950), (7, 300);",
+    "sql_expected_row_count": 5
+  },
+  {
+    "id": 13,
+    "category": "context_retention",
+    "needs_tool": true,
+    "expected_tool": "get_current_weather",
+    "messages": [
+      {"role": "user", "content": "Я планирую поездку в Париж на следующей неделе."},
+      {"role": "assistant", "content": "Париж прекрасен в любое время года! Чем могу помочь по подготовке к поездке?"},
+      {"role": "user", "content": "Какая там сейчас погода?"}
+    ],
+    "expected_parameters": {
+      "location": "Paris"
+    },
+    "validator_type": "entity_match",
+    "validation_rules": {
+      "location": ["paris", "париж"]
+    }
+  },
+  {
+    "id": 14,
+    "category": "context_retention",
+    "needs_tool": true,
+    "expected_tool": "file_read",
+    "messages": [
+      {"role": "user", "content": "У нас произошел сбой на сервере. Лог ошибки сохранен по пути /var/log/production_error.log."},
+      {"role": "assistant", "content": "Понял, зафиксировал путь к логу сбоя."},
+      {"role": "user", "content": "Пожалуйста, прочти его."}
+    ],
+    "expected_parameters": {
+      "path": "/var/log/production_error.log"
+    },
+    "validator_type": "entity_match",
+    "validation_rules": {
+      "path": ["production_error.log"]
+    }
+  },
+  {
+    "id": 15,
+    "category": "context_retention",
+    "needs_tool": true,
+    "expected_tool": "web_search",
+    "messages": [
+      {"role": "user", "content": "Мы обсуждаем выход новой версии фреймворка PyTorch 2.5."},
+      {"role": "assistant", "content": "PyTorch 2.5 включает множество улучшений компилятора TorchDynamo и оптимизаций памяти."},
+      {"role": "user", "content": "Поищи в интернете дату официального релиза этой версии."}
+    ],
+    "expected_parameters": {
+      "query": "PyTorch 2.5 release date"
+    },
+    "validator_type": "entity_match",
+    "validation_rules": {
+      "query": ["pytorch", "2.5"]
+    }
+  },
+  {
+    "id": 16,
+    "category": "negative_no_tool",
+    "needs_tool": false,
+    "expected_tool": null,
+    "messages": [
+      {"role": "user", "content": "Что такое градиентный спуск в машинном обучении?"}
+    ],
+    "validator_type": "no_tool_rule"
+  },
+  {
+    "id": 17,
+    "category": "negative_no_tool",
+    "needs_tool": false,
+    "expected_tool": null,
+    "messages": [
+      {"role": "user", "content": "Переведи фразу 'Artificial intelligence revolution' на русский язык."}
+    ],
+    "validator_type": "no_tool_rule"
+  },
+  {
+    "id": 18,
+    "category": "negative_no_tool",
+    "needs_tool": false,
+    "expected_tool": null,
+    "messages": [
+      {"role": "user", "content": "Объясни простыми словами разницу между структурой стек (Stack) и очередь (Queue)."}
+    ],
+    "validator_type": "no_tool_rule"
+  },
+  {
+    "id": 19,
+    "category": "negative_no_tool",
+    "needs_tool": false,
+    "expected_tool": null,
+    "messages": [
+      {"role": "user", "content": "Привет! Как поживаешь?"}
+    ],
+    "validator_type": "no_tool_rule"
+  },
+  {
+    "id": 20,
+    "category": "negative_no_tool",
+    "needs_tool": false,
+    "expected_tool": null,
+    "messages": [
+      {"role": "user", "content": "В чем главное концептуальное отличие синхронного выполнения от асинхронного?"}
+    ],
+    "validator_type": "no_tool_rule"
+  }
+]

@@ -1,0 +1,454 @@
+{
+  "model_safetensors": {
+    "path": "C:\\ai_models\\BitNet-b1.58-2B-4T\\model.safetensors",
+    "sha256": "8143ae115ed6babe5e5ada8fb8c5b769d8f417802b2db042ad98b4f7ed73975b",
+    "size_bytes": 1178623988
+  },
+  "model_config": {
+    "path": "C:\\ai_models\\BitNet-b1.58-2B-4T\\config.json",
+    "sha256": "2b43e80788972e6d53967b01ac3609d7df23cf0aabb0c866e51be694a59c1149",
+    "size_bytes": 844
+  },
+  "gguf_model": {
+    "path": "C:\\ai_models\\BitNet\\models\\BitNet-b1.58-2B-4T\\ggml-model-i2_s.gguf",
+    "sha256": "4221b252fdd5fd25e15847adfeb5ee88886506ba50b8a34548374492884c2162",
+    "size_bytes": 1187801280
+  },
+  "bitnet_cpp_src_modified": {
+    "path": "C:\\ai_models\\BitNet\\3rdparty\\llama.cpp\\src\\models\\bitnet.cpp",
+    "sha256": "fdd3c78b935a3545ad4ab90204bb51b53b04d48e2348eb06fd1902618f6b8aa0",
+    "size_bytes": 7104
+  },
+  "base_git_commits": {
+    "bitnet_repo_commit": "0b341e582afbf9e1011f24744b554c96a3477eb5",
+    "llama_cpp_submodule_commit": "390c307752ab78fd8189f359d6954c9ba1be74af"
+  },
+  "build_parameters": {
+    "compiler": "clang-cl (LLVM 18 / MSVC vcvars64)",
+    "generator": "Ninja",
+    "build_type": "Release",
+    "cmake_flags": "-DCMAKE_C_COMPILER=clang-cl -DCMAKE_CXX_COMPILER=clang-cl -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBITNET_X86_TL2=OFF -DLLAMA_BUILD_TOOLS=ON -DLLAMA_BUILD_EXAMPLES=ON -DLLAMA_BUILD_COMMON=ON -DLLAMA_BUILD_SERVER=ON"
+  },
+  "llama_server_silu_exe": {
+    "path": "C:\\ai_models\\BitNet\\build\\bin\\llama-server-silu.exe",
+    "sha256": "a3f88d60281321e7778a289cac19388cafd96b947040e1afb4f83bd8532a0fcd",
+    "size_bytes": 20959232
+  },
+  "llama_server_relu2_exe": {
+    "path": "C:\\ai_models\\BitNet\\build\\bin\\llama-server-relu2.exe",
+    "sha256": "501133268b13765096fb7f4e5dff77bcd71d537b6727e1c166cf6a37495b5059",
+    "size_bytes": 20959232
+  },
+  "dump_cpp_exe": {
+    "path": "C:\\ai_models\\dump_cpp_activations.exe",
+    "sha256": "c6cc8bc5c9789586232284fab709f0d4a39fd8eab50402c8d5bee86fa28da7b5",
+    "size_bytes": 3970560
+  },
+  "evaluator_rigorous_py": {
+    "path": "C:\\ai_models\\evaluator_rigorous.py",
+    "sha256": "03dc8f686e4731675cde8657bbbac60317c75baa7fd2f1f159b4f022495ef89e",
+    "size_bytes": 25883
+  },
+  "run_2x2_factorial_benchmark_py": {
+    "path": "C:\\ai_models\\run_2x2_factorial_benchmark.py",
+    "sha256": "7dda2a0e0ef8458322e4a579723681062302e00d0653a671f90be96dcaa40d8f",
+    "size_bytes": 14704
+  },
+  "factorial_2x2_benchmark_matrix_json": {
+    "path": "C:\\ai_models\\paper_artifacts\\factorial_2x2_benchmark_matrix.json",
+    "sha256": "6afe617e756a93f2c0c617a9ec95101fb46c7990975a551c4dc6d894ecea6293",
+    "size_bytes": 431243
+  },
+  "test_suite_json": {
+    "path": "C:\\ai_models\\test_suite_standardized.json",
+    "sha256": "af86f038ced5231c338cb329cfbaa9ddf5ae637e1735c43aada1439e58fdfe1c",
+    "size_bytes": 9269
+  },
+  "audit_tokenization_all_cases_py": {
+    "path": "C:\\ai_models\\audit_tokenization_all_cases.py",
+    "sha256": "6634f15089297b19434a69b0df838debab5dad415917d8624e1701371b7f3c6d",
+    "size_bytes": 14927
+  },
+  "string_vs_hf_tokenization_audit_20_cases_json": {
+    "path": "C:\\ai_models\\paper_artifacts\\string_vs_hf_tokenization_audit_20_cases.json",
+    "sha256": "3c2c7b3f534aaff8c140505e52b530ac37bf61ea19760a25c2a41848c83f3421",
+    "size_bytes": 885037
+  },
+  "heldout_test_suite_30_json": {
+    "path": "C:\\ai_models\\heldout_test_suite_30.json",
+    "sha256": "0f33d003ad811f1cac02ec509ba48d2feb7e10f50ceb20126d0738f3f604ce2e",
+    "size_bytes": 16702
+  },
+  "run_heldout_factorial_benchmark_py": {
+    "path": "C:\\ai_models\\run_heldout_factorial_benchmark.py",
+    "sha256": "da73b9d99b7ca53e1e852eeeccbde5d166f451ca420ce69bd614d70b777660c3",
+    "size_bytes": 16852
+  },
+  "heldout_30_cases_paired_transitions_json": {
+    "path": "C:\\ai_models\\paper_artifacts\\heldout_30_cases_paired_transitions.json",
+    "sha256": "cca52742ab223c21965413e74d9917e7179ff804c0f5a9d8725eb3dabc556a59",
+    "size_bytes": 144101
+  },
+  "run_aligned_tokens_benchmark_py": {
+    "path": "C:\\ai_models\\run_aligned_tokens_benchmark.py",
+    "sha256": "79f7232418222ca047d53558067dc092d8a0aa948ff1394ed4767c3dd97592eb",
+    "size_bytes": 23355
+  },
+  "update_heldout_json_metrics_py": {
+    "path": "C:\\ai_models\\update_heldout_json_metrics.py",
+    "sha256": "b144fb29276d5bcac14e217cd6ae728c337c4db7fefb344df9d39d1e9be8587b",
+    "size_bytes": 3844
+  },
+  "llama_server_default_build_exe": {
+    "path": "C:\\ai_models\\BitNet\\build\\bin\\llama-server.exe",
+    "sha256": "fe14ed96a6f950172d99e2f45bdc7d69d2f2f79f345897b46c62698ce2073d8c",
+    "size_bytes": 20959232
+  },
+  "audit_all_210_tensors_py": {
+    "path": "C:\\ai_models\\audit_all_210_tensors.py",
+    "sha256": "b4c2d697d99116352cac5df4a9a7e539bc070007209e427ca59b54564c5744af",
+    "size_bytes": 6125
+  },
+  "all_210_tensors_weight_audit_json": {
+    "path": "C:\\ai_models\\paper_artifacts\\all_210_tensors_weight_audit.json",
+    "sha256": "bc15c34015475189221b0eac88326109abfdaf0e233b9217e5dc537b3edba20f",
+    "size_bytes": 103479
+  },
+  "compare_activations_full_vector_py": {
+    "path": "C:\\ai_models\\compare_activations_full_vector.py",
+    "sha256": "519602cd0dc156ba09116bda7d4bbae929114b9898524e5ca9b72e530614cdde",
+    "size_bytes": 5025
+  },
+  "calc_exact_l2_metrics_py": {
+    "path": "C:\\ai_models\\calc_exact_l2_metrics.py",
+    "sha256": "0407f341386c2bf6a5ca1ee2c2a439a754ec80ea0ee8499c08a5c7941f806cf7",
+    "size_bytes": 2819
+  },
+  "extract_pytorch_activations_py": {
+    "path": "C:\\ai_models\\extract_pytorch_activations.py",
+    "sha256": "3c9273078d69c6c8c1b21b112f51d41989718dbfce6edd50f223fd5d76bd14bc",
+    "size_bytes": 6944
+  },
+  "dump_cpp_activations_cpp": {
+    "path": "C:\\ai_models\\dump_cpp_activations.cpp",
+    "sha256": "0d4172f5311f9fb6ad5de37491d3c5038a4c216ec482c7a80fc5785a2e3363a1",
+    "size_bytes": 12676
+  },
+  "cpp_layer_activations_relu2_json": {
+    "path": "C:\\ai_models\\paper_artifacts\\cpp_layer_activations_relu2.json",
+    "sha256": "53bd1a08f56ec08f9dbd8533e8063fb624d57d7da2afc7e9707c84dde560d66a",
+    "size_bytes": 3802773
+  },
+  "pytorch_layer_activations_json": {
+    "path": "C:\\ai_models\\paper_artifacts\\pytorch_layer_activations.json",
+    "sha256": "f0ea41ff0c0f99caeb623f190ff79d359cf73ea1bf04299fa8cd44ded50e95a8",
+    "size_bytes": 8910894
+  },
+  "run_pytorch_benchmark_cpu_py": {
+    "path": "C:\\ai_models\\run_pytorch_benchmark_cpu.py",
+    "sha256": "244e15bc359cea9ed81a9b35b7c416709a76facace7b7be09ca2ccc5461abe70",
+    "size_bytes": 9471
+  },
+  "benchmark_results_pytorch_cpu_json": {
+    "path": "C:\\ai_models\\benchmark_results_pytorch_cpu.json",
+    "sha256": "ce7c4ca603b01693ca1abaa2b2ca34ce328345f810726350c56249f883695a91",
+    "size_bytes": 15035
+  },
+  "evaluate_pytorch_and_compare_py": {
+    "path": "C:\\ai_models\\evaluate_pytorch_and_compare.py",
+    "sha256": "7ce78b0ffacec4f4d3616ed7885d7a2d53185ab9b1f616bb3a772b34863658bb",
+    "size_bytes": 7809
+  },
+  "aligned_tokens_benchmark_results_json": {
+    "path": "C:\\ai_models\\paper_artifacts\\aligned_tokens_benchmark_results_20261015_175239_31460_0a81abe1.json",
+    "sha256": "5aa191ab4507bfffcc2d151c139d4e843dbd1a9538c7b6e08b41fb935111217b",
+    "size_bytes": 23175,
+    "canonical_copy_path": "C:\\ai_models\\paper_artifacts\\aligned_tokens_benchmark_results.json",
+    "canonical_copy_status": "synchronized",
+    "committed_at": "2026-10-15T17:52:39"
+  },
+  "symmetric_dense_vs_ternary_json": {
+    "path": "C:\\ai_models\\paper_artifacts\\symmetric_dense_vs_ternary.json",
+    "sha256": "e9a92b6540212d337d2153b5613e157956404b9dcc6986d77499c1bd444fbee1",
+    "size_bytes": 96529
+  },
+  "benchmark_results_bitnet_i2s_with_hf_tokens_json": {
+    "path": "C:\\ai_models\\benchmark_results_bitnet_i2s_with_hf_tokens.json",
+    "sha256": "092c93245ed0adf99ce4dfecc460d93b04da2b934ccfd21cf8ebf979e562df5b",
+    "size_bytes": 16469
+  },
+  "top5_logprob_comparison_cases_json": {
+    "path": "C:\\ai_models\\paper_artifacts\\top5_logprob_comparison_cases.json",
+    "sha256": "5160dba42148e8665af8d4c6df651df335e11f7834a5c8b8edfaae0df3357f68",
+    "size_bytes": 5180
+  },
+  "compare_top5_logprobs_multiple_cases_py": {
+    "path": "C:\\ai_models\\compare_top5_logprobs_multiple_cases.py",
+    "sha256": "fb94873c2dbfdd7fb2faeccfabe9f0953b3a65cd165ff66ebd64dd0bdb13989a",
+    "size_bytes": 6027
+  },
+  "layer_activation_full_vector_comparison_json": {
+    "path": "C:\\ai_models\\paper_artifacts\\layer_activation_full_vector_comparison.json",
+    "sha256": "579023af92e594f9484215bc40b674fc08387d3eebdf85ff546177974907fbc0",
+    "size_bytes": 5893
+  },
+  "layer_activation_discrepancy_report_json": {
+    "path": "C:\\ai_models\\paper_artifacts\\layer_activation_discrepancy_report.json",
+    "sha256": "9350e1591228ad179eb2b6ca5aeb85efcc31e04beb01b7539efe4742471309c9",
+    "size_bytes": 70308
+  },
+  "paired_ab_benchmark_results_json": {
+    "path": "C:\\ai_models\\paper_artifacts\\paired_ab_benchmark_results_20261015_180844_5208_5832fc14.json",
+    "sha256": "77591050beee222c745b32415d9456c960913fa1fcfdf3b96c12b12cf3da0dc0",
+    "size_bytes": 265782,
+    "canonical_copy_path": "C:\\ai_models\\paper_artifacts\\paired_ab_benchmark_results.json",
+    "canonical_copy_status": "synchronized",
+    "committed_at": "2026-10-15T18:08:44"
+  },
+  "test_suite_explicit_schemas_json": {
+    "path": "C:\\ai_models\\test_suite_explicit_schemas.json",
+    "sha256": "b8348aba5075f8a3f1324d8f795e20793f3a8ee13f46187828792a7cb25fa009",
+    "size_bytes": 9561
+  },
+  "run_paired_aligned_benchmark_py": {
+    "path": "C:\\ai_models\\run_paired_aligned_benchmark.py",
+    "sha256": "2feb5674c0dadad2d895ef3c1e94df22c917f40edc798bbbda878d69dddd5de4",
+    "size_bytes": 29453
+  },
+  "postfix_symmetric_results": {
+    "path": "C:\\ai_models\\paper_artifacts\\symmetric_dense_vs_ternary_postfix.json",
+    "sha256": "2a688d26508c505ad48f45c6178d0e200e5fb196bb0ec1641cc824b6bd2b52b7",
+    "size_bytes": 105041
+  },
+  "pytorch_heldout_30_results": {
+    "path": "C:\\ai_models\\paper_artifacts\\pytorch_heldout_30_results.json",
+    "sha256": "30063efda9a41669fe5a3fe60300bc793442109955766520b302123d751e13e7",
+    "size_bytes": 20709
+  },
+  "benchmark_postfix_symmetric_py": {
+    "path": "C:\\ai_models\\benchmark_postfix_symmetric.py",
+    "sha256": "3b1086dc77b7dd70ea934f528880715b391a530065e46935537add2ded80bd0c",
+    "size_bytes": 25113
+  },
+  "speed_probe_fixed_py": {
+    "path": "C:\\ai_models\\speed_probe_fixed.py",
+    "sha256": "40f0084b3d07774d09f1b194ce8981e4ec7bfaea76958613e989631cb11ab155",
+    "size_bytes": 4556
+  },
+  "run_pytorch_heldout_30_py": {
+    "path": "C:\\ai_models\\run_pytorch_heldout_30.py",
+    "sha256": "ac48aac7106c2ae9414e29b64dc95157dc501fd55f9ff572ef1a29fdcbf46108",
+    "size_bytes": 12237
+  },
+  "binary_router_experiment_results": {
+    "path": "C:\\ai_models\\paper_artifacts\\binary_router_experiment.json",
+    "sha256": "92ba729af902efe00465a6ee5d2bea608a86943dc77234185da0a1fa97310cfe",
+    "size_bytes": 4089
+  },
+  "stage2_no_tools_validation_results": {
+    "path": "C:\\ai_models\\paper_artifacts\\stage2_no_tools_validation.json",
+    "sha256": "1378ec5a93ebc3e93a9dc3ff8174b7f9384b732c6cc10cfdfad2978f681f46e9",
+    "size_bytes": 7266
+  },
+  "gbnf_grammar_benchmark_results": {
+    "path": "C:\\ai_models\\paper_artifacts\\gbnf_grammar_benchmark.json",
+    "sha256": "c7b9d2f02ffa9377e3fd2c7cc6f43c2fec5f2f28ead4b02f90c3d5bcee80040f",
+    "size_bytes": 21090
+  },
+  "lora_merge_report": {
+    "path": "C:\\ai_models\\paper_artifacts\\lora_merge_report.json",
+    "sha256": "bdea198fa5794fff22f53504ac798dab2c1aabd5fb4a12cc4f59783e902cc116",
+    "size_bytes": 22440
+  },
+  "lora_merged_benchmark_results": {
+    "path": "C:\\ai_models\\paper_artifacts\\lora_merged_benchmark_20cases.json",
+    "sha256": "4bd012a369d4ba6ea3a0506bebdb2212f2453dfb6ed5667eb3dadca856a0e570",
+    "size_bytes": 24820
+  },
+  "binary_router_experiment_py": {
+    "path": "C:\\ai_models\\binary_router_experiment.py",
+    "sha256": "2275fac9eb6cf89b21187eb6a97002b62a93bfd944e7bcaa669180024366728c",
+    "size_bytes": 7139
+  },
+  "stage2_no_tools_validation_py": {
+    "path": "C:\\ai_models\\stage2_no_tools_validation.py",
+    "sha256": "7084027ba0142007314414356cf67f6aaa4f5f52ba34ecfd33245bd52a6603bb",
+    "size_bytes": 4186
+  },
+  "gbnf_grammar_experiment_py": {
+    "path": "C:\\ai_models\\gbnf_grammar_experiment.py",
+    "sha256": "74b727b6b4f321d9544a12efafcf13b0941ad40ede5953a84d12877437e5eca3",
+    "size_bytes": 7686
+  },
+  "lora_merge_v2_py": {
+    "path": "C:\\ai_models\\lora_merge_v2.py",
+    "sha256": "0c8c47fafea235c9654a79651d06d5160e76686604d7f63e17f8b369d4ef8fa4",
+    "size_bytes": 7356
+  },
+  "lora_convert_and_benchmark_py": {
+    "path": "C:\\ai_models\\lora_convert_and_benchmark.py",
+    "sha256": "4a4941ccb10b72346d804f6051106bd7bea5c84de3899fc27b0e60d572b07be9",
+    "size_bytes": 3764
+  },
+  "run_convert_wrapper_py": {
+    "path": "C:\\ai_models\\run_convert_wrapper.py",
+    "sha256": "b67d6fce9d297152dde05ab8990ee6bdac2e66043167ddd352d833cdfa25a661",
+    "size_bytes": 554
+  },
+  "bitnet_merged_balanced_safetensors": {
+    "path": "C:\\ai_models\\bitnet_merged_balanced\\model.safetensors",
+    "sha256": "7909dd5563a233c7de26e8ec5fe9e33c6fa9fd8613d36750ac4963f82a43c963",
+    "size_bytes": 1178623956
+  },
+  "bitnet_merged_balanced_i2s_gguf": {
+    "path": "C:\\ai_models\\bitnet_merged_balanced\\ggml-model-i2_s_merged.gguf",
+    "sha256": "20c86dc0e2b9d4fe9f78d200bde3faa75415cfab1304d942d257a08af54ae38c",
+    "size_bytes": 1187288192
+  },
+  "bfcl_external_holdout_results": {
+    "path": "C:\\ai_models\\paper_artifacts\\bfcl_external_holdout_results.json",
+    "sha256": "2d23c116ee5e9f8549b820fe037da301bb5d98f05c6cdaa361eb7a1f9475e036",
+    "size_bytes": 45676
+  },
+  "bfcl_external_holdout_py": {
+    "path": "C:\\ai_models\\bfcl_external_holdout.py",
+    "sha256": "cb8364f7e0da8ec1a23b8beb5394eb5337c8655befe450219bf4178d3bc51ca3",
+    "size_bytes": 10294
+  },
+  "energy_repetition_results": {
+    "path": "C:\\ai_models\\paper_artifacts\\energy_repetition_results.json",
+    "sha256": "cbb444c1b8d7b57faa51478b9af14fcb1ec291bf34293860a51261ad017215ea",
+    "size_bytes": 3441
+  },
+  "energy_repetitions_py": {
+    "path": "C:\\ai_models\\energy_repetitions.py",
+    "sha256": "df67caea47b9e8caca4719f93c01db2f8d5530ce4e93341e1a522ede5e0f7b30",
+    "size_bytes": 7555
+  },
+  "phase1_phase2_revision": {
+    "date": "2026-10-17T00:15:58",
+    "note": "Appended artifacts from phase 1 (post-fix symmetric, PyTorch-30), phase 2 (router, stage-2, GBNF, LoRA-merge), phase 2.4 (BFCL external holdout), phase 2.5 (energy repetitions). No existing entries were modified. Backup of the previous manifest saved next to this file.",
+    "added_keys": [
+      "postfix_symmetric_results",
+      "pytorch_heldout_30_results",
+      "benchmark_postfix_symmetric_py",
+      "speed_probe_fixed_py",
+      "run_pytorch_heldout_30_py",
+      "binary_router_experiment_results",
+      "stage2_no_tools_validation_results",
+      "gbnf_grammar_benchmark_results",
+      "lora_merge_report",
+      "lora_merged_benchmark_results",
+      "binary_router_experiment_py",
+      "stage2_no_tools_validation_py",
+      "gbnf_grammar_experiment_py",
+      "lora_merge_v2_py",
+      "lora_convert_and_benchmark_py",
+      "run_convert_wrapper_py",
+      "bitnet_merged_balanced_safetensors",
+      "bitnet_merged_balanced_i2s_gguf",
+      "bfcl_external_holdout_results",
+      "bfcl_external_holdout_py",
+      "energy_repetition_results",
+      "energy_repetitions_py"
+    ],
+    "skipped_missing": []
+  },
+  "swarm_and_energy_benchmark_postfix": {
+    "path": "C:\\ai_models\\paper_artifacts\\swarm_and_energy_benchmark_postfix.json",
+    "sha256": "81dc8aa409759ede62f9173c5d353bebbd615ede6f8ecc1f5a25f5c1e51ecb4e",
+    "size_bytes": 7988
+  },
+  "prompt_factorial_negatives": {
+    "path": "C:\\ai_models\\paper_artifacts\\prompt_factorial_negatives.json",
+    "sha256": "5fdd81ba8c5c45b11fc959b8412d8c31e85b98ecfa40b150de08904d6b8afb02",
+    "size_bytes": 11920
+  },
+  "benchmark_swarm_postfix_py": {
+    "path": "C:\\ai_models\\benchmark_swarm_postfix.py",
+    "sha256": "fec3b80b5a8e5ba475423ba3a414cf901fa8f759da353b6aeb27635af992fcd0",
+    "size_bytes": 14701
+  },
+  "prompt_factorial_negatives_py": {
+    "path": "C:\\ai_models\\prompt_factorial_negatives.py",
+    "sha256": "5967772c0e057a8f2c2dedcc03d8bb63f80ceb3c5837069036b4060425842649",
+    "size_bytes": 6260
+  },
+  "review18_revision": {
+    "date": "2026-10-18T15:05:29",
+    "note": "Appended review-driven artifacts (18.10.2026): post-fix swarm re-run (5/5 agents vs 40% pre-fix) and the 2x2 prompt mini-factorial (framing effect +7/10 in both rows; tool-menu effect 0). No existing entries were modified. Backup saved next to this file.",
+    "added_keys": [
+      "swarm_and_energy_benchmark_postfix",
+      "prompt_factorial_negatives",
+      "benchmark_swarm_postfix_py",
+      "prompt_factorial_negatives_py"
+    ],
+    "skipped": []
+  },
+  "swarm_repeatability_postfix": {
+    "path": "C:\\ai_models\\paper_artifacts\\swarm_repeatability_postfix.json",
+    "sha256": "1e873f24b85adcd6450bb6f51b0053f0169fe6d25707001920b67fac92684bd1",
+    "size_bytes": 2950
+  },
+  "swarm_repeatability_py": {
+    "path": "C:\\ai_models\\swarm_repeatability.py",
+    "sha256": "e2381aa4a61d722e6b29cd4b2aab71d2f9c88e372baca78747782a526e1d7a86",
+    "size_bytes": 3778
+  },
+  "review18_revision_r2": {
+    "date": "2026-10-18T15:30:59",
+    "note": "Appended swarm repeatability run (15 pipeline reps: tolerant 5/5 in all, strict tool-agents 3/3, 13/15 byte-identical outputs). No existing entries were modified. Backup saved next to this file.",
+    "added_keys": [
+      "swarm_repeatability_postfix",
+      "swarm_repeatability_py"
+    ]
+  },
+  "gguf_tokenizer_pre_metadata": {
+    "path": "C:\\ai_models\\paper_artifacts\\gguf_tokenizer_pre_metadata.json",
+    "sha256": "6a248c63d3b7dd3266b91e958c31f435c5c692160d79b5edc59c2eccd58bda2a",
+    "size_bytes": 5651
+  },
+  "generate_t3_artifact_py": {
+    "path": "C:\\ai_models\\generate_t3_artifact.py",
+    "sha256": "916ad580b7ddaa5a0a4b4f09e6c68bfb4775ec3570ba86b31689965948832da9",
+    "size_bytes": 8956
+  },
+  "task_t3_revision": {
+    "date": "2026-10-19T20:42:26",
+    "note": "Appended GGUF tokenizer.ggml.pre metadata audit artifact (Task T3). Confirms absence of tokenizer.ggml.pre in baseline GGUF vs presence of 'llama-bpe' in official converter, mapping to LLAMA3 pre-tokenizer regex and explaining the 39-43 token length divergence. No existing entries were modified.",
+    "added_keys": [
+      "gguf_tokenizer_pre_metadata",
+      "generate_t3_artifact_py"
+    ]
+  },
+  "upstream_silu_relu2_repro": {
+    "path": "C:\\ai_models\\paper_artifacts\\upstream_silu_relu2_repro.json",
+    "sha256": "70c048e8dc0f0607e81df4d4c2eef1be476afd1b286a25a26f01c9b2da150911",
+    "size_bytes": 14510
+  },
+  "generate_t2_artifact_py": {
+    "path": "C:\\ai_models\\generate_t2_artifact.py",
+    "sha256": "892f4bd59f4dada89a9cef1d9ac197e850c6b470f808e2eb3959aa5f10aef86f",
+    "size_bytes": 6346
+  },
+  "task_t2_revision": {
+    "date": "2026-10-19T20:44:36",
+    "note": "Appended upstream SiLU vs ReLU² reproduction benchmark artifact (Task T2). Confirms the FFN activation mismatch bug is alive in upstream microsoft/BitNet at HEAD (commit 0b341e5, submodule 390c307), showing 0/10 vs 10/10 valid schema recovery. Drafted English issue UPSTREAM_ISSUE_DRAFT.md. No existing entries were modified.",
+    "added_keys": [
+      "upstream_silu_relu2_repro",
+      "generate_t2_artifact_py"
+    ]
+  },
+  "assemble_public_package_py": {
+    "path": "C:\\ai_models\\assemble_public_package.py",
+    "sha256": "a53520654658cda6043aa91375ab5f3bd77dc43f9f844cc1c1c2660c26139e0e",
+    "size_bytes": 8457
+  },
+  "task_t1_revision": {
+    "date": "2026-10-19T20:46:32",
+    "note": "Assembled public reproducible artifacts package (Task T1) at C:\\ai_models\\public_artifacts_package with standalone English README, relative execution paths, and initialized git repository. No existing entries were modified.",
+    "added_keys": [
+      "assemble_public_package_py"
+    ]
+  }
+}

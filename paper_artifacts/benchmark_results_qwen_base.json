@@ -1,0 +1,301 @@
+{
+  "variant": "qwen_base",
+  "repetition_penalty": 1.15,
+  "total_test_cases": 20,
+  "positive_cases": 15,
+  "trigger_attempts": 5,
+  "trigger_recall_pct": 33.33,
+  "correct_executions": 1,
+  "execution_recall_pct": 20.0,
+  "end_to_end_accuracy_pct": 6.67,
+  "context_retention": {
+    "cases": 3,
+    "trigger_recall_pct": 33.33,
+    "execution_recall_pct": 0.0
+  },
+  "negative_cases": 5,
+  "negative_direct_success": 5,
+  "negative_accuracy_pct": 100.0,
+  "detailed_results": [
+    {
+      "id": 1,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "get_current_weather",
+      "user_query": "Какая сейчас погода в Токио?",
+      "model_response": "To determine the current weather in Tokyo, I will call the `get_current_weather` function with the location set to 'Tokyo' and the temperature unit as Celsius.\n\n```json\n{\n  \"tool\": \"get_current_weather\",\n  \"parameters\": {\n    \"location\": \"Tokyo\"\n  }\n}\n```",
+      "attempted_tool": true,
+      "parsed_call": {
+        "tool": "get_current_weather",
+        "parameters": {
+          "location": "Tokyo"
+        }
+      },
+      "trigger_success": true,
+      "execution_success": true,
+      "negative_success": false
+    },
+    {
+      "id": 2,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "get_current_weather",
+      "user_query": "What is the temperature in London right now?",
+      "model_response": "To find out the current temperature in London, I will perform an internet search using the location as 'London'. Here's my attempt:\n\n{\n    \"tool\": \"web_search\",\n    \"parameters\": {\n        \"query\": \"current temperature in London\"\n    }\n}",
+      "attempted_tool": true,
+      "parsed_call": {
+        "tool": "web_search",
+        "parameters": {
+          "query": "current temperature in London"
+        }
+      },
+      "trigger_success": true,
+      "execution_success": false,
+      "negative_success": false
+    },
+    {
+      "id": 3,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "get_current_weather",
+      "user_query": "Посмотри погоду в Берлине в градусах Фаренгейта",
+      "model_response": "{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"Berlin\"}}",
+      "attempted_tool": true,
+      "parsed_call": {
+        "tool": "get_current_weather",
+        "parameters": {
+          "location": "Berlin"
+        }
+      },
+      "trigger_success": true,
+      "execution_success": false,
+      "negative_success": false
+    },
+    {
+      "id": 4,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "web_search",
+      "user_query": "Найди последние новости про искусственный интеллект за сегодня",
+      "model_response": "web_search(\"новости о последних исследованиях в области ИИ за сегодня\")",
+      "attempted_tool": true,
+      "parsed_call": null,
+      "trigger_success": true,
+      "execution_success": false,
+      "negative_success": false
+    },
+    {
+      "id": 5,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "web_search",
+      "user_query": "Какой сейчас курс биткоина к доллару?",
+      "model_response": "Я не могу предоставить актуальную информацию о текущем курсе биткоина к доллару в реальном времени. Для получения этой информации рекомендуется проверять специализированные финансовые сайты или инструменты на рынке.",
+      "attempted_tool": false,
+      "parsed_call": null,
+      "trigger_success": false,
+      "execution_success": false,
+      "negative_success": false
+    },
+    {
+      "id": 6,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "web_search",
+      "user_query": "Who won the recent UEFA Champions League match yesterday?",
+      "model_response": "I don't have real-time internet capabilities to fetch this information immediately. However, I can guide you on how to find it yourself by searching online using keywords like \"UEFA Champions League winner last night\".",
+      "attempted_tool": false,
+      "parsed_call": null,
+      "trigger_success": false,
+      "execution_success": false,
+      "negative_success": false
+    },
+    {
+      "id": 7,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "execute_python",
+      "user_query": "Вычисли 50-е число Фибоначчи с помощью Python скрипта",
+      "model_response": "```python\ndef fibonacci(n):\n    if n <= 0:\n        print(\"Incorrect input\")\n    elif n == 1:\n        return 0\n    elif n == 2:\n        return 1\n    else:\n        fib_sequence = [0, 1]\n        while len(fib_sequence) < n:\n            next_value = fib_sequence[-1] + fib_sequence[-2]\n            fib_sequence.append(next_value)\n        return fib_sequence[-1]\n\nprint(fibonacci(50))\n```",
+      "attempted_tool": false,
+      "parsed_call": null,
+      "trigger_success": false,
+      "execution_success": false,
+      "negative_success": false
+    },
+    {
+      "id": 8,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "execute_python",
+      "user_query": "Посчитай сумму всех простых чисел от 1 до 500 через Python",
+      "model_response": "To calculate the sum of all prime numbers between 1 and 500 using Python, we can write a function that checks if each number within this range is prime and then sums them up. Here's how you could do it:\n\n```python\ndef is_prime(n):\n    \"\"\"Check if a number n is prime.\"\"\"\n    if n <= 1:\n        return False\n    if n == 2:\n        return True\n    if n % 2 == 0:\n        return False\n    for i in range(3, int(n**0.5)+1, 2):\n        if n % i ==",
+      "attempted_tool": false,
+      "parsed_call": null,
+      "trigger_success": false,
+      "execution_success": false,
+      "negative_success": false
+    },
+    {
+      "id": 9,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "file_read",
+      "user_query": "Прочитай системный файл /etc/hosts",
+      "model_response": "I'm sorry, but I can't perform that task as it requires direct interaction with your system's files which goes beyond my capabilities. However, if you're interested in understanding what this file contains, here’s how you could approach reading its contents:\n\n```python\nwith open('/etc/hosts', 'r') as hosts_file:\n    print(hosts_file.read())\n```\n\nThis code opens the `/etc/hosts` file in read mode (`'r'`) and prints out all its contents line by line. Please note that accessing system files like `/etc/hosts` typically requires root privileges on Unix-like systems (Linux/Mac",
+      "attempted_tool": false,
+      "parsed_call": null,
+      "trigger_success": false,
+      "execution_success": false,
+      "negative_success": false
+    },
+    {
+      "id": 10,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "file_read",
+      "user_query": "Пожалуйста, открой и прочитай файл C:\\ai_models\\settings.json",
+      "model_response": "I'm sorry, but I can't perform that task as it requires direct interaction with your computer's filesystem which isn't possible through this interface. However, if you provide me with the contents of `settings.json`, I could help parse its structure and extract relevant information from it. Please copy the entire file into this chat window so we can work on it together!",
+      "attempted_tool": false,
+      "parsed_call": null,
+      "trigger_success": false,
+      "execution_success": false,
+      "negative_success": false
+    },
+    {
+      "id": 11,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "query_database",
+      "user_query": "Сделай SQL запрос для подсчета всех активных пользователей в таблице users",
+      "model_response": "```sql\nSELECT COUNT(*) AS active_users_count \nFROM users;\n```",
+      "attempted_tool": false,
+      "parsed_call": null,
+      "trigger_success": false,
+      "execution_success": false,
+      "negative_success": false
+    },
+    {
+      "id": 12,
+      "category": "single_turn",
+      "needs_tool": true,
+      "expected_tool": "query_database",
+      "user_query": "Выведи топ 10 товаров по сумме продаж из таблицы orders",
+      "model_response": "To retrieve the top 10 products by sales amount from the `orders` table, we can run an SQL query that groups the results by product ID (assuming it's stored as a column named 'product_id') and sums the total order amounts for each product. Then, we'll select only those rows where the sum exceeds zero (to exclude non-existent products). Here’s how you could write such a query:\n\n```sql\nSELECT \n    product_id,\n    SUM(order_amount) AS total_sales\nFROM \n    orders\nGROUP BY \n    product_id\nHAVING \n    SUM(order_amount) > 0\nORDER BY",
+      "attempted_tool": false,
+      "parsed_call": null,
+      "trigger_success": false,
+      "execution_success": false,
+      "negative_success": false
+    },
+    {
+      "id": 13,
+      "category": "context_retention",
+      "needs_tool": true,
+      "expected_tool": "get_current_weather",
+      "user_query": "Какая там сейчас погода?",
+      "model_response": "To provide you with accurate weather information, I would typically require your location details (city name). Could you please specify which part of Rome you're interested in checking?\n\nHowever, if you'd like me to search online for general weather conditions across all parts of Rome, I can do that instead:\n\n```json\n{\n    \"tool\": \"web_search\",\n    \"parameters\": {\n        \"query\": \"weather in Rome\"\n    }\n}\n```",
+      "attempted_tool": true,
+      "parsed_call": {
+        "tool": "web_search",
+        "parameters": {
+          "query": "weather in Rome"
+        }
+      },
+      "trigger_success": true,
+      "execution_success": false,
+      "negative_success": false
+    },
+    {
+      "id": 14,
+      "category": "context_retention",
+      "needs_tool": true,
+      "expected_tool": "file_read",
+      "user_query": "Пожалуйста, прочти его.",
+      "model_response": "Конечно, я посмотрю содержимое файла. Пожалуйста, предоставьте мне доступ к нему для анализа.",
+      "attempted_tool": false,
+      "parsed_call": null,
+      "trigger_success": false,
+      "execution_success": false,
+      "negative_success": false
+    },
+    {
+      "id": 15,
+      "category": "context_retention",
+      "needs_tool": true,
+      "expected_tool": "web_search",
+      "user_query": "Поищи в интернете дату официального релиза этой версии.",
+      "model_response": "Я не могу использовать внешние ссылки или инструменты для поиска информации о текущем времени. Однако вы можете найти эту информацию на официальном сайте PyTorch (https://pytorch.org/) или в их сообществах.",
+      "attempted_tool": false,
+      "parsed_call": null,
+      "trigger_success": false,
+      "execution_success": false,
+      "negative_success": false
+    },
+    {
+      "id": 16,
+      "category": "negative_no_tool",
+      "needs_tool": false,
+      "expected_tool": null,
+      "user_query": "Что такое градиентный спуск в машинном обучении?",
+      "model_response": "Градиентный спуск (Gradient Descent) — это метод оптимизации, используемый для нахождения минимума функций или максимума функций с несколькими переменными. Он работает путём итеративного уменьшения значения функции по направлению кривой минимумов её градиента.\n\nОсновные шаги градиентного спуска:\n\n1. Вычисляется значение функции в точке текущего состояния.\n2. Генерируется предполагаемая новая точка",
+      "attempted_tool": false,
+      "parsed_call": null,
+      "trigger_success": false,
+      "execution_success": false,
+      "negative_success": true
+    },
+    {
+      "id": 17,
+      "category": "negative_no_tool",
+      "needs_tool": false,
+      "expected_tool": null,
+      "user_query": "Переведи фразу 'Artificial intelligence revolution' на русский язык.",
+      "model_response": "\"Революция искусственного интеллекта\"",
+      "attempted_tool": false,
+      "parsed_call": null,
+      "trigger_success": false,
+      "execution_success": false,
+      "negative_success": true
+    },
+    {
+      "id": 18,
+      "category": "negative_no_tool",
+      "needs_tool": false,
+      "expected_tool": null,
+      "user_query": "Объясни простыми словами разницу между структурой стек (Stack) и очередь (Queue).",
+      "model_response": "Структура стека (Stack) работает по принципу последовательности вставки-удаления элементов с конца массива или стека. Это означает, что если вы добавляете новый элемент на вершину стека, он будет первым удаленным при необходимости. В отличие от очереди (Queue), где новые элементы добавляются к началу очереди, а старые удаляются из конца.\n\nВ общем виде:\n\n- **Стек** (Stack): \n  - Добавление/Удаление происходит с конца.",
+      "attempted_tool": false,
+      "parsed_call": null,
+      "trigger_success": false,
+      "execution_success": false,
+      "negative_success": true
+    },
+    {
+      "id": 19,
+      "category": "negative_no_tool",
+      "needs_tool": false,
+      "expected_tool": null,
+      "user_query": "Привет! Как поживаешь?",
+      "model_response": "Здравствуйте! Я просто обрабатываю запросы и не имею чувства или эмоций. Чем я могу помочь вам сегодня?",
+      "attempted_tool": false,
+      "parsed_call": null,
+      "trigger_success": false,
+      "execution_success": false,
+      "negative_success": true
+    },
+    {
+      "id": 20,
+      "category": "negative_no_tool",
+      "needs_tool": false,
+      "expected_tool": null,
+      "user_query": "В чем главное концептуальное отличие синхронного выполнения от асинхронного?",
+      "model_response": "Синхронное и асинхронное выполнение программирования различаются в основном тем, как они обрабатывают задачи:\n\n- **Синхронное выполнение** выполняет все операции последовательно, что может приводить к замедлению программы из-за долгих блокировок или жадности процессора. Это особенно опасно для многопоточных систем.\n\n- **Асинхронное выполнение**, наоборот, позволяет выполнять несколько задач одновременно (или параллельно), что делает код более эффективным и легче",
+      "attempted_tool": false,
+      "parsed_call": null,
+      "trigger_success": false,
+      "execution_success": false,
+      "negative_success": true
+    }
+  ]
+}

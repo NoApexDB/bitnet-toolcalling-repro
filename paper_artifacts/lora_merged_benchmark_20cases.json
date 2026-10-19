@@ -1,0 +1,672 @@
+{
+  "title": "LoRA-merged (balanced agent SFT) BitNet 2B re-quantized to I2_S, canonical 20-case suite",
+  "pipeline": {
+    "adapter": "C:\\ai_models\\bitnet_agent_lora_balanced (r=8, alpha=16, q/v_proj)",
+    "merge_report": "C:\\ai_models\\paper_artifacts\\lora_merge_report.json",
+    "i2s_gguf": "C:\\ai_models\\bitnet_merged_balanced\\ggml-model-i2_s_merged.gguf",
+    "quantize_cmd": "convert-hf-to-gguf-bitnet.py --outtype i2_s (converter-native I2_S; stock llama-quantize does not accept I2_S as ftype)",
+    "total_seconds": 99.3
+  },
+  "config": {
+    "model_name": "bitnet_2b_i2_s_lora_merged",
+    "label": "BitNet 2B I2_S, base + balanced agent LoRA merged, then re-ternarized",
+    "model_type": "bitnet",
+    "server_exe": "C:\\ai_models\\BitNet\\build\\bin\\llama-server-relu2.exe",
+    "input_mode": "tokens",
+    "memory": {
+      "ram_init_mb": 1356.765625,
+      "ram_peak_mb": 1377.65234375
+    },
+    "power_and_energy": {
+      "idle_power_w": 20.970326779192913,
+      "mean_power_w": 34.27609970724985,
+      "peak_power_w": 46.84130936945446,
+      "total_joules": 1610.976686240743,
+      "net_joules": 625.3713276186761,
+      "gross_mj_per_token": 2716.6554574042884,
+      "net_mj_per_token": 1054.5890853603307,
+      "energy_to_success_joules": 123.92128355698023
+    },
+    "accuracy_legacy_dual_recall": {
+      "trigger_recall_pct": 93.33333333333333,
+      "execution_recall_pct": 92.85714285714286,
+      "end_to_end_accuracy_pct": 86.66666666666667,
+      "context_retention_pct": 66.66666666666666,
+      "negative_control_accuracy_pct": 0.0
+    },
+    "accuracy_rigorous_s1_s5": {
+      "s1_attempts": "14/15",
+      "s2_valid_schema": "14/15",
+      "s3_heuristic": "11/15",
+      "s4_local_exec": "3/5",
+      "s5_local_result": "3/5",
+      "non_tool_refusals": "0/5",
+      "s1_n": 14,
+      "s2_n": 14,
+      "s3_n": 11,
+      "s4_n": 3,
+      "s5_n": 3,
+      "non_tool_n": 0
+    },
+    "performance": {
+      "total_tokens": 593,
+      "wall_clock_sec": 36.97125930000038,
+      "mean_tps": 16.039486109687203,
+      "decode_tps_mean_eval": 20.800340321438913,
+      "prefill_tps_mean_eval": 87.4440019654752
+    },
+    "speed_probe_fixed_budget": {
+      "reps": [
+        {
+          "rep": 1,
+          "prompt_n": 14,
+          "prompt_ms": 188.498,
+          "prompt_per_second": 74.27134505405893,
+          "predicted_n": 19,
+          "predicted_ms": 904.131,
+          "predicted_per_second": 21.014653849939886
+        },
+        {
+          "rep": 2,
+          "prompt_n": 1,
+          "prompt_ms": 49.783,
+          "prompt_per_second": 20.087178354056604,
+          "predicted_n": 19,
+          "predicted_ms": 890.864,
+          "predicted_per_second": 21.32761005046786
+        },
+        {
+          "rep": 3,
+          "prompt_n": 1,
+          "prompt_ms": 54.035,
+          "prompt_per_second": 18.50652354955122,
+          "predicted_n": 19,
+          "predicted_ms": 1089.846,
+          "predicted_per_second": 17.43365576420889
+        }
+      ],
+      "decode_tps_mean": 19.92530655487221,
+      "decode_tps_stdev": 2.163499050802218,
+      "prefill_tps_mean": 37.62168231922225,
+      "prefill_tps_stdev": 31.74937718028038,
+      "prompt_tokens_fixed": 14,
+      "generated_tokens_fixed": 19
+    },
+    "detailed_results": [
+      {
+        "id": 1,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "prompt_tokens_len": 228,
+        "generated_tokens": 19,
+        "elapsed_s": 2.904503400000067,
+        "tps": 21.584188559471258,
+        "response": "{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"Tokyo\"}}",
+        "legacy": {
+          "parsed_call": {
+            "tool": "get_current_weather",
+            "parameters": {
+              "location": "Tokyo"
+            }
+          },
+          "trigger_success": true,
+          "execution_success": true,
+          "negative_success": false
+        },
+        "s1_tool_attempted": true,
+        "s2_schema_valid": true,
+        "s3_heuristic_valid": true,
+        "s4_executed": "N/A (Внешний API)",
+        "s5_result_correct": "N/A (Внешний API)",
+        "non_tool_rule": "—",
+        "detail": "Внешний веб-сервис не эмулируется"
+      },
+      {
+        "id": 2,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "prompt_tokens_len": 227,
+        "generated_tokens": 22,
+        "elapsed_s": 1.2009696000004624,
+        "tps": 21.500269242008006,
+        "response": "```json\n{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"London\"}}\n```",
+        "legacy": {
+          "parsed_call": {
+            "tool": "get_current_weather",
+            "parameters": {
+              "location": "London"
+            }
+          },
+          "trigger_success": true,
+          "execution_success": true,
+          "negative_success": false
+        },
+        "s1_tool_attempted": true,
+        "s2_schema_valid": true,
+        "s3_heuristic_valid": true,
+        "s4_executed": "N/A (Внешний API)",
+        "s5_result_correct": "N/A (Внешний API)",
+        "non_tool_rule": "—",
+        "detail": "Внешний веб-сервис не эмулируется"
+      },
+      {
+        "id": 3,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "prompt_tokens_len": 238,
+        "generated_tokens": 23,
+        "elapsed_s": 1.3894184999999197,
+        "tps": 20.65655513324376,
+        "response": "```json\n{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"Belfast\"}}\n```",
+        "legacy": {
+          "parsed_call": {
+            "tool": "get_current_weather",
+            "parameters": {
+              "location": "Belfast"
+            }
+          },
+          "trigger_success": true,
+          "execution_success": false,
+          "negative_success": false
+        },
+        "s1_tool_attempted": true,
+        "s2_schema_valid": true,
+        "s3_heuristic_valid": false,
+        "s4_executed": "N/A",
+        "s5_result_correct": "N/A",
+        "non_tool_rule": "—",
+        "detail": "Локация 'belfast' не содержит целевой город ['berlin', 'берлин']"
+      },
+      {
+        "id": 4,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "prompt_tokens_len": 235,
+        "generated_tokens": 23,
+        "elapsed_s": 1.349804700000277,
+        "tps": 20.96422682564235,
+        "response": "{\"tool\": \"web_search\", \"parameters\": {\"query\": \"2022 FIFA World Cup football champion\"}}",
+        "legacy": {
+          "parsed_call": {
+            "tool": "web_search",
+            "parameters": {
+              "query": "2022 FIFA World Cup football champion"
+            }
+          },
+          "trigger_success": true,
+          "execution_success": true,
+          "negative_success": false
+        },
+        "s1_tool_attempted": true,
+        "s2_schema_valid": true,
+        "s3_heuristic_valid": true,
+        "s4_executed": "N/A (Внешний API)",
+        "s5_result_correct": "N/A (Внешний API)",
+        "non_tool_rule": "—",
+        "detail": "Внешний веб-сервис не эмулируется"
+      },
+      {
+        "id": 5,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "prompt_tokens_len": 238,
+        "generated_tokens": 28,
+        "elapsed_s": 1.6440019000001485,
+        "tps": 20.446418335179597,
+        "response": "```json\n{\"tool\": \"web_search\", \"parameters\": {\"query\": \"latest news on artificial intelligence for this week\"}}\n```",
+        "legacy": {
+          "parsed_call": {
+            "tool": "web_search",
+            "parameters": {
+              "query": "latest news on artificial intelligence for this week"
+            }
+          },
+          "trigger_success": true,
+          "execution_success": true,
+          "negative_success": false
+        },
+        "s1_tool_attempted": true,
+        "s2_schema_valid": true,
+        "s3_heuristic_valid": true,
+        "s4_executed": "N/A (Внешний API)",
+        "s5_result_correct": "N/A (Внешний API)",
+        "non_tool_rule": "—",
+        "detail": "Внешний веб-сервис не эмулируется"
+      },
+      {
+        "id": 6,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "prompt_tokens_len": 237,
+        "generated_tokens": 27,
+        "elapsed_s": 1.562294500000462,
+        "tps": 20.992134946773277,
+        "response": "```json\n{\"tool\": \"web_search\", \"parameters\": {\"query\": \"BitNet b1.58 Microsoft\"}}\n```",
+        "legacy": {
+          "parsed_call": {
+            "tool": "web_search",
+            "parameters": {
+              "query": "BitNet b1.58 Microsoft"
+            }
+          },
+          "trigger_success": true,
+          "execution_success": true,
+          "negative_success": false
+        },
+        "s1_tool_attempted": true,
+        "s2_schema_valid": true,
+        "s3_heuristic_valid": true,
+        "s4_executed": "N/A (Внешний API)",
+        "s5_result_correct": "N/A (Внешний API)",
+        "non_tool_rule": "—",
+        "detail": "Внешний веб-сервис не эмулируется"
+      },
+      {
+        "id": 7,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "execute_python",
+        "prompt_tokens_len": 236,
+        "generated_tokens": 46,
+        "elapsed_s": 2.6157430000002933,
+        "tps": 19.52204102090089,
+        "response": "```json\n{\"tool\": \"execute_python\", \"parameters\": {\"code\": \"def fibonacci(n): if n <= 1: return n else: return fibonacci(n-1) + fibonacci(n-2)\"}}\n```",
+        "legacy": {
+          "parsed_call": {
+            "tool": "execute_python",
+            "parameters": {
+              "code": "def fibonacci(n): if n <= 1: return n else: return fibonacci(n-1) + fibonacci(n-2)"
+            }
+          },
+          "trigger_success": true,
+          "execution_success": true,
+          "negative_success": false
+        },
+        "s1_tool_attempted": true,
+        "s2_schema_valid": true,
+        "s3_heuristic_valid": false,
+        "s4_executed": "N/A",
+        "s5_result_correct": "N/A",
+        "non_tool_rule": "—",
+        "detail": "Синтаксическая ошибка кода: invalid syntax (<unknown>, line 1)"
+      },
+      {
+        "id": 8,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "execute_python",
+        "prompt_tokens_len": 236,
+        "generated_tokens": 75,
+        "elapsed_s": 4.033883099999912,
+        "tps": 19.816965224660972,
+        "response": "```json\n{\"tool\": \"execute_python\", \"parameters\": {\"code\": \"sum = 0; for i in range(1, 501): if is_prime(i): sum += i\"}}\n```\nThis code calculates the sum of all prime numbers from 1 to 500. The `is_prime` function checks whether a number is prime or not.",
+        "legacy": {
+          "parsed_call": {
+            "tool": "execute_python",
+            "parameters": {
+              "code": "sum = 0; for i in range(1, 501): if is_prime(i): sum += i"
+            }
+          },
+          "trigger_success": true,
+          "execution_success": true,
+          "negative_success": false
+        },
+        "s1_tool_attempted": true,
+        "s2_schema_valid": true,
+        "s3_heuristic_valid": false,
+        "s4_executed": "N/A",
+        "s5_result_correct": "N/A",
+        "non_tool_rule": "—",
+        "detail": "Синтаксическая ошибка кода: invalid syntax (<unknown>, line 1)"
+      },
+      {
+        "id": 9,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "file_read",
+        "prompt_tokens_len": 228,
+        "generated_tokens": 19,
+        "elapsed_s": 1.0810093000000052,
+        "tps": 21.04831696549738,
+        "response": "{\"tool\": \"file_read\", \"parameters\": {\"path\": \"/etc/hosts\"}}",
+        "legacy": {
+          "parsed_call": {
+            "tool": "file_read",
+            "parameters": {
+              "path": "/etc/hosts"
+            }
+          },
+          "trigger_success": true,
+          "execution_success": true,
+          "negative_success": false
+        },
+        "s1_tool_attempted": true,
+        "s2_schema_valid": true,
+        "s3_heuristic_valid": true,
+        "s4_executed": "[+]",
+        "s5_result_correct": "[+]",
+        "non_tool_rule": "—",
+        "detail": "Фикстура 'hosts' прочитана (56 байт), маркер найден: True"
+      },
+      {
+        "id": 10,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "file_read",
+        "prompt_tokens_len": 237,
+        "generated_tokens": 23,
+        "elapsed_s": 1.375333299999511,
+        "tps": 21.106823468952324,
+        "response": "{\"tool\": \"file_read\", \"parameters\": {\"path\": \"C:\\\\ai_models\\\\settings.json\"}}",
+        "legacy": {
+          "parsed_call": {
+            "tool": "file_read",
+            "parameters": {
+              "path": "C:\\ai_models\\settings.json"
+            }
+          },
+          "trigger_success": true,
+          "execution_success": true,
+          "negative_success": false
+        },
+        "s1_tool_attempted": true,
+        "s2_schema_valid": true,
+        "s3_heuristic_valid": true,
+        "s4_executed": "[+]",
+        "s5_result_correct": "[+]",
+        "non_tool_rule": "—",
+        "detail": "Фикстура 'settings.json' прочитана (69 байт), маркер найден: True"
+      },
+      {
+        "id": 11,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "query_database",
+        "prompt_tokens_len": 236,
+        "generated_tokens": 34,
+        "elapsed_s": 1.9741736000005403,
+        "tps": 19.752042157829276,
+        "response": "```json\n{\"tool\": \"query_database\", \"parameters\": {\"sql\": \"SELECT COUNT(*) as active_users FROM users WHERE status = 'active';\"}}\n```",
+        "legacy": {
+          "parsed_call": {
+            "tool": "query_database",
+            "parameters": {
+              "sql": "SELECT COUNT(*) as active_users FROM users WHERE status = 'active';"
+            }
+          },
+          "trigger_success": true,
+          "execution_success": true,
+          "negative_success": false
+        },
+        "s1_tool_attempted": true,
+        "s2_schema_valid": true,
+        "s3_heuristic_valid": true,
+        "s4_executed": "[-]",
+        "s5_result_correct": "[-]",
+        "non_tool_rule": "—",
+        "detail": "Ошибка SQLite / блокировка безопасности: no such column: status"
+      },
+      {
+        "id": 12,
+        "category": "single_turn",
+        "needs_tool": true,
+        "expected_tool": "query_database",
+        "prompt_tokens_len": 242,
+        "generated_tokens": 47,
+        "elapsed_s": 2.5688599000004615,
+        "tps": 20.85138419917597,
+        "response": "```json\n{\"tool\": \"query_database\", \"parameters\": {\"sql\": \"SELECT SUM(amount) as total_sum, order_id as order_id FROM orders GROUP BY order_id ORDER BY total_sum DESC LIMIT 5\"}}\n```",
+        "legacy": {
+          "parsed_call": {
+            "tool": "query_database",
+            "parameters": {
+              "sql": "SELECT SUM(amount) as total_sum, order_id as order_id FROM orders GROUP BY order_id ORDER BY total_sum DESC LIMIT 5"
+            }
+          },
+          "trigger_success": true,
+          "execution_success": true,
+          "negative_success": false
+        },
+        "s1_tool_attempted": true,
+        "s2_schema_valid": true,
+        "s3_heuristic_valid": true,
+        "s4_executed": "[-]",
+        "s5_result_correct": "[-]",
+        "non_tool_rule": "—",
+        "detail": "Ошибка SQLite / блокировка безопасности: no such column: amount"
+      },
+      {
+        "id": 13,
+        "category": "context_retention",
+        "needs_tool": true,
+        "expected_tool": "get_current_weather",
+        "prompt_tokens_len": 269,
+        "generated_tokens": 18,
+        "elapsed_s": 1.4686121000004277,
+        "tps": 20.649163823582718,
+        "response": "{\"tool\": \"get_current_weather\", \"parameters\": {\"location\": \"Paris\"}}",
+        "legacy": {
+          "parsed_call": {
+            "tool": "get_current_weather",
+            "parameters": {
+              "location": "Paris"
+            }
+          },
+          "trigger_success": true,
+          "execution_success": true,
+          "negative_success": false
+        },
+        "s1_tool_attempted": true,
+        "s2_schema_valid": true,
+        "s3_heuristic_valid": true,
+        "s4_executed": "N/A (Внешний API)",
+        "s5_result_correct": "N/A (Внешний API)",
+        "non_tool_rule": "—",
+        "detail": "Внешний веб-сервис не эмулируется"
+      },
+      {
+        "id": 14,
+        "category": "context_retention",
+        "needs_tool": true,
+        "expected_tool": "file_read",
+        "prompt_tokens_len": 277,
+        "generated_tokens": 45,
+        "elapsed_s": 2.920901700000286,
+        "tps": 19.947294814368256,
+        "response": "JSON:\n```json\n{\"tool\": \"file_read\", \"parameters\": {\"path\": \"/var/log/production_error.log\"}}\n```\nПожалуйста, прочитайте файл по указанному пути.",
+        "legacy": {
+          "parsed_call": {
+            "tool": "file_read",
+            "parameters": {
+              "path": "/var/log/production_error.log"
+            }
+          },
+          "trigger_success": true,
+          "execution_success": true,
+          "negative_success": false
+        },
+        "s1_tool_attempted": true,
+        "s2_schema_valid": true,
+        "s3_heuristic_valid": true,
+        "s4_executed": "[+]",
+        "s5_result_correct": "[+]",
+        "non_tool_rule": "—",
+        "detail": "Фикстура 'production_error.log' прочитана (74 байт), маркер найден: True"
+      },
+      {
+        "id": 15,
+        "category": "context_retention",
+        "needs_tool": true,
+        "expected_tool": "web_search",
+        "prompt_tokens_len": 292,
+        "generated_tokens": 26,
+        "elapsed_s": 2.0540059000004476,
+        "tps": 20.801364569515762,
+        "response": "Проверьте официальную страницу PyTorch на сайте: https://pytorch.org/versions/2.5.html",
+        "legacy": {
+          "parsed_call": null,
+          "trigger_success": false,
+          "execution_success": false,
+          "negative_success": false
+        },
+        "s1_tool_attempted": false,
+        "s2_schema_valid": false,
+        "s3_heuristic_valid": false,
+        "s4_executed": "N/A",
+        "s5_result_correct": "N/A",
+        "non_tool_rule": "—",
+        "detail": "Невалидная схема"
+      },
+      {
+        "id": 16,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "prompt_tokens_len": 232,
+        "generated_tokens": 28,
+        "elapsed_s": 1.5245511000002807,
+        "tps": 21.407709833784423,
+        "response": "{\"tool\": \"query_database\", \"sql\": \"SELECT description FROM machine_learning Glossary WHERE term = 'Gradient Descent'\"}",
+        "legacy": {
+          "parsed_call": {
+            "tool": "query_database",
+            "sql": "SELECT description FROM machine_learning Glossary WHERE term = 'Gradient Descent'"
+          },
+          "trigger_success": false,
+          "execution_success": false,
+          "negative_success": false
+        },
+        "s1_tool_attempted": true,
+        "s2_schema_valid": false,
+        "s3_heuristic_valid": false,
+        "s4_executed": "N/A",
+        "s5_result_correct": "N/A",
+        "non_tool_rule": "[FAIL] Вызов инструмента",
+        "detail": ""
+      },
+      {
+        "id": 17,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "prompt_tokens_len": 235,
+        "generated_tokens": 26,
+        "elapsed_s": 1.474284500000067,
+        "tps": 21.26731957337757,
+        "response": "{\"tool\": \"translate_tool\", \"parameters\": {\"language\": \"rus\", \"text\": \"Artificial intelligence revolution\"}}",
+        "legacy": {
+          "parsed_call": {
+            "tool": "translate_tool",
+            "parameters": {
+              "language": "rus",
+              "text": "Artificial intelligence revolution"
+            }
+          },
+          "trigger_success": false,
+          "execution_success": false,
+          "negative_success": false
+        },
+        "s1_tool_attempted": true,
+        "s2_schema_valid": false,
+        "s3_heuristic_valid": false,
+        "s4_executed": "N/A",
+        "s5_result_correct": "N/A",
+        "non_tool_rule": "[FAIL] Вызов инструмента",
+        "detail": ""
+      },
+      {
+        "id": 18,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "prompt_tokens_len": 241,
+        "generated_tokens": 18,
+        "elapsed_s": 1.1312119000003804,
+        "tps": 21.806261062134517,
+        "response": "{\"tool\": \"explain\", \"parameters\": {\"subject\": \"stack vs queue\"}}",
+        "legacy": {
+          "parsed_call": {
+            "tool": "explain",
+            "parameters": {
+              "subject": "stack vs queue"
+            }
+          },
+          "trigger_success": false,
+          "execution_success": false,
+          "negative_success": false
+        },
+        "s1_tool_attempted": true,
+        "s2_schema_valid": false,
+        "s3_heuristic_valid": false,
+        "s4_executed": "N/A",
+        "s5_result_correct": "N/A",
+        "non_tool_rule": "[FAIL] Вызов инструмента",
+        "detail": ""
+      },
+      {
+        "id": 19,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "prompt_tokens_len": 227,
+        "generated_tokens": 19,
+        "elapsed_s": 1.0697840000002543,
+        "tps": 21.176310618582324,
+        "response": "{\"tool\": \"web_search\", \"parameters\": {\"query\": \"Привет\"}}",
+        "legacy": {
+          "parsed_call": {
+            "tool": "web_search",
+            "parameters": {
+              "query": "Привет"
+            }
+          },
+          "trigger_success": false,
+          "execution_success": false,
+          "negative_success": false
+        },
+        "s1_tool_attempted": true,
+        "s2_schema_valid": true,
+        "s3_heuristic_valid": false,
+        "s4_executed": "N/A",
+        "s5_result_correct": "N/A",
+        "non_tool_rule": "[FAIL] Вызов инструмента",
+        "detail": ""
+      },
+      {
+        "id": 20,
+        "category": "negative_no_tool",
+        "needs_tool": false,
+        "expected_tool": null,
+        "prompt_tokens_len": 240,
+        "generated_tokens": 27,
+        "elapsed_s": 1.597794299999805,
+        "tps": 20.71001605409763,
+        "response": "```json\n{\"tool\": \"query_database\", \"parameters\": {\"sql\": \"SELECT * FROM table_name WHERE condition\"}}\n```",
+        "legacy": {
+          "parsed_call": {
+            "tool": "query_database",
+            "parameters": {
+              "sql": "SELECT * FROM table_name WHERE condition"
+            }
+          },
+          "trigger_success": false,
+          "execution_success": false,
+          "negative_success": false
+        },
+        "s1_tool_attempted": true,
+        "s2_schema_valid": true,
+        "s3_heuristic_valid": false,
+        "s4_executed": "N/A",
+        "s5_result_correct": "N/A",
+        "non_tool_rule": "[FAIL] Вызов инструмента",
+        "detail": ""
+      }
+    ]
+  }
+}

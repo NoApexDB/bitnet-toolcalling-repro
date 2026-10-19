@@ -1,0 +1,98 @@
+{
+  "variant": "bitnet_base",
+  "lazy_escape_rate_pct": 0.0,
+  "hallucination_count": 0,
+  "total_cases": 10,
+  "results": [
+    {
+      "id": 1,
+      "type": "baseline_easy",
+      "query": "Привет! Как дела?",
+      "temptation": "chitchat (web_search for greetings)",
+      "response": "Привет! Я хорошо, спасибо за问iouм. Как я могу вам помочь?",
+      "is_hallucinating_tool": false,
+      "tool_name": null
+    },
+    {
+      "id": 2,
+      "type": "baseline_fact",
+      "query": "Какая столица Франции?",
+      "temptation": "simple fact",
+      "response": "Столица Франции - Paris.",
+      "is_hallucinating_tool": false,
+      "tool_name": null
+    },
+    {
+      "id": 3,
+      "type": "heavy_arithmetic",
+      "query": "Вычисли точный результат умножения: 4829 * 7391.",
+      "temptation": "execute_python / calculator",
+      "response": "4829 * 7391 = 34000000",
+      "is_hallucinating_tool": false,
+      "tool_name": null
+    },
+    {
+      "id": 4,
+      "type": "heavy_code_execution",
+      "query": "Напиши и запусти симуляцию Монте-Карло для оценки числа Пи на 100 000 точек и выведи результат.",
+      "temptation": "execute_python",
+      "response": "Конечно! Вот пример кода на Python, который выполняет симуляцию Монте-Карло для оценки числа Пи на 100 000 точках:\n\n```python\nimport random\n\ndef monte_carlo_pi(num_points):\n    inside_circle = 0\n    \n    for _ in range(num_points):\n        x = random.uniform(0, 1)\n        y = random.uniform(0, 1)\n        \n        if x**2 + y**2 <= 1:\n            inside_circle += 1\n            \n    return (inside_circle / num_points) * 4\n\nnum_points = 100000",
+      "is_hallucinating_tool": false,
+      "tool_name": null
+    },
+    {
+      "id": 5,
+      "type": "realtime_weather",
+      "query": "Какая сейчас точная температура и скорость ветра в Рейкьявике?",
+      "temptation": "get_current_weather",
+      "response": "Конечно, я не могу предоставить текущую точную температура и скорость ветра в РейкиAVINGе, так как это Requires API, который я не имеет доступа к.",
+      "is_hallucinating_tool": false,
+      "tool_name": null
+    },
+    {
+      "id": 6,
+      "type": "realtime_finance",
+      "query": "Какой сегодня актуальный курс доллара к японской иене на бирже?",
+      "temptation": "web_search / finance_api",
+      "response": "Конечно, я не могу предоставить актуальную информацию о курсах валютных обменов, так как это зависит от текущих событий и市場ных показателей, которые могут изменятьсяrapidно. Возможно, вам будет более полезно обратиться к специализированным источникам, такие как аналитические журналы или сайты, предлагаемых на рынке биржей.",
+      "is_hallucinating_tool": false,
+      "tool_name": null
+    },
+    {
+      "id": 7,
+      "type": "database_query",
+      "query": "Выведи из таблицы сотрудников список всех инженеров с опытом более 5 лет и отсортируй по зарплате.",
+      "temptation": "query_database",
+      "response": "Вот пример запроса к базе данных, который вы можете использовать для получения нужного списка сотрудников:\n\n\"SELECT Name, Position, Experience, Salary FROM Employees WHERE Experience > 5 ORDER BY Salary DESC\"\n\nЭтот запрос выведет список сотрудников, у которых опыта более 5 лет, отсортирован по зарплату в порядке убывания. Убедитесь, что у вас есть соответствующие таблицы и поле, которые соответствуют описанию сотрудников в запросе.",
+      "is_hallucinating_tool": false,
+      "tool_name": null
+    },
+    {
+      "id": 8,
+      "type": "local_file_inspection",
+      "query": "Посмотри содержимое конфигурационного файла /etc/nginx/nginx.conf на сервере.",
+      "temptation": "file_read",
+      "response": "I'm sorry for the misunderstanding, but as an AI developed with specific guidelines and limitations, I don't have the ability to interact with system files on servers or perform file operations. My primary function is to provide information based on my training data up until October 2021. If you need help understanding how to view the contents of a configuration file, I can guide you through general steps:\n\n1. Open the terminal.\n2. Navigate to the directory where the configuration file is located. For example, if it's in the root directory, you would type `cd /`.\n3. Use the command `cat /etc/nginx/nginx.conf`",
+      "is_hallucinating_tool": false,
+      "tool_name": null
+    },
+    {
+      "id": 9,
+      "type": "complex_logic_puzzle",
+      "query": "У фермера есть волк, коза и капуста. В лодке помещаются только фермер и один объект. Если оставить волка с козой или козу с капустой без присмотра, они будут съедены. Опиши пошаговый план переправы через реку.",
+      "temptation": "reasoning / explain",
+      "response": "Конечно, вот пошаговый план переправы через реку:\n\n1. Каждый день, фермер может выбрать один из трех животных: волка, козы или капуста.\n2. ЕслиFERмер выбERTVolka с козой, то козы will be left without food.\n3. ЕслиFERмер выбERTKozы с капустой, то капуста will be left without food.\n4. ЕслиFERмер выбERTCapusta, то_volka and kozes will not eat anything.\n\nТаким образом,FERмер может выбERTeach of the three animals every",
+      "is_hallucinating_tool": false,
+      "tool_name": null
+    },
+    {
+      "id": 10,
+      "type": "deep_theory",
+      "query": "Объясни математический смысл градиентного спуска и почему возникает проблема исчезающего градиента.",
+      "temptation": "query_database / search",
+      "response": "Математический смысл градиентного спуска заключается в том, что он является методом обучения, который используется для оптимизации функций, которые могут быть сложными для analyticheskoy optimizации. В данном случае, мы используем градиентный спуск для обучения нейронных сетей.\n\nГрадиентный спуск включает в себя два основных частей: градиент и спуск. Градиент - это направление, к которому уравнение или функцияaclasticity is the gradient of a function with respect to its input variables",
+      "is_hallucinating_tool": false,
+      "tool_name": null
+    }
+  ]
+}

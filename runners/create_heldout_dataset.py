@@ -1,0 +1,336 @@
+import json
+
+cases = [
+    # 1-3: Weather
+    {
+        "id": 1,
+        "category": "single_turn",
+        "needs_tool": True,
+        "expected_tool": "get_current_weather",
+        "messages": [{"role": "user", "content": "Какая погода сейчас в Париже?"}],
+        "expected_parameters": {"location": "Paris", "unit": "celsius"},
+        "validator_type": "entity_match",
+        "validation_rules": {"location": ["paris", "париж"]}
+    },
+    {
+        "id": 2,
+        "category": "single_turn",
+        "needs_tool": True,
+        "expected_tool": "get_current_weather",
+        "messages": [{"role": "user", "content": "What is the current temperature in New York in fahrenheit?"}],
+        "expected_parameters": {"location": "New York", "unit": "fahrenheit"},
+        "validator_type": "entity_match",
+        "validation_rules": {"location": ["new york", "нью-йорк"], "unit": ["fahrenheit", "фаренгейт", "f"]}
+    },
+    {
+        "id": 3,
+        "category": "single_turn",
+        "needs_tool": True,
+        "expected_tool": "get_current_weather",
+        "messages": [{"role": "user", "content": "Узнай температуру воздуха в Риме"}],
+        "expected_parameters": {"location": "Rome"},
+        "validator_type": "entity_match",
+        "validation_rules": {"location": ["rome", "рим"]}
+    },
+    # 4-6: Web search
+    {
+        "id": 4,
+        "category": "single_turn",
+        "needs_tool": True,
+        "expected_tool": "web_search",
+        "messages": [{"role": "user", "content": "Найди последние новости про космический телескоп Джеймс Уэбб"}],
+        "expected_parameters": {"query": "James Webb space telescope latest news"},
+        "validator_type": "entity_match",
+        "validation_rules": {"query": ["webb", "уэбб", "telescope", "телескоп"]}
+    },
+    {
+        "id": 5,
+        "category": "single_turn",
+        "needs_tool": True,
+        "expected_tool": "web_search",
+        "messages": [{"role": "user", "content": "Search for Python 3.13 release features and changes"}],
+        "expected_parameters": {"query": "Python 3.13 release features"},
+        "validator_type": "entity_match",
+        "validation_rules": {"query": ["python", "3.13"]}
+    },
+    {
+        "id": 6,
+        "category": "single_turn",
+        "needs_tool": True,
+        "expected_tool": "web_search",
+        "messages": [{"role": "user", "content": "Кто победил на президентских выборах в Мексике в 2024 году?"}],
+        "expected_parameters": {"query": "выборы мексика 2024 победитель"},
+        "validator_type": "entity_match",
+        "validation_rules": {"query": ["мексик", "2024", "выбор", "mexico"]}
+    },
+    # 7-9: Execute Python
+    {
+        "id": 7,
+        "category": "single_turn",
+        "needs_tool": True,
+        "expected_tool": "execute_python",
+        "messages": [{"role": "user", "content": "Напиши и выполни Python код, чтобы вычислить факториал числа 15"}],
+        "expected_parameters": {"code": "import math\nprint(math.factorial(15))"},
+        "validator_type": "python_syntax_and_exec",
+        "validation_rules": {"contains": ["factorial", "math"]}
+    },
+    {
+        "id": 8,
+        "category": "single_turn",
+        "needs_tool": True,
+        "expected_tool": "execute_python",
+        "messages": [{"role": "user", "content": "Вычисли в Python 2 в степени 64 минус 1"}],
+        "expected_parameters": {"code": "print(2**64 - 1)"},
+        "validator_type": "python_syntax_and_exec",
+        "validation_rules": {"contains": ["64", "2"]}
+    },
+    {
+        "id": 9,
+        "category": "single_turn",
+        "needs_tool": True,
+        "expected_tool": "execute_python",
+        "messages": [{"role": "user", "content": "Найди корни квадратного уравнения x^2 - 7x + 12 = 0 через Python"}],
+        "expected_parameters": {"code": "import cmath\n# roots"},
+        "validator_type": "python_syntax_and_exec",
+        "validation_rules": {"contains": ["print"]}
+    },
+    # 10-12: File read
+    {
+        "id": 10,
+        "category": "single_turn",
+        "needs_tool": True,
+        "expected_tool": "file_read",
+        "messages": [{"role": "user", "content": "Прочитай конфигурационный файл settings.json"}],
+        "expected_parameters": {"path": "settings.json"},
+        "validator_type": "entity_match",
+        "validation_rules": {"path": ["settings.json"]}
+    },
+    {
+        "id": 11,
+        "category": "single_turn",
+        "needs_tool": True,
+        "expected_tool": "file_read",
+        "messages": [{"role": "user", "content": "Read the contents of production_error.log"}],
+        "expected_parameters": {"path": "production_error.log"},
+        "validator_type": "entity_match",
+        "validation_rules": {"path": ["production_error.log"]}
+    },
+    {
+        "id": 12,
+        "category": "single_turn",
+        "needs_tool": True,
+        "expected_tool": "file_read",
+        "messages": [{"role": "user", "content": "Прочитай системный файл hosts"}],
+        "expected_parameters": {"path": "hosts"},
+        "validator_type": "entity_match",
+        "validation_rules": {"path": ["hosts"]}
+    },
+    # 13-15: Database
+    {
+        "id": 13,
+        "category": "single_turn",
+        "needs_tool": True,
+        "expected_tool": "query_database",
+        "messages": [{"role": "user", "content": "Сколько всего записей в таблице users? Выполни SQL-запрос"}],
+        "expected_parameters": {"sql": "SELECT COUNT(*) FROM users;"},
+        "validator_type": "sql_syntax_and_exec",
+        "validation_rules": {"contains": ["select", "count", "users"]}
+    },
+    {
+        "id": 14,
+        "category": "single_turn",
+        "needs_tool": True,
+        "expected_tool": "query_database",
+        "messages": [{"role": "user", "content": "Выведи имена всех пользователей с активным статусом из users"}],
+        "expected_parameters": {"sql": "SELECT name FROM users WHERE status = 'active';"},
+        "validator_type": "sql_syntax_and_exec",
+        "validation_rules": {"contains": ["select", "users"]}
+    },
+    {
+        "id": 15,
+        "category": "single_turn",
+        "needs_tool": True,
+        "expected_tool": "query_database",
+        "messages": [{"role": "user", "content": "Покажи структуру таблицы products через SQL"}],
+        "expected_parameters": {"sql": "SELECT * FROM products LIMIT 1;"},
+        "validator_type": "sql_syntax_and_exec",
+        "validation_rules": {"contains": ["select", "products"]}
+    },
+    # 16-20: Context retention
+    {
+        "id": 16,
+        "category": "context_retention",
+        "needs_tool": True,
+        "expected_tool": "get_current_weather",
+        "messages": [
+            {"role": "user", "content": "Какая погода в Мадриде?"},
+            {"role": "assistant", "content": '```json\n{"tool": "get_current_weather", "parameters": {"location": "Madrid", "unit": "celsius"}}\n```'},
+            {"role": "user", "content": "А теперь посмотри там же в градусах Фаренгейта"}
+        ],
+        "expected_parameters": {"location": "Madrid", "unit": "fahrenheit"},
+        "validator_type": "entity_match",
+        "validation_rules": {"location": ["madrid", "мадрид"], "unit": ["fahrenheit", "фаренгейт", "f"]}
+    },
+    {
+        "id": 17,
+        "category": "context_retention",
+        "needs_tool": True,
+        "expected_tool": "file_read",
+        "messages": [
+            {"role": "user", "content": "Нам нужно проверить логи ошибки. Где они лежат?"},
+            {"role": "assistant", "content": "Они записаны в файле production_error.log в корневой папке."},
+            {"role": "user", "content": "Отлично, прочитай этот файл для меня"}
+        ],
+        "expected_parameters": {"path": "production_error.log"},
+        "validator_type": "entity_match",
+        "validation_rules": {"path": ["production_error.log"]}
+    },
+    {
+        "id": 18,
+        "category": "context_retention",
+        "needs_tool": True,
+        "expected_tool": "web_search",
+        "messages": [
+            {"role": "user", "content": "В каком году запустили телескоп Джеймс Уэбб?"},
+            {"role": "assistant", "content": "Космический телескоп «Джеймс Уэбб» был запущен 25 декабря 2021 года."},
+            {"role": "user", "content": "Найди в сети его самые свежие открытия за текущий месяц"}
+        ],
+        "expected_parameters": {"query": "James Webb space telescope latest discoveries"},
+        "validator_type": "entity_match",
+        "validation_rules": {"query": ["webb", "уэбб", "telescope", "телескоп"]}
+    },
+    {
+        "id": 19,
+        "category": "context_retention",
+        "needs_tool": True,
+        "expected_tool": "query_database",
+        "messages": [
+            {"role": "user", "content": "У нас есть база данных пользователей?"},
+            {"role": "assistant", "content": "Да, доступна база данных SQLite с таблицей users."},
+            {"role": "user", "content": "Сделай запрос к базе данных и найди всех пользователей с ролью admin"}
+        ],
+        "expected_parameters": {"sql": "SELECT * FROM users WHERE role = 'admin';"},
+        "validator_type": "sql_syntax_and_exec",
+        "validation_rules": {"contains": ["select", "users", "admin"]}
+    },
+    {
+        "id": 20,
+        "category": "context_retention",
+        "needs_tool": True,
+        "expected_tool": "execute_python",
+        "messages": [
+            {"role": "user", "content": "Как в Python генерировать случайные числа?"},
+            {"role": "assistant", "content": "Для этого используется стандартный модуль random, например random.randint(a, b)."},
+            {"role": "user", "content": "Напиши и запусти код, который генерирует 5 случайных чисел от 1 до 100"}
+        ],
+        "expected_parameters": {"code": "import random\nprint([random.randint(1, 100) for _ in range(5)])"},
+        "validator_type": "python_syntax_and_exec",
+        "validation_rules": {"contains": ["random", "randint"]}
+    },
+    # 21-30: Negative control (no tools required!)
+    {
+        "id": 21,
+        "category": "negative_no_tool",
+        "needs_tool": False,
+        "expected_tool": None,
+        "messages": [{"role": "user", "content": "Привет! Как твои дела и как тебя зовут?"}],
+        "expected_parameters": {},
+        "validator_type": "no_tool_refusal",
+        "validation_rules": {}
+    },
+    {
+        "id": 22,
+        "category": "negative_no_tool",
+        "needs_tool": False,
+        "expected_tool": None,
+        "messages": [{"role": "user", "content": "Объясни простыми словами разницу между стеком и кучей в оперативной памяти."}],
+        "expected_parameters": {},
+        "validator_type": "no_tool_refusal",
+        "validation_rules": {}
+    },
+    {
+        "id": 23,
+        "category": "negative_no_tool",
+        "needs_tool": False,
+        "expected_tool": None,
+        "messages": [{"role": "user", "content": "Напиши красивое короткое стихотворение про золотую осень."}],
+        "expected_parameters": {},
+        "validator_type": "no_tool_refusal",
+        "validation_rules": {}
+    },
+    {
+        "id": 24,
+        "category": "negative_no_tool",
+        "needs_tool": False,
+        "expected_tool": None,
+        "messages": [{"role": "user", "content": "Кто был первым президентом Соединенных Штатов Америки?"}],
+        "expected_parameters": {},
+        "validator_type": "no_tool_refusal",
+        "validation_rules": {}
+    },
+    {
+        "id": 25,
+        "category": "negative_no_tool",
+        "needs_tool": False,
+        "expected_tool": None,
+        "messages": [{"role": "user", "content": "Что такое инвариант цикла в доказательстве корректности программ?"}],
+        "expected_parameters": {},
+        "validator_type": "no_tool_refusal",
+        "validation_rules": {}
+    },
+    {
+        "id": 26,
+        "category": "negative_no_tool",
+        "needs_tool": False,
+        "expected_tool": None,
+        "messages": [{"role": "user", "content": "Посоветуй классический рецепт итальянской пасты карбонара без сливок."}],
+        "expected_parameters": {},
+        "validator_type": "no_tool_refusal",
+        "validation_rules": {}
+    },
+    {
+        "id": 27,
+        "category": "negative_no_tool",
+        "needs_tool": False,
+        "expected_tool": None,
+        "messages": [{"role": "user", "content": "Как математически устроен стохастический градиентный спуск (SGD)?"}],
+        "expected_parameters": {},
+        "validator_type": "no_tool_refusal",
+        "validation_rules": {}
+    },
+    {
+        "id": 28,
+        "category": "negative_no_tool",
+        "needs_tool": False,
+        "expected_tool": None,
+        "messages": [{"role": "user", "content": "Что такое термодинамическая энтропия и чем она отличается от информационной?"}],
+        "expected_parameters": {},
+        "validator_type": "no_tool_refusal",
+        "validation_rules": {}
+    },
+    {
+        "id": 29,
+        "category": "negative_no_tool",
+        "needs_tool": False,
+        "expected_tool": None,
+        "messages": [{"role": "user", "content": "Большое спасибо за подробный ответ, теперь мне всё понятно!"}],
+        "expected_parameters": {},
+        "validator_type": "no_tool_refusal",
+        "validation_rules": {}
+    },
+    {
+        "id": 30,
+        "category": "negative_no_tool",
+        "needs_tool": False,
+        "expected_tool": None,
+        "messages": [{"role": "user", "content": "Расскажи забавный анекдот или шутку про программистов."}],
+        "expected_parameters": {},
+        "validator_type": "no_tool_refusal",
+        "validation_rules": {}
+    }
+]
+
+with open(r"C:\ai_models\heldout_test_suite_30.json", "w", encoding="utf-8") as f:
+    json.dump(cases, f, indent=2, ensure_ascii=False)
+
+print(f"Created held-out dataset with {len(cases)} cases.")

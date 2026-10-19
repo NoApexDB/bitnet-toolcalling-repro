@@ -1,0 +1,123 @@
+{
+  "title": "Swarm pipeline repeatability (post-fix runtime)",
+  "protocol": {
+    "model": "BitNet-b1.58-2B-4T i2_s, llama-server-relu2.exe, exact HF token IDs",
+    "note": "T=0 deterministic decoding; 15 identical pipeline runs on one server",
+    "strict_criterion": "tool agent closes pre-filled JSON envelope itself (no repair)",
+    "tolerant_criterion": "envelope closed after tolerant bracket repair (as in main run)"
+  },
+  "repetitions": [
+    {
+      "rep": 1,
+      "tolerant": 5,
+      "strict_tool_agents": 3,
+      "wall_sec": 12.76,
+      "output_digest": "78aedb87a997fc09"
+    },
+    {
+      "rep": 2,
+      "tolerant": 5,
+      "strict_tool_agents": 3,
+      "wall_sec": 8.97,
+      "output_digest": "35095d1bbcf47867"
+    },
+    {
+      "rep": 3,
+      "tolerant": 5,
+      "strict_tool_agents": 3,
+      "wall_sec": 6.92,
+      "output_digest": "5f55665455b1146e"
+    },
+    {
+      "rep": 4,
+      "tolerant": 5,
+      "strict_tool_agents": 3,
+      "wall_sec": 7.31,
+      "output_digest": "5f55665455b1146e"
+    },
+    {
+      "rep": 5,
+      "tolerant": 5,
+      "strict_tool_agents": 3,
+      "wall_sec": 7.1,
+      "output_digest": "5f55665455b1146e"
+    },
+    {
+      "rep": 6,
+      "tolerant": 5,
+      "strict_tool_agents": 3,
+      "wall_sec": 7.13,
+      "output_digest": "5f55665455b1146e"
+    },
+    {
+      "rep": 7,
+      "tolerant": 5,
+      "strict_tool_agents": 3,
+      "wall_sec": 6.9,
+      "output_digest": "5f55665455b1146e"
+    },
+    {
+      "rep": 8,
+      "tolerant": 5,
+      "strict_tool_agents": 3,
+      "wall_sec": 6.93,
+      "output_digest": "5f55665455b1146e"
+    },
+    {
+      "rep": 9,
+      "tolerant": 5,
+      "strict_tool_agents": 3,
+      "wall_sec": 7.01,
+      "output_digest": "5f55665455b1146e"
+    },
+    {
+      "rep": 10,
+      "tolerant": 5,
+      "strict_tool_agents": 3,
+      "wall_sec": 6.77,
+      "output_digest": "5f55665455b1146e"
+    },
+    {
+      "rep": 11,
+      "tolerant": 5,
+      "strict_tool_agents": 3,
+      "wall_sec": 6.84,
+      "output_digest": "5f55665455b1146e"
+    },
+    {
+      "rep": 12,
+      "tolerant": 5,
+      "strict_tool_agents": 3,
+      "wall_sec": 6.8,
+      "output_digest": "5f55665455b1146e"
+    },
+    {
+      "rep": 13,
+      "tolerant": 5,
+      "strict_tool_agents": 3,
+      "wall_sec": 6.75,
+      "output_digest": "5f55665455b1146e"
+    },
+    {
+      "rep": 14,
+      "tolerant": 5,
+      "strict_tool_agents": 3,
+      "wall_sec": 6.76,
+      "output_digest": "5f55665455b1146e"
+    },
+    {
+      "rep": 15,
+      "tolerant": 5,
+      "strict_tool_agents": 3,
+      "wall_sec": 6.86,
+      "output_digest": "5f55665455b1146e"
+    }
+  ],
+  "summary": {
+    "runs": 15,
+    "tolerant_5_of_5_runs": 15,
+    "strict_tool_agents_median": 3,
+    "unique_output_digests": 3,
+    "deterministic": false
+  }
+}
