@@ -125,8 +125,16 @@ python runners/revise_manifest_review18_r2.py --verify
 
 ## Artifact inventory
 
-- `paper_artifacts/` — 69 result JSONs, audit reports, and engine binaries (`binaries/`), plus the modified graph source (`bitnet.cpp`) and model `config.json`.
-- `runners/` — all benchmark/experiment scripts.
-- `data/` — canonical test suites.
-- **Byte-exactness:** all 69 hosted files are stored without line-ending normalization (`.gitattributes: * -text`) and their SHA-256 matches `BENCHMARK_ARTIFACTS_MANIFEST.json` exactly (verified 2026-10-19).
-- **Not hosted (by size):** the two model checkpoints and two GGUF files (~1.2 GB each) — obtain from Hugging Face per Section 3; their SHA-256 are in the manifest and README.
+This is a **curated** reproduction package. Everything a reviewer needs to check the paper's numbers is hosted here; internal scaffolding (packaging tools, manifest-revision scripts, exploratory tests, superseded script versions, preliminary narrative reports) is intentionally excluded and documented in the engineering log (`paper_artifacts/ENGINEERING_DECISIONS_AND_INSIGHTS.md`).
+
+| Path | Contents |
+|---|---|
+| `paper/` | The paper itself: `PAPER_DRAFT.md` (source of truth), `article_bitnet_agents_ru.docx` (submission build), `figures/` (all four figures as PNG) |
+| `paper_artifacts/` | 51 result and audit files cited by the paper (incl. the pre/post-fix paired artifacts), the two companion documents (engineering log, literature review), the modified graph source `bitnet.cpp`, model `config.json`, LoRA adapter `bitnet_agent_lora/` |
+| `binaries/` | The four engine builds: `llama-server-silu.exe`, `llama-server-relu2.exe`, default `llama-server.exe`, `dump_cpp_activations.exe` — the bug repro pair differs by a single immediate-operand byte (see README section on the root cause) |
+| `runners/` | 56 experiment scripts that produced the hosted artifacts, incl. both evaluators (`evaluator_rigorous.py`, `evaluator_strict_5stage.py`) whose SHA-256 are embedded in the result JSONs |
+| `data/` | Canonical and held-out test suites |
+
+**Byte-exactness:** hosted files are stored without line-ending normalization (`.gitattributes: * -text`). **68 of the 73 file entries in `BENCHMARK_ARTIFACTS_MANIFEST.json` are hosted byte-exact** (SHA-256 verified over raw URLs on 2026-10-19). Not hosted: the two model checkpoints and two GGUF files (~1.2 GB each — see Section 3 for Hugging Face links and checksums) and one internal packaging utility.
+
+The manifest describes the full internal inventory (81 entries incl. revision metadata blocks); timestamped filenames (e.g. `paired_ab_benchmark_results_20261015_*.json`) are the canonical manifest entries.
