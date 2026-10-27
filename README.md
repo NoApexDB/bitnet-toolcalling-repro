@@ -32,20 +32,28 @@ Due to size considerations, raw model weights are not hosted directly in this re
 
 1. **BitNet-b1.58-2B-4T (Native 1.58-bit Base):**
    - Hugging Face Repo: [`microsoft/BitNet-b1.58-2B-4T`](https://huggingface.co/microsoft/BitNet-b1.58-2B-4T)
-   - Quantized GGUF (`ggml-model-i2_s.gguf`, 1,187,801,280 bytes):
+   - HF Checkpoint (`model.safetensors`, 1,178,623,988 bytes):
+     `SHA-256: 8143ae115ed6babe5e5ada8fb8c5b769d8f417802b2db042ad98b4f7ed73975b`
+   - Quantized GGUF used in the experiments (`ggml-model-i2_s.gguf`, 1,187,801,280 bytes):
      `SHA-256: 4221b252fdd5fd25e15847adfeb5ee88886506ba50b8a34548374492884c2162`
-   - FP32 Reference Checkpoint (`model.safetensors`, 9,659,120,192 bytes):
-     `SHA-256: 09d20c571764ebdb7d59df4567ae2c43eeea1eb4fa98aa55a9b7407519ff0f1e`
+   - Reproducibility note (verified 2026-10-27): converting the same checkpoint with the pinned
+     converter of commit `0b341e5` produces a file that differs in 513,088 bytes of structural
+     metadata (earlier toolchain build produced the original) but whose **all 332 tensors are
+     byte-identical** to the merged-model GGUF proven code-identical to the base checkpoint.
+     Re-conversion SHA-256: `5beb7e480201a1be647bc5daa33c3dacb9f170d63f6d4444ebf40a7a9563712d`.
+     I.e., the conversion path is weight-faithful; only the exact file hash is toolchain-dependent.
 
 2. **Qwen2.5-1.5B-Instruct (Dense 4-bit Baseline):**
-   - Hugging Face Repo: [`Qwen/Qwen2.5-1.5B-Instruct`](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct)
-   - Quantized GGUF (`qwen2.5-1.5b-instruct-q4_k_m.gguf`, 1,117,320,736 bytes):
-     `SHA-256: 57973719a79fa4cf2e4d9eb8d5f303494793d980ea429eecdd5f8bb6b49feaa9`
+   - Hugging Face Repo: [`Qwen/Qwen2.5-1.5B-Instruct-GGUF`](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF)
+   - Quantized GGUF (`qwen2.5-1.5b-instruct-q4_k_m.gguf`, 1,117,320,736 bytes; verified 2026-10-27,
+     byte-identical to the file used in the benchmarks):
+     `SHA-256: 6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e`
 
 3. **Qwen2.5-3B-Instruct (Dense 4-bit Baseline):**
-   - Hugging Face Repo: [`Qwen/Qwen2.5-3B-Instruct`](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct)
-   - Quantized GGUF (`qwen2.5-3b-instruct-q4_k_m.gguf`, 2,104,932,768 bytes):
-     `SHA-256: cf240092ad4a0d9e7943c22b9c7ae41c2c8f8b8fb49294e9f73369165d447f52`
+   - Hugging Face Repo: [`Qwen/Qwen2.5-3B-Instruct-GGUF`](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct-GGUF)
+   - Quantized GGUF (`qwen2.5-3b-instruct-q4_k_m.gguf`, 2,104,932,768 bytes; verified 2026-10-27,
+     byte-identical to the file used in the benchmarks):
+     `SHA-256: 626b4a6678b86442240e33df819e00132d3ba7dddfe1cdc4fbb18e0a9615c62d`
 
 ---
 

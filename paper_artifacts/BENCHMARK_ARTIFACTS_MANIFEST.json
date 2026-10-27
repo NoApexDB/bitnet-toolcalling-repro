@@ -450,5 +450,23 @@
     "added_keys": [
       "assemble_public_package_py"
     ]
+  },
+  "qwen15_gguf_official_hf": {
+    "path": "C:\\ai_models\\qwen2.5-1.5b-instruct-q4_k_m.gguf",
+    "sha256": "6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e",
+    "size_bytes": 1117320736
+  },
+  "qwen3_gguf_official_hf": {
+    "path": "C:\\ai_models\\qwen2.5-3b-instruct-q4_k_m.gguf",
+    "sha256": "626b4a6678b86442240e33df819e00132d3ba7dddfe1cdc4fbb18e0a9615c62d",
+    "size_bytes": 2104932768
+  },
+  "restore27_revision": {
+    "date": "2026-10-27T17:44:59",
+    "note": "Environment restoration after accidental deletion of local model files (27.10.2026). The two Qwen GGUFs were re-downloaded from the official Qwen HF GGUF repos and are byte-identical to the files used in the benchmarks (hashes match symmetric_dense_vs_ternary_postfix.json provenance). The BitNet I2_S GGUF was re-converted from the same HF checkpoint with the same pinned converter (commit 0b341e5 / gguf-py submodule): all 332 tensors are byte-identical to ggml-model-i2_s_merged.gguf, which in turn was proven code-identical to the base checkpoint (lora_merge_report: 0 flipped codes); the file hash differs from the historical 'gguf_model' entry because the original was produced by an earlier toolchain build (513,088 bytes of structural/metadata difference). The historical 'gguf_model' entry is kept unchanged as the record of the file used in the experiments. No existing entries were modified. Backup saved next to this file.",
+    "added_keys": [
+      "qwen15_gguf_official_hf",
+      "qwen3_gguf_official_hf"
+    ]
   }
 }
